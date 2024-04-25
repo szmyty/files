@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Set the URL to your Caddy server's address
+URL="http://localhost:80"  # Change this to an appropriate URL or health endpoint
+
+# Optionally specify expected content if you have a specific page or health endpoint
+EXPECTED_CONTENT="OK"
+
+# Perform the HTTP GET request
+RESPONSE=$(curl --silent --fail --show-error --connect-timeout 5 --write-out "HTTPSTATUS:%{http_code}" -o /dev/null $URL)
+
+# Extract the HTTP status code from the response
+HTTP_STATUS=$(echo $RESPONSE | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
+
+# Check if the HTTP status code is 200 (OK)
+if [ "$HTTP_STATUS" -eq 200 ]; then
+    echo "Health check passed!"
+    exit 0
+else
+    echo "Health check failed! HTTP status code: $HTTP_STATUS"
+    exit 1
+fi
