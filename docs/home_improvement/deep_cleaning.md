@@ -22,11 +22,12 @@
   - [ ] Quotes: Get detailed quotes from multiple companies. Ensure the quotes break down the costs for each service (deep cleaning, mold removal, pest control).
 
 - [ ] **Room Rotation and Culling Technique**
-  - [ ] Initial Cull: Empty the room by rotating items out and culling clear trash and donation items.
-  - [ ] Consolidation: Place items into bins to reduce scattered items.
-  - [ ] Deep Clean: Have the cleaning service perform a deep clean on the emptied room.
-  - [ ] Final Cull and Rotation: Rotate items back into the cleaned room, performing a deeper cull and cleaning bins for long-term storage.
-  - [ ] Multiple Rooms: For multiple rooms, consolidate items to ensure each room is fully emptied for cleaning.
+  - [ ] Choose Target Room: Select the room to be cleaned (target room). Other rooms will serve as staging areas.
+  - [ ] Initial Cull: Empty the target room by rotating items to staging areas, culling clear trash and donation items.
+  - [ ] Consolidation: Place items into bins to reduce scattered items in staging areas.
+  - [ ] Deep Clean: Have the cleaning service perform a deep clean on the emptied target room.
+  - [ ] Final Cull and Rotation: Rotate items back into the cleaned target room, performing a deeper cull and cleaning bins for long-term storage.
+  - [ ] Repeat: Select the next room as the target room and repeat the process.
 
 - [ ] **Schedule the Services**
   - [ ] Deep Cleaning: Schedule this first to prepare the area for mold removal and pest control.
@@ -105,3 +106,43 @@ rooms = [
 ]
 
 multiple_room_rotation(rooms)
+```
+
+```
+import matplotlib.pyplot as plt
+import networkx as nx
+
+def draw_algorithm_diagram():
+    G = nx.DiGraph()
+
+    # Nodes
+    G.add_node("Choose Target Room")
+    G.add_node("Initial Cull")
+    G.add_node("Consolidation")
+    G.add_node("Deep Clean")
+    G.add_node("Final Cull and Rotation")
+    G.add_node("Repeat Process for Next Room")
+    G.add_node("End")
+
+    # Edges
+    G.add_edges_from([
+        ("Choose Target Room", "Initial Cull"),
+        ("Initial Cull", "Consolidation"),
+        ("Consolidation", "Deep Clean"),
+        ("Deep Clean", "Final Cull and Rotation"),
+        ("Final Cull and Rotation", "Repeat Process for Next Room"),
+        ("Repeat Process for Next Room", "Choose Target Room"),
+        ("Repeat Process for Next Room", "End")
+    ])
+
+    pos = nx.spring_layout(G)
+    nx.draw(G, pos, with_labels=True, node_size=2000, node_color="skyblue", font_size=10, font_weight="bold", arrows=True)
+    plt.title("Room Rotation and Culling Algorithm")
+    plt.show()
+
+draw_algorithm_diagram()
+```
+
+## Algorithm Diagram
+
+![Room Rotation and Culling Algorithm](../.png)
