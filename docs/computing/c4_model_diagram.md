@@ -24,7 +24,7 @@ Admin --> [Web Application]
 [Web Application] --> [REST API]
 [REST API] --> [Database]
 @enduml
-\`\`\`
+```
 
 ## 2. Container Diagram
 **Perspective**: High-level internal view.  
