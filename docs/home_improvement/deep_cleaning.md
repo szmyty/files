@@ -108,7 +108,7 @@ rooms = [
 multiple_room_rotation(rooms)
 ```
 
-```
+```python
 import matplotlib.pyplot as plt
 import networkx as nx
 
@@ -145,4 +145,4 @@ draw_algorithm_diagram()
 
 ## Algorithm Diagram
 
-![Room Rotation and Culling Algorithm](../.png)
+![Room Rotation and Culling Algorithm](path_to_your_image.png)
