@@ -2,10 +2,10 @@
 
 ## Checklist for Cleaning Process
 
-- [ ] **Identify the Services You Need**
-  - [ ] Deep Cleaning: Involves thorough cleaning of all surfaces, including floors, walls, and ceilings.
-  - [ ] Mold Removal: Professional mold remediation services to safely remove mold and prevent future growth.
-  - [ ] Pest Control: Services to remove and prevent insects and other pests.
+- [X] **Identify the Services You Need**
+  - [X] Deep Cleaning: Involves thorough cleaning of all surfaces, including floors, walls, and ceilings.
+  - [X] Mold Removal: Professional mold remediation services to safely remove mold and prevent future growth.
+  - [X] Pest Control: Services to remove and prevent insects and other pests.
 
 - [ ] **Search for Reputable Service Providers**
   - [ ] Deep Cleaning Services: Search for terms like "deep cleaning services" or "professional home cleaning" in your area.
@@ -22,9 +22,9 @@
   - [ ] Quotes: Get detailed quotes from multiple companies. Ensure the quotes break down the costs for each service (deep cleaning, mold removal, pest control).
 
 - [ ] **Room Rotation and Culling Technique**
-  - [ ] Choose Target Room: Select the room to be cleaned (target room). Other rooms will serve as staging areas.
-  - [ ] Initial Cull: Empty the target room by rotating items to staging areas, culling clear trash and donation items.
-  - [ ] Consolidation: Place items into bins to reduce scattered items in staging areas.
+  - [X] Choose Target Room: Select the room to be cleaned (target room). Other rooms will serve as staging areas.
+  - [X] Initial Cull: Empty the target room by rotating items to staging areas, culling clear trash and donation items.
+  - [X] Consolidation: Place items into bins to reduce scattered items in staging areas.
   - [ ] Deep Clean: Have the cleaning service perform a deep clean on the emptied target room.
   - [ ] Final Cull and Rotation: Rotate items back into the cleaned target room, performing a deeper cull and cleaning bins for long-term storage.
   - [ ] Repeat: Select the next room as the target room and repeat the process.
