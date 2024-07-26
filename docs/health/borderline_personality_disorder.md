@@ -348,6 +348,43 @@ plt.show()
 ![png](bpd_files/bpd_3_0.png)
     
 
+# Borderline Personality Disorder Tests: McLean Screening Instrument
+
+## Overview
+The McLean Screening Instrument for Borderline Personality Disorder (MSI-BPD) is a self-report questionnaire designed to screen for the presence of Borderline Personality Disorder (BPD). It consists of ten questions that assess the core features of BPD.
+
+## Purpose
+The MSI-BPD helps to identify individuals who may have BPD, facilitating early intervention and treatment. It is a quick and efficient tool for use in clinical settings.
+
+## Test Structure
+The MSI-BPD comprises ten yes/no questions that correspond to the diagnostic criteria for BPD as outlined in the Diagnostic and Statistical Manual of Mental Disorders (DSM-5). Each affirmative response indicates the presence of a symptom related to BPD.
+
+## Questions
+1. Have any of your closest relationships been troubled by a lot of arguments or repeated breakups?
+2. Have you deliberately hurt yourself physically (e.g., punched yourself, cut yourself, burned yourself)?
+3. Have you ever threatened to or actually hurt yourself or hurt someone else?
+4. Have you ever felt that you had no idea who you are or that you had no identity?
+5. Have you made desperate efforts to avoid feeling abandoned or being abandoned (e.g., repeatedly called someone to reassure yourself)?
+6. Have you felt that you are a bad person or evil?
+7. Have you often felt that life is not worth living, that you wanted to die, or that you were going to die?
+8. Have you felt that you were on an emotional roller coaster, shifting from feeling very upbeat to very depressed?
+9. Have you felt paranoid or experienced extreme suspiciousness for at least several hours?
+10. Have you felt numb or detached from your emotions, felt outside your body, or felt that you were in a dream for at least several hours?
+
+## Scoring
+Each "yes" answer scores one point. A total score of 7 or higher suggests a likelihood of BPD and indicates that a more comprehensive diagnostic assessment should be considered.
+
+## Interpretation
+The MSI-BPD is a screening tool and not a definitive diagnostic instrument. High scores should prompt further evaluation by a qualified mental health professional.
+
+## Further Resources
+For more information and to take the MSI-BPD, please visit the following sources:
+- [McLean Screening Instrument for BPD - McLean Hospital](https://www.mcleanhospital.org/)
+- [Psychology Today: Borderline Personality Disorder Test](https://www.psychologytoday.com/us/tests/personality/borderline-personality-test)
+
+## Disclaimer
+The information provided here is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+
 
 ---
 
