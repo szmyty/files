@@ -121,6 +121,9 @@ Per DSM-5, at least five of the following symptoms:
 ## Summary
 Trauma and Stress: Trauma and significant stress can activate and intensify symptoms of BPD, leading to a cycle of emotional instability and maladaptive coping mechanisms.
 
+## Code Example
+[Jupyter Notebook](https://colab.research.google.com/drive/16_WbvZeI95QeT3WHHyCL168n1WT_W4FZ#scrollTo=hU6jhgF8ytc1)
+
 ---
 
 _Disclaimer: This information was formatted with the help of ChatGPT to ensure clarity and thoroughness._
