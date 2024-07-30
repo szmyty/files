@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubernetes Data Pipeline Architecture</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        .mermaid .node rect {
+            fill: #ffdd57;
+            stroke: #333333;
+            stroke-width: 2px;
+        }
+
+        .mermaid .arrow {
+            stroke: #007bff;
+            stroke-width: 2px;
+        }
+
+        .mermaid .label {
+            font-family: 'Arial, sans-serif';
+            font-size: 14px;
+            fill: #333333;
+        }
+
+        .node .data-sources {
+            background-image: url('https://example.com/data-sources-logo.png');
+            background-size: cover;
+        }
+
+        .node .airflow {
+            background-image: url('https://example.com/airflow-logo.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="mermaid">
+        graph TB
+            subgraph K8s[Kubernetes Cluster]
+                DataSources[Data Sources]:::data-sources
+                Airflow[Apache Airflow]:::airflow
+                DataSources --> |Arbitrary Data Sources| Airflow
+                Airflow --> |Transform Data| Datalake[Common Datalake Format]
+            end
+
+            subgraph Storage[MinIO]
+                Datalake --> |Store Parquet Files| Parquet[Parquet Files]
+            end
+
+            subgraph Applications[Web Applications]
+                App1[Web App 1]
+                App2[Web App 2]
+                App3[Web App 3]
+                Parquet --> |Interface| App1
+                Parquet --> |Interface| App2
+                Parquet --> |Interface| App3
+            end
+    </div>
+</body>
+</html>
