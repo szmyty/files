@@ -15,7 +15,8 @@
 **[Date of the Start of the Breakdown]**  
 
 **In particular, our marriage has suffered an irretrievable breakdown because:**  
-Our marriage has experienced fundamental disagreements and emotional distances that have proven insurmountable, affecting both of us deeply. Despite efforts to resolve these issues, both independently and together, the recurring challenges and the impact on our mental and emotional health have led us to conclude that reconciliation is unfeasible.
+Our marriage has suffered an irretrievable breakdown due to fundamental disagreements and emotional distances that have proven insurmountable. Despite individual and joint efforts to resolve these issues, their persistence has made reconciliation impossible.
+
 
 **Signed under the penalties of perjury.**
 
