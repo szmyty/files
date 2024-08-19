@@ -1,0 +1,26 @@
+' ***********************************************************************
+'  File: sql_query_engine.puml
+'  Purpose: Defines a stylized SQL Query Engine component for use in 
+'           architecture diagrams.
+'  Usage: Include this file in the main architecture diagram to visualize 
+'         the SQL Query Engine.
+'  Author: Alan Szmyt
+' ***********************************************************************
+
+@startuml "SQL Query Engine Component"
+skinparam backgroundColor #F2F2F2
+skinparam shadowing true
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam defaultTextAlignment center
+
+' SQL Query Engine Node
+node "SQL Query Engine" as sql_engine {
+    [<color:#336699><&server></color> SQL Query Engine]
+    
+    note right
+    "Executes queries against data stored in the Data Lake"
+    "Supports distributed query execution (e.g., Presto, Trino)"
+    end note
+}
+@enduml
