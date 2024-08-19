@@ -15,6 +15,11 @@
 !include data_hub.puml
 !include client_applications.puml
 
-' Components included but not connected yet
+@startuml
+!include objects/node_with_logo.puml
+
+!$show_icons = "true"
+$node_with_logo("Job Orchestrator", "airflow", "Handles ETL processes")
+@enduml
 
 @enduml
