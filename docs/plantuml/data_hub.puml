@@ -1,0 +1,26 @@
+' ***********************************************************************
+'  File: data_hub.puml
+'  Purpose: Defines a stylized Data Hub component (e.g., CKAN) for use in 
+'           architecture diagrams.
+'  Usage: Include this file in the main architecture diagram to visualize 
+'         the Data Hub component.
+'  Author: Alan Szmyt
+' ***********************************************************************
+
+@startuml "Data Hub Component"
+skinparam backgroundColor #F2F2F2
+skinparam shadowing true
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam defaultTextAlignment center
+
+' Data Hub Node
+node "Data Hub" as data_hub {
+    [<color:#336699><&folder-open></color> Data Hub]
+    
+    note right
+    "Central repository for raw data ingestion"
+    "Supports various data formats (e.g., CKAN)"
+    end note
+}
+@enduml
