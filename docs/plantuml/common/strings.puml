@@ -1,0 +1,27 @@
+' ***********************************************************************
+'  File: strings.puml
+'  Location: docs/diagrams/common/strings.puml
+'  Purpose: This utility library contains common string manipulation
+'           functions for use in PlantUML diagrams, providing additional
+'           tools for working with text and formatting.
+'
+'  Usage: Include this file in your PlantUML diagrams to access the
+'         predefined string manipulation functions.
+'
+'  Author: Alan Szmyt
+' ***********************************************************************
+
+' Function: $repeat
+' Purpose: Repeats a given string a specified number of times.
+' Params: 
+'   $str: The string to repeat.
+'   $count: The number of times to repeat the string.
+' Returns: A string that consists of the input string repeated `$count` times.
+!function $repeat($str, $count) 
+  !local $result = ""
+  !while ($count > 0)
+    !$result = $result + $str
+    !$count = $count - 1
+  !endwhile
+  !return $result
+!endfunction
