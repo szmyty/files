@@ -1,0 +1,21 @@
+@startuml
+!procedure $node_with_logo($title, $logo, $description)
+    node $title as n <<$logo>> {
+        ' Check if icons should be shown
+        !if %variable_exists("show_icons")
+            !if ($show_icons == "true")
+                <$logo>
+                n : $title
+                n : $description
+            !else
+                n : $title
+                n : $description
+            !endif
+        !else
+            ' Default to showing only the title and description
+            n : $title
+            n : $description
+        !endif
+    }
+!endprocedure
+@enduml
