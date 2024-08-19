@@ -1,17 +1,20 @@
 ' ***********************************************************************
 '  File: architecture.puml
-'  Purpose: Combines and connects the Data Lake and SQL Query Engine 
-'           components in the system architecture.
-'  Usage: This file is the main architecture diagram, visualizing the 
-'         connections between major components.
+'  Purpose: Combines and includes all the modular components of the system 
+'           architecture without connecting them yet.
+'  Usage: This file is the main architecture diagram, serving as a base 
+'         for further connections and interactions between components.
 '  Author: Alan Szmyt
 ' ***********************************************************************
 
 @startuml "System Architecture"
 !include data_lake.puml
 !include sql_query_engine.puml
+!include blob_storage.puml
+!include job_orchestrator.puml
+!include data_hub.puml
+!include client_applications.puml
 
-' Connecting the Data Lake to the SQL Query Engine
-data_lake --> sql_engine : "Provides Data For Queries"
+' Components included but not connected yet
 
 @enduml
