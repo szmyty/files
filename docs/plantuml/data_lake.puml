@@ -1,0 +1,24 @@
+' ***********************************************************************
+'  File: data_lake.puml
+'  Purpose: Defines a stylized Data Lake component for use in architecture diagrams.
+'  Usage: Include this file in the main architecture diagram to visualize the Data Lake.
+'  Author: Alan Szmyt
+' ***********************************************************************
+
+@startuml "Data Lake Component"
+skinparam backgroundColor #F2F2F2
+skinparam shadowing true
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam defaultTextAlignment center
+
+' Data Lake Node
+node "Data Lake" as data_lake {
+    [<color:#336699><&database></color> Data Lake]
+    
+    note right
+    "Storage for raw and processed data"
+    "Supports multiple formats (e.g., TileDB, Parquet)"
+    end note
+}
+@enduml
