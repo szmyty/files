@@ -1,0 +1,26 @@
+' ***********************************************************************
+'  File: client_applications.puml
+'  Purpose: Defines a stylized Client Applications component for use in 
+'           architecture diagrams.
+'  Usage: Include this file in the main architecture diagram to visualize 
+'         the Client Applications component.
+'  Author: Alan Szmyt
+' ***********************************************************************
+
+@startuml "Client Applications Component"
+skinparam backgroundColor #F2F2F2
+skinparam shadowing true
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam defaultTextAlignment center
+
+' Client Applications Node
+node "Client Applications" as client_apps {
+    [<color:#336699><&desktop></color> Client Applications]
+    
+    note right
+    "Interfaces with the REST API to retrieve and display data"
+    "Supports web, desktop, and mobile applications"
+    end note
+}
+@enduml
