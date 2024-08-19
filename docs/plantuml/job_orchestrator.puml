@@ -1,0 +1,26 @@
+' ***********************************************************************
+'  File: job_orchestrator.puml
+'  Purpose: Defines a stylized Job Orchestrator component (e.g., Apache 
+'           Airflow) for use in architecture diagrams.
+'  Usage: Include this file in the main architecture diagram to visualize 
+'         the Job Orchestrator component.
+'  Author: Alan Szmyt
+' ***********************************************************************
+
+@startuml "Job Orchestrator Component"
+skinparam backgroundColor #F2F2F2
+skinparam shadowing true
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam defaultTextAlignment center
+
+' Job Orchestrator Node
+node "Job Orchestrator" as job_orchestrator {
+    [<color:#336699><&process></color> Job Orchestrator]
+    
+    note right
+    "Manages ETL processes to transform and normalize data"
+    "Supports complex workflows (e.g., Apache Airflow)"
+    end note
+}
+@enduml
