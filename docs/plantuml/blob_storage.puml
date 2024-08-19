@@ -1,0 +1,26 @@
+' ***********************************************************************
+'  File: blob_storage.puml
+'  Purpose: Defines a stylized Blob Storage component (e.g., S3, MinIO) 
+'           for use in architecture diagrams.
+'  Usage: Include this file in the main architecture diagram to visualize 
+'         the Blob Storage component.
+'  Author: Alan Szmyt
+' ***********************************************************************
+
+@startuml "Blob Storage Component"
+skinparam backgroundColor #F2F2F2
+skinparam shadowing true
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam defaultTextAlignment center
+
+' Blob Storage Node
+node "Blob Storage" as blob_storage {
+    [<color:#336699><&cloud></color> Blob Storage]
+    
+    note right
+    "Stores large volumes of unstructured data"
+    "Supports S3-compatible APIs (e.g., MinIO, Amazon S3)"
+    end note
+}
+@enduml
