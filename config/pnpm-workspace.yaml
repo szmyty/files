@@ -1,0 +1,19 @@
+packages:
+  # all packages in direct subdirs of packages/
+  # - "packages/*"
+  # all packages in subdirs of components/
+  # - "components/**"
+  # exclude packages that are inside test directories
+  - "!**/test/**"
+
+# # Define a catalog of version ranges.
+# catalog:
+#   "@commitlint/cli": ^19.4.0
+#   asdf: 1.2.3
+
+catalogs:
+  # Define a catalog of version ranges for the workspace.
+  workspace:
+    "@commitlint/cli": ^19.4.0
+    asdf: 1.2.3
+    commitizen: 4.3.0
