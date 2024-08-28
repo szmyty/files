@@ -188,3 +188,5 @@ Pancreatitis is inflammation of the pancreas that often occurs when digestive en
 ### Summary
 
 Gastrointestinal diseases such as IBD, Colitis, and Pancreatitis involve complex interactions within the digestive system and require a comprehensive approach for diagnosis and management. Each condition has distinct hallmark symptoms—chronic diarrhea and vomiting for IBD, urgent bowel movements for Colitis, and severe abdominal pain for Pancreatitis—that help in their identification and management. Treatment typically involves dietary modifications, medications, and in some cases, long-term lifestyle changes to maintain digestive health.
+
+**Disclaimer**: This document is created for informational purposes only and is not intended as professional veterinary advice. The owner creating this document is not a veterinary professional. For all health concerns and conditions, please consult a licensed veterinarian.
