@@ -1,0 +1,117 @@
+# Poetry configuration file
+# For more details on each option, see the official documentation:
+# https://python-poetry.org/docs/configuration/
+
+# Path to the cache directory used by Poetry
+# Docs: https://python-poetry.org/docs/configuration/#cache-dir
+cache-dir = ".cache/pypoetry"
+
+[virtualenvs]
+
+# Create a new virtual environment if one doesn’t already exist
+# Docs: https://python-poetry.org/docs/configuration/#virtualenvscreate
+create = true
+
+# Create the virtualenv inside the project’s root directory
+# Docs: https://python-poetry.org/docs/configuration/#virtualenvsin-project
+in-project = true
+
+# Use currently activated Python version to create a new virtual environment
+# Docs: https://python-poetry.org/docs/configuration/#virtualenvsprefer-active-python
+prefer-active-python = true
+
+# Format string defining the prompt to be displayed when the virtual environment is activated
+# Docs: https://python-poetry.org/docs/configuration/#virtualenvsprompt
+prompt = "{project_name}-py{python_version}"
+
+[virtualenvs.options]
+
+# If set to true, the --always-copy parameter is passed to virtualenv
+# Docs: https://python-poetry.org/docs/configuration/#virtualenvsoptionsalways-copy
+always-copy = true
+
+# If set to true, the --no-pip parameter is passed to virtualenv
+# Docs: https://python-poetry.org/docs/configuration/#virtualenvsoptionsno-pip
+no-pip = true
+
+# If set to true, the --no-setuptools parameter is passed to virtualenv
+# Docs: https://python-poetry.org/docs/configuration/#virtualenvsoptionsno-setuptools
+no-setuptools = true
+
+# Give the virtual environment access to the system site-packages directory
+# Docs: https://python-poetry.org/docs/configuration/#virtualenvsoptionssystem-site-packages
+system-site-packages = false
+
+[installer]
+
+# Use parallel execution when installing packages
+# Docs: https://python-poetry.org/docs/configuration/#installerparallel
+parallel = true
+
+# Set the maximum number of workers while using the parallel installer
+# Docs: https://python-poetry.org/docs/configuration/#installermax-workers
+max-workers = 1
+
+# Set this configuration to disallow binary distributions for all or specific packages
+# Docs: https://python-poetry.org/docs/configuration/#installerno-binary
+no-binary = false
+
+# Use a more modern and faster method for package installation
+# Docs: https://python-poetry.org/docs/configuration/#installermodern-installation
+modern-installation = true
+
+[experimental]
+
+# Use system git client backend for git-related tasks
+# Docs: https://python-poetry.org/docs/configuration/#experimentalsystem-git-client
+system-git-client = false
+
+[solver]
+
+# Do not download entire wheels to extract metadata but use HTTP range requests instead
+# Docs: https://python-poetry.org/docs/configuration/#solverlazy-wheel
+lazy-wheel = true
+
+[keyring]
+
+# Enable or disable the use of the system keyring for storing credentials
+# Docs: https://python-poetry.org/docs/configuration/#keyringenabled
+enabled = true
+
+[repositories]
+
+# Define custom repositories for dependencies
+# Docs: https://python-poetry.org/docs/repositories/#publishing-to-repositories
+# <name> can be any identifier for your custom repository.
+# Example:
+# [repositories.my-repo]
+# url = "https://my-repo-url.com"
+
+[http-basic]
+
+# Configure HTTP Basic Auth credentials for repositories
+# Docs: https://python-poetry.org/docs/repositories/#configuring-credentials
+# <name> can be any identifier for your custom repository.
+# Example:
+# [http-basic.my-repo]
+# username = "my-username"
+# password = "my-password"
+
+[pypi-token]
+
+# Set repository credentials using an API token for authentication
+# Docs: https://python-poetry.org/docs/repositories/#configuring-credentials
+# <name> can be any identifier for your custom repository.
+# Example:
+# [pypi-token.my-repo]
+# token = "my-api-token"
+
+[certificates]
+
+# Set custom certificate authority for a specific repository
+# Docs: https://python-poetry.org/docs/repositories/#custom-certificate-authority
+# <name> can be any identifier for your custom repository.
+# Example:
+# [certificates.my-repo]
+# cert = "/path/to/ca-bundle.crt"
+# client-cert = "/path/to/client-cert.pem"

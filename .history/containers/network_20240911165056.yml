@@ -1,0 +1,67 @@
+---
+######################################################################
+# @Project      : sanctuary
+# @File         : network.yml
+# @Description  : Defines a shared Docker network for all containers in
+#                 the Sanctuary project. This configuration ensures consistent
+#                 networking across all services, utilizing Docker's bridge
+#                 driver for straightforward inter-container communication.
+#
+# @Author       : Alan Szmyt
+# @Date         : 2024-08-22
+# @Version      : 1.0
+######################################################################
+
+# Define common labels to apply to Docker network objects
+x-labels: &labels
+  labels:
+    app.name: ${COMPOSE_PROJECT_NAME} # Application name, using the Compose project name.
+
+# Configuration of the Docker network
+networks:
+  default:
+    # Network name based on the project name.
+    name: ${COMPOSE_PROJECT_NAME}-network
+    # Utilizing the bridge driver for Docker networking.
+    # Reference: https://docs.docker.com/network/bridge/
+    driver: bridge
+    # Allows manual attachment of containers to this network.
+    # Reference: https://docs.docker.com/compose/compose-file/compose-file-v3/#attachable
+    attachable: true
+    # Driver options for customizing the Docker bridge network.
+    driver_opts:
+      # Bridge interface name.
+      # Reference: https://docs.docker.com/network/bridge/#bridge-name
+      com.docker.network.bridge.name: "${COMPOSE_PROJECT_NAME}-bridge"
+      # Enable IP masquerading for NAT.
+      # Reference: https://docs.docker.com/network/bridge/#ip-masquerading
+      com.docker.network.bridge.enable_ip_masquerade: "true"
+      # NAT gateway mode for IPv4.
+      com.docker.network.bridge.gateway_mode_ipv4: "nat"
+      # NAT gateway mode for IPv6.
+      com.docker.network.bridge.gateway_mode_ipv6: "nat"
+      # Enable inter-container communication.
+      # Reference: https://docs.docker.com/network/bridge/#enable-inter-container-communication
+      com.docker.network.bridge.enable_icc: "true"
+      # Default IPv4 address binding.
+      com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
+      # Set the MTU (Maximum Transmission Unit).
+      # Reference: https://docs.docker.com/network/bridge/#mtu
+      com.docker.network.driver.mtu: "1500"
+      # Prefix for container network interfaces.
+      # Reference: https://docs.docker.com/network/bridge/#configure-the-default-bridge-network
+      com.docker.network.bridge.container_iface_prefix: "eth"
+      # Enable IPv4 networking.
+      com.docker.network.bridge.inhibit_ipv4: "false"
+    # IPAM configuration for managing IP addressing.
+    # Reference: https://docs.docker.com/network/bridge/#configure-the-default-bridge-network
+    ipam:
+      driver: default # Default IPAM driver.
+      config:
+        - subnet: "172.28.0.0/16" # Define the subnet for the network.
+          gateway: "172.28.0.1" # Define the gateway for the network.
+          ip_range: "172.28.5.0/24" # Allocate a specific IP range within the subnet.
+          aux_addresses:
+            my-router: "172.28.3.3" # Assign an auxiliary address.
+    # Apply the common labels to the network.
+    <<: *labels

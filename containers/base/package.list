@@ -1,0 +1,119 @@
+# -----------------------------------------------------------------------------
+# File: package.list
+#
+# Purpose: List of common Debian packages for installing into a base image.
+#
+# Description: This file contains a list of essential and commonly used
+# Debian packages for building and developing applications within a Docker
+# container. This list can be extended or modified based on the specific
+# needs of your project.
+#
+# Author: Alan Szmyt
+# -----------------------------------------------------------------------------
+
+# Essential packages
+build-essential        # Includes GCC, G++, and other essential build tools
+curl                   # Command-line tool for transferring data with URLs
+git                    # Version control system for tracking changes in files
+wget                   # Network downloader for retrieving files from the web
+ca-certificates        # Common CA certificates to enable HTTPS
+cmake                  # Build system generator for C++
+autoconf               # Generates configuration scripts for building packages
+make                   # Utility for directing compilation of source files
+locales                # Support for various language and character sets
+locales-all            # All locales, useful for broader language support
+vim                    # Popular text editor
+xz-utils               # Compression utilities for .xz files
+mlocate                # Fast file search tool
+unzip                  # Extract files from .zip archives
+file                   # Determines file type
+dpkg-dev               # Debian package development tools
+tzdata                 # Time zone data for the system
+lsb-release            # Distribution release information
+psmisc                 # Utilities for managing processes
+perl                   # High-level programming language
+libc-dev               # C library development files
+uuid-dev               # Development files for universally unique identifiers
+
+# Compression and Archiving
+tar                    # Tool for creating and extracting tar archives
+gzip                   # Compression utility using Lempel-Ziv coding
+bzip2                  # Compression utility using Burrows-Wheeler block sorting
+zip                    # Compression and archiving utility for .zip files
+libzstd-dev            # Development files for Zstandard compression
+libbz2-dev             # Development files for bzip2 compression
+liblz4-dev             # Development files for LZ4 compression
+zlib1g-dev             # Development files for zlib compression
+liblzma-dev            # Development files for XZ compression
+libsnappy-dev          # Development files for Snappy compression
+
+# Networking tools
+net-tools              # Basic tools for network management
+iproute2               # Collection of utilities for network management
+iputils-ping           # Network testing utility
+dnsutils               # Utilities for querying DNS
+
+# Debugging and Development tools
+gdb                    # GNU Debugger
+strace                 # Diagnostic, debugging, and instructional userspace utility
+lsof                   # List open files
+clang                  # C, C++, and Objective-C compiler
+clang++                # C++ compiler from the Clang project
+ccache                 # Compiler cache to speed up recompilation
+chrpath                # Tool to edit rpath in binaries
+g++                    # GNU C++ compiler
+gcc                    # GNU C compiler
+
+# Shell and Terminal utilities
+bash                   # Bourne Again Shell
+zsh                    # Z Shell
+tmux                   # Terminal multiplexer
+screen                 # Terminal multiplexer with VT100/ANSI terminal emulation
+
+# Package Management tools
+apt-utils              # APT utilities, required for certain APT features
+software-properties-common  # Manages distribution and independent software sources
+
+# Text Processing and Editing
+nano                   # Simple text editor
+sed                    # Stream editor for filtering and transforming text
+gawk                   # Pattern scanning and processing language
+
+# Miscellaneous Utilities
+sudo                   # Allows permitted users to execute commands as the superuser
+tree                   # Recursive directory listing command
+htop                   # Interactive process viewer
+jq                     # Command-line JSON processor
+
+# Security and Authentication
+gosu                   # Run commands as a different user and group
+pwgen                  # Password generator
+libssl-dev             # Development files for the OpenSSL library
+libpam0g-dev           # Development files for PAM
+libcrack2-dev          # Password checking library - development files
+libjudy-dev            # Development files for Judy, a general-purpose dynamic array
+libdbd-mysql           # MySQL database driver for Perl
+
+# Databases and Data Processing
+libzmq3-dev            # Development files for ZeroMQ messaging library
+libnuma-dev            # Development files for NUMA (Non-Uniform Memory Access)
+libstemmer-dev         # Development files for Snowball stemmers
+libpcre3-dev           # Development files for Perl Compatible Regular Expressions
+libreadline-dev        # Development files for the GNU Readline library
+
+# Media and Audio Libraries
+libpulse-dev           # Development files for PulseAudio sound server
+libgstreamer-plugins-base1.0-dev  # Development files for GStreamer
+libgstreamer1.0-dev    # GStreamer core development files
+
+# Miscellaneous Libraries
+libcurl4-openssl-dev   # Development files for libcurl with OpenSSL support
+libjemalloc-dev        # Development files for jemalloc, a memory allocator
+libxml2-dev            # Development files for the GNOME XML library
+libboost-all-dev       # Development files for Boost C++ libraries
+
+# Version Control and SCM
+subversion             # Centralized version control system
+
+# Clean up
+# Clean up the package cache after installation

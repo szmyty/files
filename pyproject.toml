@@ -1,0 +1,453 @@
+[build-system]
+# Specifies the build backend and its requirements
+# Docs: https://python-poetry.org/docs/pyproject/#build-system-table
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+# Project metadata
+# Docs: https://python-poetry.org/docs/pyproject/#toolpoetryname
+package-mode = false
+# name = "app"
+# version = "0.0.1"
+# description = ""
+# authors = ["Alan Szmyt <szmyty@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "**/*.py", from = "scripts", to = "licenses", format = "sdist" },
+    { include = "**/*.py", from = "scripts", to = "licenses", format = "wheel" },
+    # { include = "extra_package" },
+]
+
+[tool.poetry.scripts]
+licenses = "scripts.licenses:main"
+
+[tool.poetry.dependencies]
+# Project dependencies
+# Docs: https://python-poetry.org/docs/pyproject/#dependencies
+python = ">=3.10,<3.13"  # Specifies supported Python versions
+
+# Example dependencies
+art = "^5.9"
+bottleneck = "^1.3.7"
+cyberpandas = "^1.1.1"
+cython = "^0.29.34"
+geopandas = "^0.12.2"
+jupyter = "^1.0.0"
+jupyter-contrib-nbextensions = "^0.7.0"
+jupyterlab = "^3.6.2"
+itikz = "^0.1.5"
+kaleido = "0.2.1"
+lxml = "^4.9.2"
+matplotlib = "^3.7.1"
+more-itertools = "^9.1.0"
+notebook = {version = "^6.5.3", extras = ["json-logging"]}
+numpy = "^1.24.2"
+pandas = {extras = ["excel"], version = "^2.0.0"}
+pandas-path = "^0.3.0"
+plotly = "^5.14.1"
+plotly-geo = "^1.0.0"
+pydantic = "^1.10.6"
+pyjanitor = "^0.24.0"
+# pylatex = "1.4.0"
+pytest = "^7.2.2"
+scikit-learn = "^1.2.2"
+scipy = "^1.10.1"
+seaborn = "^0.12.2"
+statistics = "^1.0.3.5"
+tabulate = "^0.9.0"
+types-tabulate = "^0.9.0.1"
+wcmatch = "^8.4.1"
+jupyterlab-github = "^3.0.1"
+python-dotenv = "^1.0.0"
+marshmallow = "^3.19.0"
+spotipy = "^2.23.0"
+kneed = "^0.8.2"
+loguru = "^0.7.0"
+pydot = "^1.4.2"
+poethepoet = "^0.19.0"
+objsize = "^0.7.0"
+sqids = "^0.3.0"
+pylatex = "^1.4.2"
+opensource = "^1.0.2"
+
+[tool.poetry.group.dev.dependencies]
+# Development dependencies
+# Docs: https://python-poetry.org/docs/pyproject/#development-dependencies
+absolufy-imports = "^0.3.1"
+bandit = {version = "^1.7.5", extras = ["all"]}
+black = {version = "^23.1.0", extras = ["all"]}
+codespell = "^2.2.4"
+commitizen = "^2.42.1"
+coverage = {version = "^7.2.1", extras = ["toml"]}
+darglint = "^1.8.1"
+docutils = "^0.19"
+flake8 = "^6.0.0"
+flake8-docstrings = "^1.7.0"
+flake8-mutable = "^1.2.0"
+flake8-plugin-utils = "^1.3.2"
+flake8-pyproject = "^1.2.2"
+flake8-rst-docstrings = "^0.3.0"
+flynt = "^0.77"
+ipykernel = "^6.21.2"
+isort = "^5.12.0"
+mypy = "^1.1.1"
+pdoc = "^13.0.0"
+pep8-naming = "^0.13.3"
+pre-commit = "^3.1.1"
+pre-commit-hooks = "^4.4.0"
+py2puml = "^0.7.1"
+pycodestyle = "^2.10.0"
+pydocstyle = "^6.2.0"
+pylic = "^3.5.0"
+pylint = "^2.17.0"
+pytest-clarity = "^1.0.1"
+pytest-cov = "^4.0.0"
+pytest-deadfixtures = "^2.2.1"
+pytest-dotenv = "^0.5.2"
+pytest-forked = "^1.6.0"
+pytest-instafail = "^0.4.2"
+pytest-isort = "^3.1.0"
+pytest-mock = "^3.10.0"
+pytest-rerunfailures = "^11.1.2"
+pytest-sugar = "^0.9.6"
+pytest-xdist = {version = "^3.2.1", extras = ["psutil"]}
+pyupgrade = "^3.3.1"
+ruff = "^0.0.256"
+shellcheck-py = "^0.9.0.2"
+typeguard = "^3.0.0"
+yesqa = "^1.4.0"
+
+[tool.poetry.group.jupyter.dependencies]
+# Jupyter-related dependencies
+# Docs: https://python-poetry.org/docs/pyproject/#grouped-dependencies
+ipyleaflet = "^0.17.2"
+ipymidicontrols = "^0.1.3"
+ipytone = "^0.4.1"
+ipywidgets = "^8.0.6"
+jlab-enhanced-cell-toolbar = "^3.5.1"
+jlab-enhanced-launcher = "^3.2.0"
+jupyter-archive = "^3.3.4"
+jupyterlab-autorun-cells = "^1.0.0"
+jupyterlab-autoversion = "^0.3.6"
+jupyterlab-cell-flash = "^0.3.5"
+jupyterlab-celltests = "^0.1.3"
+jupyterlab-code-formatter = "^1.6.0"
+jupyterlab-commands = "^0.3.4"
+jupyterlab-drawio = "^0.9.0"
+jupyterlab-execute-time = "^2.3.1"
+jupyterlab-executor = "^2021.1.6"
+jupyterlab-favorites = "^3.1.1"
+jupyterlab-geojson = "^3.3.1"
+jupyterlab-git = "^0.41.0"
+jupyterlab-image-editor = "^0.1.0"
+jupyterlab-js-logs = "^0.2.6"
+jupyterlab-kernelspy = "^3.1.0"
+jupyterlab-latex = "^3.1.0"
+jupyterlab-logout = "^0.5.0"
+jupyterlab-markup = "^2.0.0"
+jupyterlab-materialdarker = "^0.6.1"
+jupyterlab-nbconvert-nocode = "^0.4.0"
+jupyterlab-recents = "^3.2.0"
+jupyterlab-search-replace = "^1.0.1"
+jupyterlab-spellchecker = "^0.7.3"
+jupyterlab-spreadsheet-editor = "^0.6.1"
+jupyterlab-system-monitor = "^0.8.0"
+jupyterlab-templates = "^0.4.0"
+jupyterlab-unfold = "^0.2.2"
+lckr-jupyterlab-variableinspector = "^3.0.9"
+python-lsp-server = {version = "^1.7.2", extras = ["all"]}
+pythreejs = "^2.4.2"
+voila = "^0.4.0"
+
+[tool.poetry-exec-plugin.commands]
+# Define custom commands to be run using poetry-exec-plugin
+# Docs: https://github.com/python-poetry/poetry-exec-plugin
+greet = "poetry run poe greet"
+
+[tool.poetry.plugins.dotenv]
+location = "app.env"
+
+[tool.jupyter.kernel]
+# Jupyter kernel configuration
+name = "app-kernel"
+display = "app Jupyter Kernel"
+
+[tool.commitizen]
+# Configuration for commitizen, a tool for managing conventional commits
+# Docs: https://commitizen-tools.github.io/commitizen/config
+bump_message = "bump(release): v$current_version -> v$new_version"
+tag_format = "v$version"
+update_changelog_on_bump = true
+version = "0.0.1"
+version_files = ["pyproject.toml:version"]
+
+[tool.pytest.ini_options]
+# Pytest configuration options
+# Docs: https://docs.pytest.org/en/latest/reference/reference.html#ini-options-ref
+minversion = "7.0"
+pythonpath = "."
+testpaths = ["app/tests"]
+norecursedirs = ["app/tests/helpers"]
+cache_dir = ".cache/.pytest_cache"
+addopts = "--color=yes --doctest-modules --exitfirst --failed-first --strict-config --strict-markers --verbosity=2"
+xfail_strict = true
+console_output_style = "progress"
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning"
+]
+required_plugins = "pytest-clarity>=1.0.1 pytest-cov>=4.0.0 pytest-deadfixtures>=2.2.1 pytest-dotenv>=0.5.2 pytest-forked>=1.6.0 pytest-instafail>=0.4.2 pytest-isort>=3.1.0 pytest-rerunfailures>=11.1.2 pytest-mock>=3.10.0 pytest-sugar>=0.9.6 pytest-xdist>=3.2.1"
+
+[tool.coverage.run]
+# Coverage.py run configuration
+# Docs: https://coverage.readthedocs.io/en/latest/config.html#run
+branch = true
+command_line = "--module pytest"
+data_file = ".cache/coverage/.coverage"
+source = ["."]
+
+[tool.coverage.report]
+# Coverage.py report configuration
+# Docs: https://coverage.readthedocs.io/en/latest/config.html#report
+fail_under = 80
+precision = 1
+show_missing = true
+skip_covered = false
+omit = [
+    "*conftest*",
+    "*/test*",
+]
+exclude_lines = [
+    "if __name__ == .__main__.:",
+    "def __subclasshook__",
+]
+
+[tool.coverage.html]
+# Coverage.py HTML report configuration
+# Docs: https://coverage.readthedocs.io/en/latest/config.html#html
+directory = ".cache/coverage/reports/html"
+
+[tool.coverage.xml]
+# Coverage.py XML report configuration
+# Docs: https://coverage.readthedocs.io/en/latest/config.html#xml
+output = ".cache/coverage/reports/xml/coverage.xml"
+
+[tool.black]
+# Black code formatter configuration
+# Docs: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
+target-version = ["py310"]
+line-length = 88
+include_trailing_comma = false
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.ruff_cache
+    | \.pytest_cache
+    | \.tox
+    | \.cache
+    | \.venv
+    | \.ipynb_checkpoints
+    | \.lsp_symlink
+    | _build
+    | buck-out
+    | build
+    | dist
+    | migrations
+    | venv
+    # The following are specific to Black, you probably don't want those.
+    | blib2to3
+    | resources
+)/
+'''
+
+[tool.isort]
+# Isort configuration for sorting imports
+# Docs: https://pycqa.github.io/isort/docs/configuration/options.html
+profile = "black"
+skip = [".venv", "venv", ".cache", "__init__.py"]
+skip_glob = ["*__init__.py*"]
+atomic = true
+color_output = true
+use_parentheses = true
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+line_length = 88
+ensure_newline_before_comments = true
+
+[tool.mypy]
+# Mypy configuration for static type checking
+# Docs: https://mypy.readthedocs.io/en/latest/config_file.html
+mypy_path = "."
+files = "**/*.py"
+exclude = ["venv", ".venv", "resources"]
+color_output = true
+cache_dir = ".cache/.mypy_cache"
+plugins = ["numpy.typing.mypy_plugin", "pydantic.mypy"]
+junit_xml = ".cache/coverage/reports/mypy.xml"
+html_report = ".cache/coverage/reports/html"
+follow_imports = "silent"
+strict = true
+pretty = true
+warn_no_return = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+disallow_subclassing_any = true
+ignore_missing_imports = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+
+[tool.pydantic-mypy]
+# Pydantic plugin for mypy configuration
+# Docs: https://pydantic-docs.helpmanual.io/mypy_plugin/#configuring-the-plugin
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[tool.ruff]
+# Ruff linter configuration
+# Docs: https://github.com/charliermarsh/ruff
+allowed-confusables = ["−", "ρ", "∗"]
+builtins = ["_"]
+cache-dir = ".cache/.ruff_cache"
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+exclude = [
+    ".bzr", ".cache", ".coverage", ".direnv", ".eggs", ".env", ".git", ".hg", ".idea",
+    ".ipynb_checkpoints", ".mypy_cache", ".nox", ".pants.d", ".pytype", ".ruff_cache",
+    ".sha1", ".svn", ".tox", ".venv", "__pycache__", "__pypackages__", "_build",
+    "buck-out", "build", "dist", "docker", "docs", "logs", "node_modules", "out",
+    "resources", "scripts", "site", "sql", "venv"
+]
+extend-exclude = ["./config"]
+extend-ignore = []
+extend-select = ["B", "Q"]
+external = []
+fix = false
+fix-only = false
+fixable = [
+    "A", "ANN", "ARG", "B", "BLE", "C", "COM", "D", "DTZ", "E", "EM", "ERA", "EXE",
+    "F", "FBT", "G", "I", "ICN", "INP", "ISC", "N", "PD", "PGH", "PIE", "PL", "PT",
+    "PTH", "Q", "RET", "RUF", "S", "SIM", "T", "TCH", "TID", "TRY", "UP", "W", "YTT"
+]
+force-exclude = false
+format = "grouped"
+ignore = []
+ignore-init-module-imports = true
+line-length = 88
+namespace-packages = []
+required-version = "0.0.256"
+respect-gitignore = true
+select = ["ALL"]
+show-fixes = true
+show-source = true
+src = ["."]
+target-version = "py310"
+task-tags = ["TODO", "FIXME", "XXX", "HACK"]
+typing-modules = ["airflow.typing_compat"]
+unfixable = ["F401"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["I001"]
+"app/tests/test_app.py" = ["S101"]
+
+[tool.ruff.pydocstyle]
+# Pydocstyle configuration for docstring style checking
+# Docs: https://github.com/PyCQA/pydocstyle
+convention = "google"
+ignore-decorators = ["typing.overload"]
+property-decorators = []
+
+[tool.ruff.flake8-annotations]
+# Flake8 annotations configuration
+# Docs: https://github.com/sco1/flake8-annotations
+allow-star-arg-any = false
+ignore-fully-untyped = false
+mypy-init-return = false
+suppress-dummy-args = false
+suppress-none-returning = false
+
+[tool.ruff.flake8-bandit]
+# Flake8 bandit configuration for security checks
+# Docs: https://github.com/tylerwince/flake8-bandit
+check-typed-exception = false
+hardcoded-tmp-directory = ["/tmp", "/var/tmp", "/dev/shm"]
+
+[tool.ruff.flake8-bugbear]
+# Flake8 bugbear configuration for finding likely bugs
+# Docs: https://github.com/PyCQA/flake8-bugbear
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query"]
+
+[tool.ruff.flake8-builtins]
+# Flake8 builtins configuration to avoid shadowing Python builtins
+# Docs: https://github.com/gforcada/flake8-builtins
+builtins-ignorelist = ["id"]
+
+[tool.ruff.flake8-comprehensions]
+# Flake8 comprehensions configuration to simplify comprehensions
+# Docs: https://github.com/adamchainz/flake8-comprehensions
+allow-dict-calls-with-keyword-arguments = false
+
+[tool.poe]
+# Poethepoet configuration for task management
+# Docs: https://github.com/nat-n/poethepoet
+verbosity = -1
+include = ["tasks.toml"]
+envfile = "./config/poe.env"
+
+[tool.pylic]
+# Pylic configuration for license compliance checks
+# Docs: https://github.com/ubersan/pylic
+safe_licenses = [
+    "Apache 2.0",
+    "Apache Software License",
+    "BSD 3-Clause",
+    "BSD License",
+    "BSD",
+    "Eclipse Public License 2.0 (EPL-2.0)",
+    "GNU General Public License v2 (GPLv2)",
+    "GNU Lesser General Public License v2 (LGPLv2)",
+    "GNU Library or Lesser General Public License (LGPL)",
+    "GPL v2",
+    "ISC License (ISCL)",
+    "MIT License",
+    "Mozilla Public License 2.0 (MPL 2.0)",
+    "Public Domain",
+    "Python Software Foundation License",
+    "The Unlicense (Unlicense)",
+    "Historical Permission Notice and Disclaimer (HPND)",
+    "GNU Lesser General Public License v3 or later (LGPLv3+)",
+    "BSD 3-Clause License",
+    "GNU Lesser General Public License v2 or later (LGPLv2+)",
+    "MPL-2.0",
+    "MIT",
+    "Apache License 2.0",
+]
+unsafe_packages = [
+    "kneed",
+    "pytoolconfig",
+    "app",
+    "python-lsp-jsonrpc",
+    "ypy-websocket",
+    "flynt"
+]
+
+[tool.flynt]
+# Flynt configuration for converting string formatting to f-strings
+# Docs: https://github.com/ikamensh/flynt
+line-length = 88
+verbose = true
+transform-concats = true
+exclude = [".venv"]

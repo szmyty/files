@@ -23,7 +23,7 @@ SHELL ["/bin/bash", "-o", "errexit", "-o", "errtrace", "-o", "functrace", "-o", 
 USER root
 
 # Set environment variables for APP_HOME, APP_BIN, and APP_CONFIG
-ENV APP_HOME=/app
+ENV APP_HOME=/sanctuary
 ENV APP_BIN=${APP_HOME}/bin
 ENV APP_CONFIG=${APP_HOME}/config
 

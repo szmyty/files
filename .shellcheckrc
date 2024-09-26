@@ -1,0 +1,18 @@
+# -----------------------------------------------------------------------------
+# File: .shellcheckrc
+# Purpose: Configuration file for ShellCheck, a static analysis tool for shell scripts.
+# Description: This configuration file sets the options and checks to be used
+#              by ShellCheck when analyzing shell scripts within the project.
+#              It is designed to ensure consistent code quality and to help
+#              identify potential issues in shell scripts.
+# Author: Alan Szmyt
+# -----------------------------------------------------------------------------
+# Reference: https://github.com/koalaman/shellcheck
+# -----------------------------------------------------------------------------
+
+# Enable all available checks
+enable=all
+
+# Add additional configuration options here as needed
+# For example, to exclude specific checks, you can use:
+# exclude=SC1117,SC1091

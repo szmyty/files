@@ -1,0 +1,42 @@
+---
+# Define common labels for Docker objects.
+x-labels: &labels
+  labels:
+    # Name of the application, set using the Compose project name.
+    app.name: ${COMPOSE_PROJECT_NAME}
+
+services:
+  redis:
+    extends:
+      file: ../base/base.yml
+      service: base
+    pull_policy: missing
+    hostname: ${COMPOSE_PROJECT_NAME}.${REDIS_HOSTNAME}
+    container_name: ${COMPOSE_PROJECT_NAME}-${REDIS_HOSTNAME}
+    image: ${COMPOSE_PROJECT_NAME}/${REDIS_IMAGE_NAME}:${REDIS_IMAGE_TAG}
+    build:
+      context: .
+      dockerfile: redis.Dockerfile
+      args:
+        - PROJECT_NAME=${COMPOSE_PROJECT_NAME}
+        - BASE_IMAGE_NAME=${BASE_IMAGE_NAME}
+        - BASE_IMAGE_VERSION=${BASE_IMAGE_VERSION}
+        - REDIS_VERSION=${REDIS_VERSION}
+        - REDIS_PORT=${REDIS_PORT}
+        - REDIS_DATA_DIR=${REDIS_DATA_DIR}
+    ports:
+      - "${REDIS_EXPOSED_PORT}:${REDIS_PORT}"
+    volumes:
+      - ${REDIS_DATA_VOLUME}:${REDIS_DATA_DIR}
+    networks:
+      default:
+        aliases:
+          - ${COMPOSE_PROJECT_NAME}.${REDIS_HOSTNAME}
+    env_file:
+      - redis.env
+
+volumes:
+  redis_data:
+    name: ${REDIS_DATA_VOLUME}
+    driver: local
+    <<: [*labels]

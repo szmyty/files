@@ -1,0 +1,41 @@
+---
+######################################################################
+# @Project      : app
+# @File         : app.yml
+# @Description  : Docker Compose setup file for the app project.
+#                 This file defines common configurations and includes
+#                 service-specific Docker Compose files for a modular and
+#                 maintainable architecture. It leverages Docker Compose's
+#                 ability to dynamically include other YAML files, ensuring
+#                 each service's configuration is isolated yet integrated.
+#
+# @Author       : Alan Szmyt
+# @Date         : 2024-08-22
+# @Version      : 1.0
+######################################################################
+
+# Define common labels for Docker objects that will be used across all services
+# to maintain consistency in labeling Docker objects like containers and volumes.
+x-labels: &labels
+  labels:
+    app.name: ${COMPOSE_PROJECT_NAME} # Name of the application, set using the Compose project name.
+
+# Include external Docker Compose files for specific services. This approach helps in
+# maintaining a clean and organized project structure, allowing individual service configurations
+# to be modified independently without impacting other services.
+# Learn more: https://docs.docker.com/compose/multiple-compose-files/include/
+include:
+  # Include the Base service Docker Compose file which sets up the foundational services.
+  - path: ${CONTAINERS_ROOT}/base/base.yml
+    project_directory: ${CONTAINERS_ROOT}/base
+    env_file: ${CONTAINERS_ROOT}/base/base.env
+
+  # # Include the Minio service Docker Compose file for object storage configuration.
+  # - path: ${CONTAINERS_ROOT}/minio/minio.yml
+  #   project_directory: ${CONTAINERS_ROOT}/minio
+  #   env_file: ${CONTAINERS_ROOT}/minio/minio.env
+
+  # # Include the TileDB service Docker Compose file for database configuration.
+  # - path: ${CONTAINERS_ROOT}/tiledb/tiledb.yml
+  #   project_directory: ${CONTAINERS_ROOT}/tiledb
+  #   env_file: ${CONTAINERS_ROOT}/tiledb/tiledb.env

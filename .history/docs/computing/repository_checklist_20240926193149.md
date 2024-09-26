@@ -354,10 +354,10 @@ This checklist outlines a comprehensive set of tools, configurations, files, and
   - Purpose: Include a Postman collection for testing APIs.
   - Usage: Provide easy access to API testing configurations and examples.
 
-- **app/**:
+- **sanctuary/**:
   - Directory
   - Purpose: Custom scripts or tools regularly used in projects.
-  - Contents: Setup, installation, and management scripts (e.g., `app/lint/`, `app/scripts/`).
+  - Contents: Setup, installation, and management scripts (e.g., `sanctuary/lint/`, `sanctuary/scripts/`).
 
 - **Read the Docs configuration (`.readthedocs.yml`)**:
   - File type: YAML

@@ -1,0 +1,39 @@
+---
+# Define common labels for Docker objects.
+x-labels: &labels
+  labels:
+    # Name of the application, set using the Compose project name.
+    app.name: ${COMPOSE_PROJECT_NAME}
+
+services:
+  minio:
+    extends:
+      file: ../common.yml
+      service: common
+    depends_on:
+      - base
+    image: minio/minio:latest
+    #  image: ${COMPOSE_PROJECT_NAME}/${MINIO_IMAGE_NAME}:${MINIO_IMAGE_TAG}
+    hostname: ${COMPOSE_PROJECT_NAME}.${MINIO_HOSTNAME}
+    container_name: ${COMPOSE_PROJECT_NAME}-${MINIO_HOSTNAME}
+    ports:
+      - ${MINIO_EXPOSED_PORT}:${MINIO_PORT}
+      - ${MINIO_CONSOLE_EXPOSED_PORT}:${MINIO_CONSOLE_PORT}
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+    volumes:
+      - ${MINIO_DATA_VOLUME}:${MINIO_DATA_DIR}
+    command: server ${MINIO_DATA_DIR} --console-address ":${MINIO_CONSOLE_PORT}"
+    networks:
+      default:
+        aliases:
+          - ${COMPOSE_PROJECT_NAME}.${MINIO_HOSTNAME}
+    env_file:
+      - minio.env
+
+volumes:
+  minio_data:
+    name: ${MINIO_DATA_VOLUME}
+    driver: local
+    <<: [*labels]

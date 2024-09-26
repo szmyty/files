@@ -22,10 +22,10 @@ SHELL ["/bin/bash", "-o", "errexit", "-o", "errtrace", "-o", "functrace", "-o", 
 # Ensure the build process uses the root user
 USER root
 
-# Set environment variables for APP_HOME, APP_BIN, and APP_CONFIG
-ENV APP_HOME=/app
-ENV APP_BIN=${APP_HOME}/bin
-ENV APP_CONFIG=${APP_HOME}/config
+# Set environment variables for SANCTUARY_HOME, SANCTUARY_BIN, and SANCTUARY_CONFIG
+ENV SANCTUARY_HOME=/sanctuary
+ENV SANCTUARY_BIN=${SANCTUARY_HOME}/bin
+ENV SANCTUARY_CONFIG=${SANCTUARY_HOME}/config
 
 # Copy apt.conf and dpkg.cfg to their respective locations
 COPY apt.conf /etc/apt/apt.conf.d/99custom-apt.conf

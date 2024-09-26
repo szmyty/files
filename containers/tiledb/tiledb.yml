@@ -1,0 +1,58 @@
+---
+# Define common labels for Docker objects.
+x-labels: &labels
+  labels:
+    # Name of the application, set using the Compose project name.
+    app.name: ${COMPOSE_PROJECT_NAME}
+
+services:
+  tiledb:
+    extends:
+      file: ../common.yml
+      service: common
+    depends_on:
+      base:
+        condition: service_started
+        restart: false
+        required: true
+      # - minio
+    image: ${COMPOSE_PROJECT_NAME}/${TILEDB_IMAGE_NAME}:${TILEDB_IMAGE_TAG}
+    hostname: ${COMPOSE_PROJECT_NAME}.${TILEDB_HOSTNAME}
+    container_name: ${COMPOSE_PROJECT_NAME}-${TILEDB_HOSTNAME}
+    # platform: "linux/arm64"
+    build:
+      context: .
+      dockerfile: tiledb.Dockerfile
+      target: final
+      # cache_from:
+      #   - type=local,src=${PROJECT_CACHE_DIR}/.buildx-cache
+      args:
+        - PROJECT_NAME=${COMPOSE_PROJECT_NAME}
+        - BASE_IMAGE_NAME=${BASE_IMAGE_NAME}
+        - BASE_IMAGE_VERSION=${BASE_IMAGE_VERSION}
+        - TILEDB_PORT=${TILEDB_PORT}
+      # platforms:
+      #   - "linux/arm64"
+      # - "linux/amd64"
+    ports:
+      - "${TILEDB_EXPOSED_PORT}:${TILEDB_PORT}"
+    environment:
+      - TILEDB_S3_ENDPOINT=http://minio:9000
+      - TILEDB_S3_USE_HTTPS=0
+      - TILEDB_S3_REGION=${TILEDB_S3_REGION}
+      - TILEDB_S3_ACCESS_KEY_ID=${TILEDB_S3_ACCESS_KEY_ID}
+      - TILEDB_S3_SECRET_ACCESS_KEY=${TILEDB_S3_SECRET_ACCESS_KEY}
+    # volumes:
+    #   - ${TILEDB_DATA_VOLUME}:${TILEDB_DATA_HOME}
+    networks:
+      default:
+        aliases:
+          - ${COMPOSE_PROJECT_NAME}.${TILEDB_HOSTNAME}
+    env_file:
+      - tiledb.env
+
+volumes:
+  tiledb_data:
+    name: ${TILEDB_DATA_VOLUME}
+    driver: local
+    <<: [*labels]

@@ -1,0 +1,21 @@
+/* TEAM */
+Your Name: Alan Szmyt
+Role: Software Engineer, Architect, and Project Manager
+Site: https://github.com/szmyty
+Location: Boston, USA
+
+/* THANKS */
+Special Thanks: 
+
+/* SITE */
+Last update: 2024/08/25
+Standards: HTML5, CSS3
+Software: Visual Studio Code, Git, pnpm, Docker
+
+/* CONTACT */
+Email: szmyty@gmail.com
+GitHub: https://github.com/szmyty
+LinkedIn: https://www.linkedin.com/in/alanszmyt
+
+/* CREDITS */
+Humans.txt inspired by: https://humanstxt.org
