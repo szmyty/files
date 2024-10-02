@@ -257,8 +257,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked,id=apt-cache \
     zip \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/* \
-    && ${APP_TOOLS_BIN}/setup_locale.sh \
-    && ${APP_TOOLS_BIN}/set_timezone.sh
+    && ${APP_BIN}/setup_locale.sh \
+    && ${APP_BIN}/set_timezone.sh
 
 FROM apt-install AS logger
 
