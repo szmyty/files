@@ -49,18 +49,33 @@ services:
       dockerfile: base.Dockerfile
       target: base
       # https://docs.docker.com/reference/cli/docker/buildx/build/#cache-to
-      cache_to:
-        - type=local,dest=${PROJECT_CACHE_DIR}/.buildx-cache
-      platforms:
-        - "linux/arm64"
-      # - "linux/amd64"
+      # cache_to:
+      #   - type=local,dest=${PROJECT_CACHE_DIR}/.buildx-cache
+      # platforms:
+      #   - "${DOCKER_DEFAULT_PLATFORM}"
 
       # Arguments to pass to the build process
       # Reference: https://docs.docker.com/reference/compose-file/build/#args
       args:
         BASE_IMAGE_VERSION: ${BASE_IMAGE_VERSION}
         DEBIAN_IMAGE_VERSION: bookworm-20240904
-
+        TARGETPLATFORM: ${DOCKER_DEFAULT_PLATFORM}
+        BUILDPLATFORM: ${DOCKER_DEFAULT_PLATFORM}
+      x-bake:
+        # tags:
+        #   - ct-addon:foo
+        #   - ct-addon:alp
+        # cache-from:
+        #   - type=local,src=${PROJECT_CACHE_DIR}/.buildx-cache
+        # cache-to:
+        #   - type=local,dest=${PROJECT_CACHE_DIR}/.buildx-cache
+        # pull: true
+        # secret:
+          # - id=mysecret,src=./secret
+          # - id=mysecret2,src=./secret2
+        platforms: "${DOCKER_DEFAULT_PLATFORM}"
+        # output: type=docker
+        # no-cache: true
     # Environment file containing environment variables for the base service
     # Documentation: https://docs.docker.com/compose/compose-file/compose-file-v3/#env_file
     env_file:

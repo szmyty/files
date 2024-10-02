@@ -26,6 +26,7 @@ x-labels: &labels
 # Learn more: https://docs.docker.com/compose/multiple-compose-files/include/
 include:
   # Include the Base service Docker Compose file which sets up the foundational services.
+  - path: ${CONTAINERS_ROOT}/network.yml
   - path: ${CONTAINERS_ROOT}/base/base.yml
     project_directory: ${CONTAINERS_ROOT}/base
     env_file: ${CONTAINERS_ROOT}/base/base.env

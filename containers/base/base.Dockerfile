@@ -29,20 +29,20 @@
 ARG BASE_IMAGE_VERSION
 
 # Use the official Debian image as the base image.
-ARG DEBIAN_IMAGE_VERSION
+ARG DEBIAN_IMAGE_VERSION=bookworm-20240904
 
 # Define ARG variables
-ARG TARGETPLATFORM
+ARG TARGETPLATFORM=linux/amd64
 ARG TARGETOS
 ARG TARGETARCH
 ARG TARGETVARIANT
-ARG BUILDPLATFORM
+ARG BUILDPLATFORM=linux/amd64
 ARG BUILDOS
 ARG BUILDARCH
 ARG BUILDVARIANT
 
-FROM debian:${DEBIAN_IMAGE_VERSION} AS setup
-# FROM --platform=${BUILDPLATFORM} debian:${DEBIAN_IMAGE_VERSION} AS setup
+# FROM debian:${DEBIAN_IMAGE_VERSION} AS setup
+FROM --platform=${BUILDPLATFORM} debian:${DEBIAN_IMAGE_VERSION} AS setup
 
 RUN echo "Base image version: ${BASE_IMAGE_VERSION}"
 RUN echo "Project name: ${COMPOSE_PROJECT_NAME}"
@@ -141,13 +141,7 @@ USER root
 SHELL ["/bin/bash", "-o", "errexit", "-o", "errtrace", "-o", "functrace", "-o", "nounset", "-o", "pipefail", "-c"]
 
 # Create necessary directories and set permissions.
-RUN mkdir --parents ${APP_HOME} \
-    ${APP_BIN} ${APP_CONFIG} ${APP_LOGS} ${APP_DATA} \
-    # Set ownership to the app user and group
-    && chown --recursive ${APP_USER}:${APP_GROUP} ${APP_HOME} \
-    # Set permissions: read, write, and execute for owner, and read-only for group and others
-    && chmod --recursive 700 ${APP_HOME} \
-    && chmod --recursive 755 ${APP_BIN}
+RUN mkdir --parents ${APP_HOME} ${APP_BIN} ${APP_CONFIG} ${APP_LOGS} ${APP_DATA}
 
 # Create a non-root user with specific configurations.
 RUN groupadd \
@@ -161,7 +155,12 @@ RUN groupadd \
     --comment "Non-root User for Running Applications" \
     --home-dir ${APP_HOME} \
     --shell /usr/sbin/nologin \
-    ${APP_USER}
+    ${APP_USER} && \
+    # Set ownership to the app user and group
+    chown --recursive ${APP_USER}:${APP_GROUP} ${APP_HOME} \
+    # Set permissions: read, write, and execute for owner, and read-only for group and others
+    && chmod --recursive 700 ${APP_HOME} \
+    && chmod --recursive 755 ${APP_BIN}
 
 # Set the working directory to the app home directory.
 WORKDIR ${APP_HOME}
