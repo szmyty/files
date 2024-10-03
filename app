@@ -416,9 +416,14 @@ function start_services() {
     "${cmd[@]}"
 }
 
-function setup() {
+function load_environment() {
     load_env_file "app.env"
+    load_env_file "${CONTAINERS_ROOT:-.}/base/base.env"
     print_environment
+}
+
+function setup() {
+    load_environment
     find_docker
     configure_docker_context
     gather_docker_info
@@ -426,11 +431,19 @@ function setup() {
     configure_buildx
 }
 
+function bake() {
+    app::docker buildx bake \
+        --progress plain \
+        --file app.yml \
+        --metadata-file app.metadata.json \
+        "${@}"
+}
+
 # if [[ "${TRACE-0}" == "1" ]];
 
 function main() {
     setup
-    app::docker buildx bake --progress plain --file app.yml
+    bake "${@}"
     # build_base_image
     # start_services
 }

@@ -126,6 +126,9 @@
 		"javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
 		"javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
 		"javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": true,
-		"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
+		"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+		"cSpell.words": [
+			"Matchering"
+		]
 	}
 }

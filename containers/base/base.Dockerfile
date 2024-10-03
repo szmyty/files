@@ -110,7 +110,8 @@ ENV APP_LOGS=${APP_HOME}/logs
 ENV APP_DATA=${APP_HOME}/data
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${APP_BIN}
 
-ENV DEBIAN_FRONTEND=noninteractive \
+ENV CFLAGS=-O2 \
+    DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true \
     DEBIAN_PRIORITY=critical \
     DEBCONF_NOWARNINGS=yes \
@@ -185,8 +186,7 @@ RUN rm -f /etc/apt/apt.conf.d/docker-clean; \
 
 # Fix for update-alternatives: error: error creating symbolic link '/usr/share/man/man1/rmid.1.gz.dpkg-tmp': No such file or directory
 # See https://github.com/debuerreotype/docker-debian-artifacts/issues/24#issuecomment-360870939
-RUN mkdir -p /usr/share/man/man1
-
+RUN mkdir --parents /usr/share/man/man1
 
 # Stage 2: Installing APT Dependencies.
 FROM setup AS apt-install
@@ -199,6 +199,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked,id=apt-cache \
     apt-get update \
     && apt-get install --yes \
     apt-utils \
+    bash \
     build-essential \
     bzip2 \
     ca-certificates \
@@ -209,6 +210,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked,id=apt-cache \
     curl \
     dnsutils \
     doxygen \
+    ffmpeg \
+    gettext \
     git \
     ghostscript \
     graphviz \
@@ -226,7 +229,10 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked,id=apt-cache \
     libreadline-dev \
     libpng-dev \
     libpng-tools \
+    libncurses5-dev \
     libncursesw5-dev \
+    libsecret-1-dev \
+    libsndfile1 \
     libspdlog-dev \
     libsqlite3-dev \
     libssl-dev \
@@ -236,31 +242,66 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked,id=apt-cache \
     libxml2-dev \
     libxmlsec1-dev \
     libzstd-dev \
+    llvm \
     locales \
     locales-all \
     lsof \
     make \
+    moreutils \
     nano \
     net-tools \
     ninja-build \
+    openssh-client \
     pandoc \
     pkg-config \
     python3 \
     python3-dev \
+    python3-openssl \
+    python3-pip \
     strace \
     sysstat \
     tcpdump \
     unzip \
+    uuid-runtime \
     vim \
     wget \
     xz-utils \
+    tk-dev \
     zip \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/* \
     && ${APP_BIN}/setup_locale.sh \
     && ${APP_BIN}/set_timezone.sh
 
-FROM apt-install AS logger
+FROM apt-install AS install-pyenv
+
+LABEL stage="install-pyenv"
+LABEL description="Stage to install pyenv from source."
+
+ARG PYENV_VER_MAJOR=2
+ARG PYENV_VER_MINOR=4
+ARG PYENV_VER_PATCH=14
+ARG PYENV_REPO_URL="https://github.com/pyenv/pyenv.git"
+
+ARG PYTHON_VER_MAJOR=3
+ARG PYTHON_VER_MINOR=12
+ARG PYTHON_VER_PATCH=5
+
+ENV PYTHON_VERSION="${PYTHON_VER_MAJOR}.${PYTHON_VER_MINOR}.${PYTHON_VER_PATCH}"
+ENV PYENV_VERSION="${PYENV_VER_MAJOR}.${PYENV_VER_MINOR}.${PYENV_VER_PATCH}"
+ENV PYENV_GIT_TAG="v${PYENV_VERSION}"
+
+RUN mkdir --parents --mode 0700 ${APP_HOME}/.ssh && \
+    chown --recursive ${APP_USER}:${APP_GROUP} ${APP_HOME}/.ssh && \
+    /usr/bin/env bash ${APP_BIN}/setup_known_hosts.sh
+
+# Set-up necessary Env vars for PyEnv
+ENV PYENV_ROOT=${APP_HOME}/.pyenv
+ENV PATH=${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}
+
+RUN ${APP_BIN}/install_pyenv.sh
+
+FROM install-pyenv AS logger
 
 # Optional: Verify package installation from cache without internet
 RUN --network=none \
@@ -275,6 +316,8 @@ RUN dpkg --get-selections > ${APP_LOGS}/installed_packages.log
 
 # Log the current APT configuration.
 RUN apt-config dump > ${APP_LOGS}/apt-config.log
+
+RUN pyenv --version > ${APP_LOGS}/pyenv.log
 
 FROM logger AS base
 
