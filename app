@@ -107,26 +107,31 @@ function find_docker() {
     # Check if debug is enabled via environment variable
     if [[ "${PROJECT_DEBUG:-0}" -eq 1 ]]; then
         echo "Enabling Docker debug mode."
-        args=(--debug --log-level "debug")
-        _docker_cmd="${_docker_cmd} ${args[*]}"
+        docker_command=("${_docker_cmd}" --debug --log-level \"debug\")
+    else
+        docker_command=("${_docker_cmd}")
     fi
 
     # Export the docker command so it can be used globally in the script
-    export docker_command="${_docker_cmd}"
+    export docker_command
+}
+
+function app::docker() {
+    ${docker_command} "${@}"
 }
 
 function gather_docker_info() {
     # Extract information using docker info --format
-    operating_system=$(${docker_command} info --format "{{.OperatingSystem}}")
-    containerd_version=$(${docker_command} info --format "{{.ContainerdCommit.ID}}")
-    docker_root_dir=$(${docker_command} info --format "{{.DockerRootDir}}")
-    running_containers=$(${docker_command} info --format "{{.ContainersRunning}}")
-    total_images=$(${docker_command} info --format "{{.Images}}")
-    driver_status=$(${docker_command} info --format "{{ .DriverStatus }}")
-    client_os=$(${docker_command} version --format "{{.Client.Os}}")
-    client_arch=$(${docker_command} version --format "{{.Client.Arch}}")
-    client_context=$(${docker_command} version --format "{{.Client.Context}}")
-    client_version=$(${docker_command} version --format "{{.Client.Version}}")
+    operating_system=$(app::docker info --format "{{.OperatingSystem}}")
+    containerd_version=$(app::docker info --format "{{.ContainerdCommit.ID}}")
+    docker_root_dir=$(app::docker info --format "{{.DockerRootDir}}")
+    running_containers=$(app::docker info --format "{{.ContainersRunning}}")
+    total_images=$(app::docker info --format "{{.Images}}")
+    driver_status=$(app::docker info --format "{{ .DriverStatus }}")
+    client_os=$(app::docker version --format "{{.Client.Os}}")
+    client_arch=$(app::docker version --format "{{.Client.Arch}}")
+    client_context=$(app::docker version --format "{{.Client.Context}}")
+    client_version=$(app::docker version --format "{{.Client.Version}}")
 
     export \
         operating_system \
@@ -141,7 +146,7 @@ function gather_docker_info() {
         client_version
 
     # Display the extracted information
-    echo "Operating System: ${operating_system}"
+    printf "Operating System: %s\n", "${operating_system}"
     echo "Containerd Version: ${containerd_version}"
     echo "Docker Root Directory: ${docker_root_dir}"
     echo "Running Containers: ${running_containers}"
@@ -200,12 +205,12 @@ function configure_containerd_snapshotter() {
 
     # Wait for Docker to be back up
     echo "Waiting for Docker service to restart..."
-    until ${docker_command} info >/dev/null 2>&1; do
+    until app::docker info >/dev/null 2>&1; do
         sleep 1
     done
 
     # Verify that the 'containerd-snapshotter' is in use
-    if ${docker_command} info --format '{{ .DriverStatus }}' | grep -q "driver-type io.containerd.snapshotter.v1"; then
+    if app::docker info --format '{{ .DriverStatus }}' | grep -q "driver-type io.containerd.snapshotter.v1"; then
         echo "The containerd snapshotter is in use."
     else
         echo "Failed to verify that the containerd snapshotter is in use."
@@ -226,25 +231,25 @@ configure_docker_context() {
     local _docker_host="${DOCKER_HOST:-unix:///var/run/docker.sock}"
 
     # Check if the context already exists
-    if ${docker_command} context ls --format '{{.Name}}' | grep -q "^${_context_name}$"; then
+    if app::docker context ls --format '{{.Name}}' | grep -q "^${_context_name}$"; then
         echo "Docker context '${_context_name}' already exists."
 
         # Get the current endpoint for the existing context
         local _current_endpoint
-        _current_endpoint=$(${docker_command} context inspect "${_context_name}" --format '{{.Endpoints.docker.Host}}')
+        _current_endpoint=$(app::docker context inspect "${_context_name}" --format '{{.Endpoints.docker.Host}}')
 
         # Check if the current endpoint matches the desired one
         if [[ "${_current_endpoint}" != "${_docker_host}" ]]; then
             echo "Docker endpoint has changed. Updating context '${_context_name}' to use new Docker host: ${_docker_host}"
             # Update the existing context with the new Docker endpoint
-            ${docker_command} context update "${_context_name}" --docker "host=${_docker_host}"
+            app::docker context update "${_context_name}" --docker "host=${_docker_host}"
         else
             echo "Docker endpoint is already set to ${_docker_host}. No update needed."
         fi
     else
         echo "Docker context '${_context_name}' does not exist. Creating it..."
         # Create a new context with the specified Docker host
-        ${docker_command} context create --docker "host=${_docker_host}" "${_context_name}"
+        app::docker context create --docker "host=${_docker_host}" "${_context_name}"
     fi
 
     # Switch to the new or updated context
@@ -265,14 +270,14 @@ configure_docker_context() {
 
 function is_containerd_active() {
     # Check if containerd is active
-    if ${docker_command} info | grep -q 'containerd'; then
+    if app::docker info | grep -q 'containerd'; then
         return 0
     else
         return 1
     fi
 }
 
-# Function to ensure containerd is enabled and running
+# Function to ensure containerd is enabled and running. TODO
 function ensure_containerd_enabled() {
     echo "Checking the current status of containerd..."
 
@@ -295,7 +300,7 @@ function ensure_containerd_enabled() {
 
     #     # Command to check if containerd is active in Docker Desktop
     #     # Docker Desktop should manage containerd automatically; manual intervention is not typical
-    #     # if ! ${docker_command} info | grep -q 'containerd'; then
+    #     # if ! app::docker info | grep -q 'containerd'; then
     #     #     echo "Containerd appears to be inactive or not properly configured in Docker Desktop."
     #     #     echo "Please check Docker Desktop settings or restart Docker."
     #     # else
@@ -324,7 +329,7 @@ function ensure_containerd_enabled() {
 
 # Function to check and ensure Docker Swarm is initialized
 function ensure_docker_swarm() {
-    if ! ${docker_command} info | grep -q 'Swarm: active'; then
+    if ! app::docker info | grep -q 'Swarm: active'; then
         echo "Docker Swarm is not active. Initializing Docker Swarm..."
         docker swarm init || {
             echo "Failed to initialize Docker Swarm."
@@ -341,11 +346,11 @@ function ensure_buildx_builder() {
     local _builder_name
     _builder_name="${1}"
 
-    if ${docker_command} buildx inspect "${_builder_name}" > /dev/null 2>&1; then
+    if app::docker buildx inspect "${_builder_name}" > /dev/null 2>&1; then
         echo "Builder '${_builder_name}' already exists. Setting it as the default builder."
     else
         echo "Builder '${_builder_name}' does not exist. Creating and setting it as the default builder."
-        ${docker_command} buildx create \
+        app::docker buildx create \
             --name "${_builder_name}" \
             --node "${_builder_name}-node" \
             --driver "docker-container" \
@@ -354,11 +359,19 @@ function ensure_buildx_builder() {
             --bootstrap
         echo "Builder '${_builder_name}' created and set as default."
     fi
-    ${docker_command} buildx use "${_builder_name}"
+    app::docker buildx use "${_builder_name}"
+}
+
+function configure_buildx() {
+    export DOCKER_DEFAULT_PLATFORM="${client_os}/${client_arch}"
+
+    echo "${DOCKER_DEFAULT_PLATFORM}"
+
+    ensure_buildx_builder "${BUILDX_BUILDER:-"app-container-builder"}"
 }
 
 function build_base_image() {
-    ${docker_command} compose \
+    app::docker compose \
         --file app.yml \
         --env-file app.env \
         --env-file containers/base/base.env \
@@ -374,7 +387,7 @@ function start_services() {
 
     # Base Docker Compose command, broken into multiple lines for readability.
     cmd=(
-        "${docker_command}" "compose"
+        "app::docker" "compose"
         "--file" "app.yml"
         "--env-file" "app.env"
         "--env-file" "containers/base/base.env"
@@ -403,21 +416,35 @@ function start_services() {
     "${cmd[@]}"
 }
 
-function setup() {
+function load_environment() {
     load_env_file "app.env"
+    load_env_file "${CONTAINERS_ROOT:-.}/base/base.env"
     print_environment
+}
+
+function setup() {
+    load_environment
     find_docker
     configure_docker_context
     gather_docker_info
     ensure_containerd_enabled
-    ensure_buildx_builder "${BUILDX_BUILDER:-"app-container-builder"}"
+    configure_buildx
+}
+
+function bake() {
+    app::docker buildx bake \
+        --progress plain \
+        --file app.yml \
+        --metadata-file app.metadata.json \
+        "${@}"
 }
 
 # if [[ "${TRACE-0}" == "1" ]];
 
 function main() {
     setup
-    build_base_image
+    bake "${@}"
+    # build_base_image
     # start_services
 }
 
