@@ -417,7 +417,7 @@ function setup() {
 
 function main() {
     setup
-    # build_base_image
+    build_base_image
     # start_services
 }
 
