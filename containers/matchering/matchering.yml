@@ -16,7 +16,7 @@ services:
     build:
       context: .
       dockerfile: matchering.Dockerfile
-      # target: final
+      target: final
       args:
         - PROJECT_NAME=${COMPOSE_PROJECT_NAME}
         - BASE_IMAGE_NAME=${BASE_IMAGE_NAME}

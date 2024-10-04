@@ -71,7 +71,7 @@ services:
           # - id=mysecret,src=./secret
           # - id=mysecret2,src=./secret2
         platforms: "${DOCKER_DEFAULT_PLATFORM}"
-        output: type=tar,dest=out.tar
+        output: type=docker
         # output: type=tar,dest=${PROJECT_CACHE_DIR}/.buildx-cache/${COMPOSE_PROJECT_NAME}-${BASE_IMAGE_NAME}-${BASE_IMAGE_VERSION}.tar
         no-cache: false
     # Environment file containing environment variables for the base service

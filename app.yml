@@ -42,6 +42,6 @@ include:
   #   env_file: ${CONTAINERS_ROOT}/tiledb/tiledb.env
 
   # Include the Matchering service Docker Compose file for database configuration.
-  # - path: ${CONTAINERS_ROOT}/matchering/matchering.yml
-  #   project_directory: ${CONTAINERS_ROOT}/matchering
-  #   env_file: ${CONTAINERS_ROOT}/matchering/matchering.env
+  - path: ${CONTAINERS_ROOT}/matchering/matchering.yml
+    project_directory: ${CONTAINERS_ROOT}/matchering
+    env_file: ${CONTAINERS_ROOT}/matchering/matchering.env

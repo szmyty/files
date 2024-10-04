@@ -48,6 +48,8 @@ set -o nounset   # abort on unbound variable
 set -o pipefail  # don't hide errors within pipes
 IFS=$'\n\t'
 
+# if [[ "${TRACE-0}" == "1" ]];
+
 daemon_file="/etc/docker/daemon.json"
 
 function has_command() {
@@ -120,8 +122,8 @@ function app::docker() {
     ${docker_command} "${@}"
 }
 
+# Extract information using docker info --format
 function gather_docker_info() {
-    # Extract information using docker info --format
     operating_system=$(app::docker info --format "{{.OperatingSystem}}")
     containerd_version=$(app::docker info --format "{{.ContainerdCommit.ID}}")
     docker_root_dir=$(app::docker info --format "{{.DockerRootDir}}")
@@ -205,11 +207,13 @@ function configure_containerd_snapshotter() {
 
     # Wait for Docker to be back up
     echo "Waiting for Docker service to restart..."
+    # shellcheck disable=SC2310
     until app::docker info >/dev/null 2>&1; do
         sleep 1
     done
 
     # Verify that the 'containerd-snapshotter' is in use
+    # shellcheck disable=SC2310
     if app::docker info --format '{{ .DriverStatus }}' | grep -q "driver-type io.containerd.snapshotter.v1"; then
         echo "The containerd snapshotter is in use."
     else
@@ -219,7 +223,7 @@ function configure_containerd_snapshotter() {
 }
 
 # Function to create/update and switch to a Docker context based on the project name
-configure_docker_context() {
+function configure_docker_context() {
     # Ensure COMPOSE_PROJECT_NAME is set
     if [[ -z "${COMPOSE_PROJECT_NAME}" ]]; then
         echo "COMPOSE_PROJECT_NAME is not set. Please set it and try again."
@@ -231,6 +235,7 @@ configure_docker_context() {
     local _docker_host="${DOCKER_HOST:-unix:///var/run/docker.sock}"
 
     # Check if the context already exists
+    # shellcheck disable=SC2310
     if app::docker context ls --format '{{.Name}}' | grep -q "^${_context_name}$"; then
         echo "Docker context '${_context_name}' already exists."
 
@@ -270,6 +275,7 @@ configure_docker_context() {
 
 function is_containerd_active() {
     # Check if containerd is active
+    # shellcheck disable=SC2310
     if app::docker info | grep -q 'containerd'; then
         return 0
     else
@@ -277,58 +283,15 @@ function is_containerd_active() {
     fi
 }
 
-# Function to ensure containerd is enabled and running. TODO
+# Function to ensure containerd is enabled and running.
+# TODO
 function ensure_containerd_enabled() {
     echo "Checking the current status of containerd..."
-
-    # Check if containerd is active
-    # if is_containerd_active; then
-    #     echo "Containerd is already active."
-    # else
-    #     echo "Containerd is not active. Attempting to start containerd..."
-    #     sudo systemctl start containerd
-
-    #     # Enable containerd to start at boot
-    #     sudo systemctl enable containerd
-    #     echo "Containerd has been started and enabled."
-    # fi
-
-    # # Check if running on Docker Desktop or a Linux system with Docker Engine
-    # if is_docker_desktop; then
-    #     # Docker Desktop (MacOS)
-    #     echo "Docker Desktop detected."
-
-    #     # Command to check if containerd is active in Docker Desktop
-    #     # Docker Desktop should manage containerd automatically; manual intervention is not typical
-    #     # if ! app::docker info | grep -q 'containerd'; then
-    #     #     echo "Containerd appears to be inactive or not properly configured in Docker Desktop."
-    #     #     echo "Please check Docker Desktop settings or restart Docker."
-    #     # else
-    #     #     echo "Containerd is active in Docker Desktop."
-    #     # fi
-    # elif command -v systemctl &> /dev/null; then
-    #     # Linux Docker Engine
-    #     echo "Systemd found, assuming Linux environment with Docker Engine."
-
-    #     # Check if containerd service is active
-    #     if ! systemctl is-active --quiet containerd.service; then
-    #         echo "Containerd is not active. Attempting to start containerd..."
-    #         sudo systemctl start containerd
-
-    #         # Enable containerd to start at boot
-    #         sudo systemctl enable containerd
-    #         echo "Containerd has been started and enabled."
-    #     else
-    #         echo "Containerd is already active and running."
-    #     fi
-    # else
-    #     echo "Neither Docker Desktop nor a standard Linux Docker Engine environment detected."
-    #     echo "Manual verification required."
-    # fi
 }
 
 # Function to check and ensure Docker Swarm is initialized
 function ensure_docker_swarm() {
+    # shellcheck disable=SC2310
     if ! app::docker info | grep -q 'Swarm: active'; then
         echo "Docker Swarm is not active. Initializing Docker Swarm..."
         docker swarm init || {
@@ -346,6 +309,7 @@ function ensure_buildx_builder() {
     local _builder_name
     _builder_name="${1}"
 
+    # shellcheck disable=SC2310
     if app::docker buildx inspect "${_builder_name}" > /dev/null 2>&1; then
         echo "Builder '${_builder_name}' already exists. Setting it as the default builder."
     else
@@ -435,16 +399,15 @@ function bake() {
     app::docker buildx bake \
         --progress plain \
         --file app.yml \
-        --metadata-file app.metadata.json \
+        --load \
         "${@}"
 }
-
-# if [[ "${TRACE-0}" == "1" ]];
+        # --metadata-file app.metadata.json \
 
 function main() {
     setup
+    build_base_image
     bake "${@}"
-    # build_base_image
     # start_services
 }
 

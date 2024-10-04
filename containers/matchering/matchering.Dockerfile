@@ -17,13 +17,13 @@ ARG BASE_IMAGE_VERSION=latest
 
 # Define ARG variables
 ARG TARGETPLATFORM=linux/amd64
-ARG TARGETOS
-ARG TARGETARCH
-ARG TARGETVARIANT
+ARG TARGETOS=linux
+ARG TARGETARCH=amd64
+ARG TARGETVARIANT=
 ARG BUILDPLATFORM=linux/amd64
-ARG BUILDOS
-ARG BUILDARCH
-ARG BUILDVARIANT
+ARG BUILDOS=linux
+ARG BUILDARCH=amd64
+ARG BUILDVARIANT=
 
 # Use a base image.
 FROM --platform=${BUILDPLATFORM} ${PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
@@ -75,5 +75,7 @@ RUN pip3 install --no-cache-dir --requirement requirements.txt
 
 # Copy the scripts from the local bin directory to overwrite the container's bin directory.
 COPY --chown=${APP_USER}:${APP_GROUP} --chmod=500 bin ${APP_BIN}
+
+FROM base AS final
 
 ENTRYPOINT [ "/bin/bash", "-c", "${APP_BIN}/entrypoint.sh" ]
