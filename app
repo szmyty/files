@@ -148,7 +148,7 @@ function gather_docker_info() {
         client_version
 
     # Display the extracted information
-    printf "Operating System: %s\n", "${operating_system}"
+    printf "Operating System: %s\n" "${operating_system}"
     echo "Containerd Version: ${containerd_version}"
     echo "Docker Root Directory: ${docker_root_dir}"
     echo "Running Containers: ${running_containers}"
@@ -345,9 +345,27 @@ function build_base_image() {
         build base
 }
 
+function deploy_local_registry() {
+    cd "./containers/registry" && \
+        mkdir --parents "./data" && \
+        mkdir --parents "./config" && \
+        touch
+        app::docker compose \
+            --file registry.yml \
+            --env-file registry.env \
+            --parallel 1 \
+            --ansi auto \
+            --progress plain \
+            up --detach registry
+}
+
 function start_services() {
     # Array of services to bring up. Add more services here as needed.
-    services=("tiledb")
+    services=("matchering")
+
+        # "--env-file" "containers/redis/redis.env"
+        # "--env-file" "containers/tiledb/tiledb.env"
+        # "--env-file" "containers/minio/minio.env"
 
     # Base Docker Compose command, broken into multiple lines for readability.
     cmd=(
@@ -355,9 +373,7 @@ function start_services() {
         "--file" "app.yml"
         "--env-file" "app.env"
         "--env-file" "containers/base/base.env"
-        "--env-file" "containers/redis/redis.env"
-        "--env-file" "containers/tiledb/tiledb.env"
-        "--env-file" "containers/minio/minio.env"
+        "--env-file" "containers/matchering/matchering.env"
         "--parallel" "1"
         "--ansi" "auto"
         "up"
@@ -383,6 +399,7 @@ function start_services() {
 function load_environment() {
     load_env_file "app.env"
     load_env_file "${CONTAINERS_ROOT:-.}/base/base.env"
+    load_env_file "${CONTAINERS_ROOT:-.}/matchering/matchering.env"
     print_environment
 }
 
@@ -393,6 +410,7 @@ function setup() {
     gather_docker_info
     ensure_containerd_enabled
     configure_buildx
+    deploy_local_registry
 }
 
 function bake() {
@@ -406,9 +424,12 @@ function bake() {
 
 function main() {
     setup
-    build_base_image
-    bake "${@}"
-    # start_services
+    # build_base_image
+    # bake "${@}"
+    BASE_IMAGE_ID=$(docker inspect --format='{{.Id}}' app/base:1.0)
+    export BASE_IMAGE_ID
+
+    # start_services "${@}"
 }
 
 main "$@"

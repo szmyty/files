@@ -10,7 +10,7 @@ services:
     extends:
       file: ../base/base.yml
       service: base
-    pull_policy: missing
+    pull_policy: never
     hostname: ${COMPOSE_PROJECT_NAME}.${REDIS_HOSTNAME}
     container_name: ${COMPOSE_PROJECT_NAME}-${REDIS_HOSTNAME}
     image: ${COMPOSE_PROJECT_NAME}/${REDIS_IMAGE_NAME}:${REDIS_IMAGE_TAG}

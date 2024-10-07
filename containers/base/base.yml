@@ -60,13 +60,11 @@ services:
       # Reference: https://docs.docker.com/reference/compose-file/build/#args
       args:
         BASE_IMAGE_VERSION: ${BASE_IMAGE_VERSION}
-        DEBIAN_IMAGE_VERSION: bookworm-20240904
       x-bake:
         # cache-from:
         #   - type=local,src=${PROJECT_CACHE_DIR}/.buildx-cache
         # cache-to:
         #   - type=local,dest=${PROJECT_CACHE_DIR}/.buildx-cache
-        pull: false
         # secret:
           # - id=mysecret,src=./secret
           # - id=mysecret2,src=./secret2

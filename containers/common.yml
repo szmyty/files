@@ -36,7 +36,7 @@ x-settings: &settings
       aliases:
         - ${COMPOSE_PROJECT_NAME}-network
   init: true
-  pull_policy: missing
+  pull_policy: never
   attach: true
 
   # DNS options for containers

@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
-# check=error=true
 # escape=\
 
 ######################################################################
+# check=error=true
 # Stage 1: Base Setup
 # This stage sets up the base environment with necessary packages and dependencies.
 ######################################################################
@@ -24,9 +24,12 @@ ARG BUILDPLATFORM=linux/amd64
 ARG BUILDOS=linux
 ARG BUILDARCH=amd64
 ARG BUILDVARIANT=
+ARG BASE_IMAGE_ID=sha256:0
 
 # Use a base image.
-FROM --platform=${BUILDPLATFORM} ${PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
+# FROM --platform=${BUILDPLATFORM} ${PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
+FROM --platform=linux/amd64 ${PROJECT_NAME}/${BASE_IMAGE_NAME}@${BASE_IMAGE_ID} AS BASE
+# FROM ${BASE_IMAGE_ID} AS BASE
 
 LABEL stage="base"
 LABEL description="Base stage with necessary dependencies for building Matchering."

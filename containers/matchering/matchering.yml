@@ -22,6 +22,7 @@ services:
         - BASE_IMAGE_NAME=${BASE_IMAGE_NAME}
         - BASE_IMAGE_VERSION=${BASE_IMAGE_VERSION}
         - MATCHERING_PORT=${MATCHERING_PORT}
+        - BASE_IMAGE_ID=${BASE_IMAGE_ID}
       x-bake:
         platforms: "${DOCKER_DEFAULT_PLATFORM}"
         output: type=docker

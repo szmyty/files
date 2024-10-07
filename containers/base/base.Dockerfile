@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
-# check=error=true
 # escape=\
 ######################################################################
+# check=error=true
 # @Project      : app
 # @File         : Dockerfile
 # @Description  : Dockerfile for building a secure and efficient container.
@@ -29,7 +29,7 @@
 ARG BASE_IMAGE_VERSION
 
 # Use the official Debian image as the base image.
-ARG DEBIAN_IMAGE_VERSION=bookworm-20240904
+ARG DEBIAN_IMAGE_VERSION=bookworm-20240926-slim
 
 # Define ARG variables
 ARG TARGETPLATFORM=linux/amd64
@@ -42,7 +42,7 @@ ARG BUILDARCH=amd64
 ARG BUILDVARIANT=
 
 # FROM debian:${DEBIAN_IMAGE_VERSION} AS setup
-FROM --platform=${BUILDPLATFORM} debian:${DEBIAN_IMAGE_VERSION} AS setup
+FROM --platform=linux/amd64 debian:${DEBIAN_IMAGE_VERSION} AS setup
 
 # Set labels using OCI conventions and incorporating ARG variables
 # https://github.com/opencontainers/image-spec/blob/v1.0.1/annotations.md
@@ -317,8 +317,14 @@ VOLUME [ "/home/app/data" ]
 VOLUME [ "/home/app/config" ]
 VOLUME [ "/home/app/logs" ]
 
+# Reset to default shell for runtime
+SHELL ["/bin/bash", "-c"]
+
 # Set Bash as the entry point to keep the container running.
 ENTRYPOINT [ "bash", "-c", "tail -f /dev/null" ]
+
+# Runtime commands
+CMD ["bash"]
 
 # Healthcheck to ensure the container is running.
 HEALTHCHECK \
