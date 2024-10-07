@@ -412,3 +412,9 @@ function main() {
 }
 
 main "$@"
+
+# https://docs.docker.com/build/building/variables/
+# https://docs.docker.com/build/building/secrets/
+# https://docs.docker.com/build/building/base-images/
+# https://no-color.org/
+# https://ftp.gnu.org/gnu/aspell/dict/0index.html
