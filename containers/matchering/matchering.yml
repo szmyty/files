@@ -22,10 +22,10 @@ services:
         - BASE_IMAGE_NAME=${BASE_IMAGE_NAME}
         - BASE_IMAGE_VERSION=${BASE_IMAGE_VERSION}
         - MATCHERING_PORT=${MATCHERING_PORT}
-        - BASE_IMAGE_ID=${BASE_IMAGE_ID}
+        - BASE_IMAGE_ID=${BASE_IMAGE_ID:-sha256:0}
       x-bake:
         platforms: "${DOCKER_DEFAULT_PLATFORM}"
-        output: type=docker
+        output: type=image,name=localhost:5005/${COMPOSE_PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION},push=true,registry.insecure=true
     ports:
       - "${MATCHERING_EXPOSED_PORT}:${MATCHERING_PORT}"
     networks:

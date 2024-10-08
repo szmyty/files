@@ -349,7 +349,6 @@ function deploy_local_registry() {
     cd "./containers/registry" && \
         mkdir --parents "./data" && \
         mkdir --parents "./config" && \
-        touch
         app::docker compose \
             --file registry.yml \
             --env-file registry.env \
@@ -410,7 +409,7 @@ function setup() {
     gather_docker_info
     ensure_containerd_enabled
     configure_buildx
-    deploy_local_registry
+    # deploy_local_registry TODO add conditional
 }
 
 function bake() {
@@ -425,9 +424,13 @@ function bake() {
 function main() {
     setup
     # build_base_image
-    # bake "${@}"
-    BASE_IMAGE_ID=$(docker inspect --format='{{.Id}}' app/base:1.0)
-    export BASE_IMAGE_ID
+
+    # BASE_IMAGE_ID=$(app::docker inspect --format='{{.Id}}' app/base:1.0)
+    # export BASE_IMAGE_ID
+
+
+    bake "${@}"
+
 
     # start_services "${@}"
 }

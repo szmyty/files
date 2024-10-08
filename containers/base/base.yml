@@ -49,12 +49,12 @@ services:
       dockerfile: base.Dockerfile
       target: base
       tags:
-        - ${COMPOSE_PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION}
+        - localhost:5005/${COMPOSE_PROJECT_NAME}-${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION}
       # https://docs.docker.com/reference/cli/docker/buildx/build/#cache-to
       # cache_to:
       #   - type=local,dest=${PROJECT_CACHE_DIR}/.buildx-cache
-      # platforms:
-      #   - "${DOCKER_DEFAULT_PLATFORM}"
+      platforms:
+        - "${DOCKER_DEFAULT_PLATFORM}"
 
       # Arguments to pass to the build process
       # Reference: https://docs.docker.com/reference/compose-file/build/#args
@@ -69,7 +69,9 @@ services:
           # - id=mysecret,src=./secret
           # - id=mysecret2,src=./secret2
         platforms: "${DOCKER_DEFAULT_PLATFORM}"
-        output: type=docker
+        # https://docs.docker.com/build/exporters/image-registry/
+        output: type=image,name=localhost:5005/${COMPOSE_PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION},push=true,registry.insecure=true
+        # output: type=docker
         # output: type=tar,dest=${PROJECT_CACHE_DIR}/.buildx-cache/${COMPOSE_PROJECT_NAME}-${BASE_IMAGE_NAME}-${BASE_IMAGE_VERSION}.tar
         no-cache: false
     # Environment file containing environment variables for the base service
