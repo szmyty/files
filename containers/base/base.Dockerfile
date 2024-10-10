@@ -32,17 +32,17 @@ ARG BASE_IMAGE_VERSION
 ARG DEBIAN_IMAGE_VERSION=bookworm-20240926-slim
 
 # Define ARG variables
-ARG TARGETPLATFORM=linux/amd64
-ARG TARGETOS=linux
-ARG TARGETARCH=amd64
-ARG TARGETVARIANT=
-ARG BUILDPLATFORM=linux/amd64
-ARG BUILDOS=linux
-ARG BUILDARCH=amd64
-ARG BUILDVARIANT=
+# ARG TARGETPLATFORM=linux/amd64
+# ARG TARGETOS=linux
+# ARG TARGETARCH=amd64
+# ARG TARGETVARIANT=
+# ARG BUILDPLATFORM=linux/amd64
+# ARG BUILDOS=linux
+# ARG BUILDARCH=amd64
+# ARG BUILDVARIANT=
 
 # FROM debian:${DEBIAN_IMAGE_VERSION} AS setup
-FROM --platform=linux/amd64 debian:${DEBIAN_IMAGE_VERSION} AS setup
+FROM debian:${DEBIAN_IMAGE_VERSION} AS setup
 
 # Set labels using OCI conventions and incorporating ARG variables
 # https://github.com/opencontainers/image-spec/blob/v1.0.1/annotations.md
