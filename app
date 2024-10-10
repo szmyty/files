@@ -803,15 +803,34 @@ function app::ensure_containerd_enabled() {
     echo "Checking the current status of containerd..."
 }
 
-# Function to check and ensure Docker Swarm is initialized
+#######################################
+# Ensure that Docker Swarm is initialized and active.
+# This function checks if Docker Swarm is initialized by inspecting `docker info`.
+# If Swarm is not active, it initializes Docker Swarm using `docker swarm init`.
+#
+# Globals:
+#   docker_command (function): The Docker command constructed by find_docker.
+# Arguments:
+#   None
+# Outputs:
+#   Writes messages indicating whether Docker Swarm is active or if initialization was needed.
+# Returns:
+#   0: If Docker Swarm is already active or successfully initialized.
+#   1: If Docker Swarm initialization fails.
+#######################################
 function app::ensure_docker_swarm() {
+    # Check if Docker Swarm is active
     # shellcheck disable=SC2310
-    if ! app::docker info | grep -q 'Swarm: active'; then
+    if ! app::docker info | grep -q "Swarm: active"; then
         echo "Docker Swarm is not active. Initializing Docker Swarm..."
-        docker swarm init || {
+
+        # Try to initialize Docker Swarm
+        # shellcheck disable=SC2310
+        if ! app::docker swarm init; then
             echo "Failed to initialize Docker Swarm."
             exit 1
-        }
+        fi
+
         echo "Docker Swarm has been successfully initialized."
     else
         echo "Docker Swarm is already active."
@@ -938,10 +957,32 @@ function app::start_services() {
     "${cmd[@]}"
 }
 
+#######################################
+# Load environment variables from predefined .env files and print the environment.
+# This function loads environment variables from three specific .env files by calling
+# `app::load_env_file` for each file. After loading all environment variables, it prints
+# the final environment variables.
+#
+# Globals:
+#   CONTAINERS_ROOT (optional): The root directory for container configurations.
+# Arguments:
+#   None
+# Outputs:
+#   Prints the loaded environment variables to stdout.
+# Returns:
+#   0: Always returns 0 (success).
+#######################################
 function app::load_environment() {
+    # Load the main app environment
     app::load_env_file "app.env"
+
+    # Load the environment for base container
     app::load_env_file "${CONTAINERS_ROOT:-.}/base/base.env"
+
+    # Load the environment for matchering container
     app::load_env_file "${CONTAINERS_ROOT:-.}/matchering/matchering.env"
+
+    # Print the final environment variables
     app::print_environment
 }
 
@@ -1110,6 +1151,8 @@ function app::init() {
     app::configure_script
     app::load_environment
     app::get_script_info "$@"
+    app::find_docker
+    app::configure_docker_context
 }
 
 function setup() {
@@ -1150,8 +1193,6 @@ function main() {
     trap app::exit_handler EXIT
 
     app::init "$@"
-
-    app::print_environment
 
     # setup
     # build_base_image
