@@ -722,8 +722,287 @@ function app::configure_containerd_snapshotter() {
     fi
 }
 
-# Function to create/update and switch to a Docker context based on the project name
+
+
+#######################################
+# Find the path to the Docker daemon.json configuration file.
+# This function determines the location of the Docker daemon configuration file (daemon.json)
+# based on the operating system and Docker setup (e.g., Docker Desktop, rootless mode).
+#
+# Globals:
+#   operating_system (optional): The operating system running Docker (set by app::get_operating_system).
+#   HOME: The home directory of the current user.
+# Arguments:
+#   None
+# Outputs:
+#   Sets the DAEMON_JSON_PATH variable to the path of daemon.json.
+# Returns:
+#   0: If the path is successfully determined.
+#   1: If the path cannot be determined.
+#######################################
+function app::find_daemon_json_path() {
+    local os
+    local daemon_path
+
+    # Get the operating system using uname
+    os=$(uname -s)
+
+    # Determine if Docker is running in rootless mode
+    if app::is_docker_rootless; then
+        log::info "Docker is running in rootless mode."
+        if [[ -n "${XDG_CONFIG_HOME}" ]]; then
+            daemon_path="${XDG_CONFIG_HOME}/docker/daemon.json"
+        else
+            daemon_path="${HOME}/.config/docker/daemon.json"
+        fi
+    else
+        # Check if Docker is running on Docker Desktop
+        if app::is_docker_desktop; then
+            log::info "Docker is running on Docker Desktop."
+            case "${os}" in
+                Darwin)
+                    # macOS Docker Desktop
+                    daemon_path="${HOME}/Library/Group Containers/group.com.docker/settings.json"
+                    ;;
+                MINGW*|CYGWIN*|MSYS*|Windows_NT)
+                    # Windows Docker Desktop
+                    daemon_path="/c/ProgramData/Docker/config/daemon.json"
+                    ;;
+                *)
+                    log::error "Unsupported OS for Docker Desktop: ${os}"
+                    return 1
+                    ;;
+            esac
+        else
+            # Standard Docker installation
+            log::info "Docker is running on a standard installation."
+            daemon_path="/etc/docker/daemon.json"
+        fi
+    fi
+
+    # Check if the daemon.json file exists
+    if [[ -f "${daemon_path}" ]]; then
+        DAEMON_JSON_PATH="${daemon_path}"
+        log::info "Found daemon.json at: ${DAEMON_JSON_PATH}"
+        return 0
+    else
+        log::warning "daemon.json not found at expected location: ${daemon_path}"
+        # Even if the file doesn't exist, return the expected path
+        DAEMON_JSON_PATH="${daemon_path}"
+        return 0
+    fi
+}
+
+
+
+
+
+
+
+
+#######################################
+# Check if COMPOSE_PROJECT_NAME is set.
+# Globals:
+#   COMPOSE_PROJECT_NAME
+# Arguments:
+#   None
+# Outputs:
+#   Writes an error message if COMPOSE_PROJECT_NAME is not set.
+# Returns:
+#   0: If COMPOSE_PROJECT_NAME is set.
+#   1: If COMPOSE_PROJECT_NAME is not set.
+#######################################
+function app::check_compose_project_name() {
+    if [[ -z "${COMPOSE_PROJECT_NAME}" ]]; then
+        log::error "COMPOSE_PROJECT_NAME is not set. Please set it and try again."
+        return 1
+    fi
+}
+
+#######################################
+# Get the Docker context name based on COMPOSE_PROJECT_NAME.
+# Globals:
+#   COMPOSE_PROJECT_NAME
+# Arguments:
+#   None
+# Outputs:
+#   Sets the _context_name variable.
+# Returns:
+#   0: Always returns 0.
+#######################################
+function app::get_docker_context_name() {
+    _context_name="${COMPOSE_PROJECT_NAME}-context"
+}
+
+#######################################
+# Get the Docker host endpoint.
+# Globals:
+#   DOCKER_HOST
+# Arguments:
+#   None
+# Outputs:
+#   Sets the _docker_host variable.
+# Returns:
+#   0: Always returns 0.
+#######################################
+function app::get_docker_host() {
+    _docker_host="${DOCKER_HOST:-unix:///var/run/docker.sock}"
+}
+
+#######################################
+# Check if the Docker context exists.
+# Globals:
+#   None
+# Arguments:
+#   $_context_name
+# Outputs:
+#   Sets the _context_exists variable to 0 (true) or 1 (false).
+# Returns:
+#   0: Always returns 0.
+#######################################
+function app::check_docker_context_exists() {
+    if app::docker context ls --format "{{.Name}}" | grep -q "^${_context_name}$"; then
+        _context_exists=0
+    else
+        _context_exists=1
+    fi
+}
+
+#######################################
+# Get the current Docker endpoint for the context.
+# Globals:
+#   None
+# Arguments:
+#   $_context_name
+# Outputs:
+#   Sets the _current_endpoint variable.
+# Returns:
+#   0: If successful.
+#   1: If failed to get the endpoint.
+#######################################
+function app::get_current_docker_endpoint() {
+    _current_endpoint=$(app::docker context inspect "${_context_name}" --format '{{.Endpoints.docker.Host}}')
+    if [[ -z "${_current_endpoint}" ]]; then
+        log::error "Failed to get current Docker endpoint for context '${_context_name}'."
+        return 1
+    fi
+}
+
+#######################################
+# Update the Docker context with the new Docker host.
+# Globals:
+#   None
+# Arguments:
+#   $_context_name, $_docker_host
+# Outputs:
+#   Logs the update status.
+# Returns:
+#   0: If the context is updated successfully.
+#   1: If the update fails.
+#######################################
+function app::update_docker_context_endpoint() {
+    log::info "Updating context '${_context_name}' to use new Docker host: ${_docker_host}"
+    if app::docker context update "${_context_name}" --docker "host=${_docker_host}"; then
+        log::info "Docker context '${_context_name}' updated successfully."
+    else
+        log::error "Failed to update Docker context '${_context_name}'."
+        return 1
+    fi
+}
+
+#######################################
+# Create a new Docker context.
+# Globals:
+#   None
+# Arguments:
+#   $_context_name, $_docker_host
+# Outputs:
+#   Logs the creation status.
+# Returns:
+#   0: If the context is created successfully.
+#   1: If the creation fails.
+#######################################
+function app::create_docker_context() {
+    log::info "Creating Docker context '${_context_name}' with Docker host: ${_docker_host}"
+    if app::docker context create --docker "host=${_docker_host}" "${_context_name}"; then
+        log::info "Docker context '${_context_name}' created successfully."
+    else
+        log::error "Failed to create Docker context '${_context_name}'."
+        return 1
+    fi
+}
+
+#######################################
+# Switch to the specified Docker context.
+# Globals:
+#   None
+# Arguments:
+#   $_context_name
+# Outputs:
+#   Logs the switch status.
+# Returns:
+#   0: If switched successfully.
+#   1: If the switch fails.
+#######################################
+function app::switch_to_docker_context() {
+    log::info "Switching to Docker context '${_context_name}'..."
+    if docker context use "${_context_name}"; then
+        log::info "Successfully switched to Docker context '${_context_name}'."
+    else
+        log::error "Failed to switch to Docker context '${_context_name}'."
+        return 1
+    fi
+}
+
+#######################################
+# Main function to configure the Docker context.
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   Executes the steps to configure Docker context.
+# Returns:
+#   0: If successful.
+#   1: If any step fails.
+#######################################
 function app::configure_docker_context() {
+    # shellcheck disable=SC2310
+    app::check_compose_project_name || return 1
+    app::get_docker_context_name
+    app::get_docker_host
+
+    app::check_docker_context_exists
+
+    if [[ "${_context_exists}" -eq 0 ]]; then
+        log::info "Docker context '${_context_name}' already exists."
+        app::get_current_docker_endpoint || return 1
+
+        if [[ "${_current_endpoint}" != "${_docker_host}" ]]; then
+            app::update_docker_context_endpoint || return 1
+        else
+            log::info "Docker endpoint is already set to ${_docker_host}. No update needed."
+        fi
+    else
+        app::create_docker_context || return 1
+    fi
+
+    app::switch_to_docker_context || return 1
+}
+
+
+
+
+
+
+
+
+
+
+
+
+# Function to create/update and switch to a Docker context based on the project name
+function app::configure_sdocker_context() {
     # Ensure COMPOSE_PROJECT_NAME is set
     if [[ -z "${COMPOSE_PROJECT_NAME}" ]]; then
         echo "COMPOSE_PROJECT_NAME is not set. Please set it and try again."
@@ -1152,7 +1431,8 @@ function app::init() {
     app::load_environment
     app::get_script_info "$@"
     app::find_docker
-    app::configure_docker_context
+    app::find_daemon_json_path
+    # app::configure_docker_context
 }
 
 function setup() {
