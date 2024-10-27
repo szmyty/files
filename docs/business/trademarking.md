@@ -39,9 +39,11 @@ References:
 - https://my.uspto.gov/
 - https://trademarkcenter.uspto.gov/
 - https://tsdr.uspto.gov/
+- https://ipidentifier.uspto.gov/
 - https://tmep.uspto.gov/RDMS/TMEP/current
 - https://www3.wipo.int/madrid/monitor/en/
 - https://www.uspto.gov/trademarks/basics/what-trademark
+- https://www.uspto.gov/trademarks/basics/trademark-patent-copyright
 
 File:
 - https://www.uspto.gov/trademarks/apply
