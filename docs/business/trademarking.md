@@ -27,4 +27,28 @@ References:
 - https://www.uspto.gov/learning-and-resources/open-data-and-mobility
 - https://developer.uspto.gov/data?f%5B0%5D=published_datasets%3A39202
 - https://www.uspto.gov/trademarks/search/federal-trademark-searching
+- https://idm-tmng.uspto.gov/id-master-list-public.html
+- https://www.uspto.gov/trademarks/trademark-fee-information
+- https://www.uspto.gov/trademarks/search
+- https://www.trademarkia.com/search/trademarks
+- https://www.uspto.gov/trademarks/guides-and-manuals/tmep-archives
+- https://www.uspto.gov/learning-and-resources/official-gazette/trademark-official-gazette-tmog
+- https://tmsearch.uspto.gov/search/search-information
+- https://tmdesigncodes.uspto.gov/
+- https://www.uspto.gov/trademarks/basics/online-tools
+- https://my.uspto.gov/
+- https://trademarkcenter.uspto.gov/
+- https://tsdr.uspto.gov/
+- https://tmep.uspto.gov/RDMS/TMEP/current
+- https://www3.wipo.int/madrid/monitor/en/
+- https://www.uspto.gov/trademarks/basics/what-trademark
 
+File:
+- https://www.uspto.gov/trademarks/apply
+
+Verify:
+- https://ipidentifier.uspto.gov/
+
+Madrid Protocol
+- https://www.uspto.gov/ip-policy/international-protection/madrid-protocol
+- https://www.uspto.gov/trademarks/apply/trademark-electronic-application-system-teasi-online
