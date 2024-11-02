@@ -1,0 +1,85 @@
+services:
+  kestra-api:
+    image: kestra/kestra:latest
+    command: server
+    environment:
+      - KESTRA_CONFIG=/app/config/application.yml
+    volumes:
+      - ./config:/app/config
+    ports:
+      - "8080:8080"
+    depends_on:
+      - elasticsearch
+      - kafka
+      - redis
+    networks:
+      - kestra-network
+
+  kestra-executor:
+    image: kestra/kestra:latest
+    command: executor
+    environment:
+      - KESTRA_CONFIG=/app/config/application.yml
+    volumes:
+      - ./config:/app/config
+    depends_on:
+      - kestra-api
+      - kafka
+      - redis
+    networks:
+      - kestra-network
+    deploy:
+      replicas: 2  # Scale Executors as needed
+
+  kestra-indexer:
+    image: kestra/kestra:latest
+    command: indexer
+    environment:
+      - KESTRA_CONFIG=/app/config/application.yml
+    volumes:
+      - ./config:/app/config
+    depends_on:
+      - kafka
+      - elasticsearch
+    networks:
+      - kestra-network
+
+  elasticsearch:
+    image: elasticsearch:7.17.0
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    networks:
+      - kestra-network
+
+  kafka:
+    image: bitnami/kafka:latest
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+    depends_on:
+      - zookeeper
+    networks:
+      - kestra-network
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - kestra-network
+
+  redis:
+    image: redis:6-alpine
+    networks:
+      - kestra-network
+
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  kestra-network:
+    name: kestra-network
