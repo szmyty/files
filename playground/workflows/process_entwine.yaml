@@ -21,12 +21,7 @@ tasks:
       # Compute SHA256 hash of the downloaded file
       sha256sum {{ outputs.download_from_minio.uri }} > /output/simple.laz.sha256
 
-    runner: DOCKER
-    docker:
-      image: alpine:latest
-      volumes:
-        - name: entwine-output
-          path: /output
+      cat /output/simple.laz.sha256
 
 triggers:
   - id: watch_minio
