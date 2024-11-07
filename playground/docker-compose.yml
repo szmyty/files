@@ -21,6 +21,32 @@ services:
       timeout: 10s
       retries: 10
 
+  minio:
+    image: minio/minio
+    command: server /data
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    ports:
+      - "9000:9000"
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  minio-init:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc alias set myminio http://minio:9000 minioadmin minioadmin) do echo 'waiting for minio...' && sleep 2; done;
+      /usr/bin/mc mb myminio/input-bucket || true;
+      "
+
   kestra:
     image: kestra/kestra:latest
     user: "root"
@@ -54,23 +80,14 @@ services:
             tmpDir:
               path: /tmp/kestra-wd/tmp
       KESTRA_URL: http://localhost:8080/
-      KESTRA_PLUGINS: io.kestra.plugin:scripts-docker:2.4.0,io.kestra.plugin:minio:2.4.0
+      KESTRA_PLUGINS: io.kestra.plugin:scripts:2.4.0,io.kestra.plugin:minio:2.4.0
     ports:
       - "8080:8080"
     depends_on:
       postgres:
         condition: service_healthy
-
-  minio:
-    image: minio/minio
-    command: server /data
-    environment:
-      MINIO_ACCESS_KEY: minioadmin
-      MINIO_SECRET_KEY: minioadmin
-    ports:
-      - "9000:9000"
-    volumes:
-      - minio-data:/data
+      minio-init:
+        condition: service_completed_successfully
 
   caddy:
     image: caddy:latest
