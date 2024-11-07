@@ -31,6 +31,11 @@ include:
     project_directory: ${CONTAINERS_ROOT}/base
     env_file: ${CONTAINERS_ROOT}/base/base.env
 
+  # Include the Entwine service Docker Compose file.
+  - path: ${CONTAINERS_ROOT}/entwine/entwine.yml
+    project_directory: ${CONTAINERS_ROOT}/entwine
+    env_file: ${CONTAINERS_ROOT}/entwine/entwine.env
+
   # # Include the Minio service Docker Compose file for object storage configuration.
   # - path: ${CONTAINERS_ROOT}/minio/minio.yml
   #   project_directory: ${CONTAINERS_ROOT}/minio

@@ -1,0 +1,66 @@
+# Global options: https://caddyserver.com/docs/caddyfile/options
+# https://caddyserver.com/docs/conventions#placeholders
+# https://caddyserver.com/docs/caddyfile/concepts#placeholders
+{
+    # servers {
+    #     # Enabling metrics with Prometheus: https://caddyserver.com/docs/metrics
+    #     metrics
+    # }
+    # Set the admin port.
+    admin :{$CADDY_ADMIN_PORT:2019}
+
+    # General Options: https://caddyserver.com/docs/caddyfile/options#general-options
+    http_port {$CADDY_HTTP_PORT:80}
+    https_port {$CADDY_HTTPS_PORT:443}
+    # storage file_system {$CADDY_DATA_DIR:/data}
+    storage_clean_interval 24h
+    renew_interval 10m
+    ocsp_interval 1h
+    grace_period 10s
+    shutdown_delay 5s
+
+    # debug
+
+    # exec {
+    #     command echo
+    #     args "{system.hostname}" > test2.log
+    #     directory /opt/caddy
+    #     startup
+    #     timeout 0 # don't timeout
+    # }
+
+    # TLS Options: https://caddyserver.com/docs/caddyfile/options#tls-options
+    email {$EMAIL:admin@localhost}
+    acme_ca {$ACME_CA:https://acme-staging-v02.api.letsencrypt.org/directory}
+}
+
+# import snippets/*
+
+# Redirect www subdomain by removing it.
+www.{$DOMAIN:localhost} {
+    redir https://{$DOMAIN:localhost}{uri} permanent
+}
+
+http://{$DOMAIN:localhost}, https://{$DOMAIN:localhost} {
+    # import redirect
+    # import dns
+    # import common
+
+    root * /usr/share/caddy
+
+    encode zstd gzip
+    templates
+
+    file_server {
+        browse
+        precompressed zstd br gzip
+        hide *.symlink
+    }
+
+    handle /health {
+        skip_log
+        @goingDown vars {http.shutting_down} true
+        respond @goingDown "Bye-bye in {http.time_until_shutdown}" 503
+        respond 200
+    }
+}

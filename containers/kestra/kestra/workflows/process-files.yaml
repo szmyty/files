@@ -1,0 +1,45 @@
+id: file.processing
+namespace: my.project
+
+triggers:
+  - id: scheduled_trigger
+    type: io.kestra.core.models.triggers.types.Schedule
+    cron: "*/5 * * * *"  # Every 5 minutes
+
+
+
+# Define tasks that run when a new file appears in the 'input' directory
+tasks:
+  - id: watch_directory
+    type: io.kestra.core.tasks.schedules.FileFlowTrigger
+
+    # Watch for new files in the input directory
+    files:
+      - /data/input/*
+    interval: PT10S        # Check every 10 seconds
+    debounce: PT5S         # Ignore duplicate triggers within 5 seconds
+
+    # Action to take when a file is found
+    action:
+      tasks:
+        - id: process_file
+          type: io.kestra.core.tasks.scripts.Python
+
+          # Pass the detected file as an input
+          inputFiles:
+            inputFile: "{{ trigger.file }}"
+          script: |
+            #!/usr/bin/env python
+            import shutil
+            import os
+
+            input_file = '{{ inputs.inputFile }}'
+            output_file = '/data/output/' + os.path.basename(input_file)
+
+            # Process the file - for example, just copying it here
+            shutil.copy(input_file, output_file)
+
+        - id: move_file
+          type: io.kestra.core.tasks.storages.LocalMove
+          from: "{{ trigger.file }}"
+          to: "/data/processed/{{ basename(trigger.file) }}"

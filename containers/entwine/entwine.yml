@@ -1,0 +1,28 @@
+---
+# Define common labels for Docker objects.
+x-labels: &labels
+  labels:
+    # Name of the application, set using the Compose project name.
+    app.name: ${COMPOSE_PROJECT_NAME}
+
+services:
+  entwine:
+    extends:
+      file: ../common.yml
+      service: common
+    image: ${COMPOSE_PROJECT_NAME}/${ENTWINE_IMAGE_NAME}:${ENTWINE_IMAGE_TAG}
+    hostname: ${COMPOSE_PROJECT_NAME}.${ENTWINE_HOSTNAME}
+    container_name: ${COMPOSE_PROJECT_NAME}-${ENTWINE_HOSTNAME}
+    build:
+      context: .
+      dockerfile: entwine.Dockerfile
+      args:
+        - PROJECT_NAME=${COMPOSE_PROJECT_NAME}
+        - BASE_IMAGE_NAME=${BASE_IMAGE_NAME}
+        - BASE_IMAGE_VERSION=${BASE_IMAGE_VERSION}
+    networks:
+      default:
+        aliases:
+          - ${COMPOSE_PROJECT_NAME}.${ENTWINE_HOSTNAME}
+    env_file:
+      - entwine.env

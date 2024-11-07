@@ -303,11 +303,11 @@ function app::get_script_info() {
     readonly SCRIPT_DIR SCRIPT_NAME SCRIPT_PATH SCRIPT_NAME_NO_EXT SCRIPT_EXT
 
     # Display the information (optional)
-    printf "SCRIPT_PATH: %s" "${SCRIPT_PATH}"
-    printf "SCRIPT_DIR: %s" "${SCRIPT_DIR}"
-    printf "SCRIPT_NAME_WITH_EXT: %s" "${SCRIPT_NAME}"
-    printf "SCRIPT_NAME_NO_EXT: %s" "${SCRIPT_NAME_NO_EXT}"
-    printf "SCRIPT_EXT: %s" "${SCRIPT_EXT}"
+    printf "SCRIPT_PATH: %s\n" "${SCRIPT_PATH}"
+    printf "SCRIPT_DIR: %s\n" "${SCRIPT_DIR}"
+    printf "SCRIPT_NAME_WITH_EXT: %s\n" "${SCRIPT_NAME}"
+    printf "SCRIPT_NAME_NO_EXT: %s\n" "${SCRIPT_NAME_NO_EXT}"
+    printf "SCRIPT_EXT: %s\n" "${SCRIPT_EXT}"
 }
 
 function app::error_handler() {
@@ -721,8 +721,6 @@ function app::configure_containerd_snapshotter() {
         return 1
     fi
 }
-
-
 
 #######################################
 # Find the path to the Docker daemon.json configuration file.
@@ -1201,11 +1199,7 @@ function app::deploy_local_registry() {
 
 function app::start_services() {
     # Array of services to bring up. Add more services here as needed.
-    services=("matchering")
-
-        # "--env-file" "containers/redis/redis.env"
-        # "--env-file" "containers/tiledb/tiledb.env"
-        # "--env-file" "containers/minio/minio.env"
+    services=("entwine")
 
     # Base Docker Compose command, broken into multiple lines for readability.
     cmd=(
@@ -1213,7 +1207,7 @@ function app::start_services() {
         "--file" "app.yml"
         "--env-file" "app.env"
         "--env-file" "containers/base/base.env"
-        "--env-file" "containers/matchering/matchering.env"
+        "--env-file" "containers/entwine/entwine.env"
         "--parallel" "1"
         "--ansi" "auto"
         "up"
@@ -1432,15 +1426,10 @@ function app::init() {
     app::get_script_info "$@"
     app::find_docker
     app::find_daemon_json_path
-    # app::configure_docker_context
-}
-
-function setup() {
-    app::find_docker
     app::configure_docker_context
     app::gather_docker_info
     app::ensure_containerd_enabled
-    app::configure_buildx
+    # app::configure_buildx
     # app::deploy_local_registry TODO add conditional
 }
 
@@ -1474,14 +1463,14 @@ function main() {
 
     app::init "$@"
 
-    # setup
-    # build_base_image
+    # TODO add condition to check if base image is already built
+    # app::build_base_image
 
     # BASE_IMAGE_ID=$(app::docker inspect --format='{{.Id}}' app/base:1.0)
     # export BASE_IMAGE_ID
 
     # bake "${@}"
-    # start_services "${@}"
+    app::start_services "${@}"
 }
 
 # shellcheck disable=SC2310

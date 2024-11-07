@@ -53,8 +53,8 @@ services:
       # https://docs.docker.com/reference/cli/docker/buildx/build/#cache-to
       # cache_to:
       #   - type=local,dest=${PROJECT_CACHE_DIR}/.buildx-cache
-      platforms:
-        - "${DOCKER_DEFAULT_PLATFORM}"
+      # platforms:
+      #   - "${DOCKER_DEFAULT_PLATFORM}"
 
       # Arguments to pass to the build process
       # Reference: https://docs.docker.com/reference/compose-file/build/#args
