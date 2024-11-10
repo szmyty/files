@@ -1,3 +1,4 @@
+---
 services:
   kestra-api:
     image: kestra/kestra:latest
