@@ -20,7 +20,7 @@ Looking for pants that are slightly more formal than skinny jeans but still have
 - **Style**: A blend of formal and casual elements.
 - **Occasion**: Great for a polished, business casual look.
 
-### Keywords to Look For:
+### Keywords to Look For
 - **Slim Fit**
 - **Tailored Fit**
 - **Modern Fit**

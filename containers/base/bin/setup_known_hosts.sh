@@ -3,7 +3,7 @@
 function add_known_hosts() {
     local domains=("gitlab.com" "github.com")
     for domain in "${domains[@]}"; do
-        ssh-keyscan "${domain}" >> "${HOME}/.ssh/known_hosts" || true
+        ssh-keyscan "${domain}" >>"${HOME}/.ssh/known_hosts" || true
     done
 }
 

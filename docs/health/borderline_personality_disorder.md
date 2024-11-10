@@ -2,10 +2,10 @@
 
 ## Overview of BPD
 
-### Definition:
+### Definition
 - A mental health disorder characterized by pervasive patterns of instability in emotions, self-image, behavior, and relationships.
 
-### Core Symptoms:
+### Core Symptoms
 - Intense fear of abandonment.
 - Unstable interpersonal relationships.
 - Identity disturbance.
@@ -15,25 +15,25 @@
 - Inappropriate, intense anger.
 - Transient, stress-related paranoid ideation or severe dissociative symptoms.
 
-### Prevalence:
+### Prevalence
 - Affects about 1.6% of the general population.
 - More common in women than men.
 
 ## Causes and Risk Factors
 
-### Genetic Factors:
+### Genetic Factors
 - Family history of BPD or other mental health disorders.
 
-### Neurobiological Factors:
+### Neurobiological Factors
 - Abnormalities in brain regions that regulate emotion and behavior.
 
-### Environmental Factors:
+### Environmental Factors
 - Childhood trauma and abuse.
 - Neglect and separation from caregivers.
 
 ## Symptoms and Diagnosis
 
-### Diagnostic Criteria:
+### Diagnostic Criteria
 Per DSM-5, at least five of the following symptoms:
 - Efforts to avoid real or imagined abandonment.
 - A pattern of unstable and intense interpersonal relationships.
@@ -45,77 +45,77 @@ Per DSM-5, at least five of the following symptoms:
 - Inappropriate, intense anger.
 - Transient, stress-related paranoid ideation or severe dissociative symptoms.
 
-### Impact on Life:
+### Impact on Life
 - Severe interpersonal difficulties.
 - High rates of comorbid conditions like depression, anxiety, and substance abuse.
 
 ## Treatment and Management
 
-### Therapeutic Approaches:
+### Therapeutic Approaches
 - Dialectical Behavior Therapy (DBT).
 - Cognitive Behavioral Therapy (CBT).
 - Schema-focused therapy.
 
-### Medications:
+### Medications
 - No specific medication for BPD.
 - Medications may be used to treat co-occurring conditions like depression or anxiety.
 
-### Support Systems:
+### Support Systems
 - Importance of a strong support network.
 - Family education and involvement in therapy.
 
 ## Relationship with Bipolar Disorder
 
-### Similarities and Differences:
+### Similarities and Differences
 - Both involve mood instability but differ in patterns and triggers.
 
-### Family History:
+### Family History
 - Having a family member with bipolar disorder can increase vulnerability to BPD.
 
 ## Impact of Trauma and Stress on BPD
 
-### Pre-existing Vulnerabilities:
+### Pre-existing Vulnerabilities
 - Genetic, neurobiological, and early environmental factors can create a predisposition to BPD.
 
-### Role of Trauma:
+### Role of Trauma
 - Early trauma, such as abuse or neglect, is strongly linked to BPD development.
 
-### Stress and Symptom Exacerbation:
+### Stress and Symptom Exacerbation
 - High levels of stress and significant life events can intensify BPD symptoms.
 
 ## Intensification of BPD Symptoms
 
-### Emotional Dysregulation:
+### Emotional Dysregulation
 - Trauma and stress amplify emotional dysregulation, leading to severe mood swings.
 
-### Increased Use of Defense Mechanisms:
+### Increased Use of Defense Mechanisms
 - Under stress, reliance on maladaptive defense mechanisms like splitting and projection increases.
 
-### Heightened Fear of Abandonment:
+### Heightened Fear of Abandonment
 - Stressful events exacerbate the fear of abandonment, resulting in turbulent relationships and impulsive behaviors.
 
 ## Framework of Thinking and Ego Regulation
 
-### Trauma Impact on Ego:
+### Trauma Impact on Ego
 - Trauma disrupts normal ego functioning, making emotional regulation difficult.
 
-### Development of BPD Framework:
+### Development of BPD Framework
 - Individuals adopt a BPD framework as a coping mechanism, characterized by black-and-white thinking and unstable relationships.
 
-### Ego Defense and Trauma Response:
+### Ego Defense and Trauma Response
 - Defense mechanisms become entrenched, contributing to further emotional dysregulation and relational difficulties.
 
 ## Mental Illness as Ego Defense Mechanism
 
-### Understanding Mental Illness:
+### Understanding Mental Illness
 - Mental illness can be seen as an ego defense mechanism, where the mind develops certain behaviors and patterns to protect itself from perceived threats.
 - Everyone has unique frameworks of thinking that can be managed with the right tools and therapy.
 
-### Therapy and Tools:
+### Therapy and Tools
 - Therapy helps individuals understand their mental framework and find tools that work for them.
 - Thinking of mental illness as a universal human experience can reduce stigma and make it more relatable.
 
-### Cultural Impact:
+### Cultural Impact
 - Society's understanding of mental illness is evolving, but cultural constructs still influence perceptions and treatment of mental health conditions.
 
 ## Summary
@@ -127,7 +127,7 @@ Trauma and Stress: Trauma and significant stress can activate and intensify symp
 ```python
 !pip install matplotlib pandas seaborn
 ```
-    
+
 ```python
 from dataclasses import dataclass, field
 from typing import List
@@ -290,19 +290,19 @@ plot_treatment_effectiveness(bpd_data.treatment_data)
 
     
 ![png](bpd_files/bpd_2_1.png)
-    
 
 
 
-    
+
+
 ![png](bpd_files/bpd_2_2.png)
-    
 
 
 
-    
+
+
 ![png](bpd_files/bpd_2_3.png)
-    
+
 
 
     <ipython-input-3-046e7b1e3132>:131: FutureWarning: 
@@ -315,7 +315,7 @@ plot_treatment_effectiveness(bpd_data.treatment_data)
 
     
 ![png](bpd_files/bpd_2_5.png)
-    
+
 
 
 
@@ -344,9 +344,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](bpd_files/bpd_3_0.png)
-    
+
 
 # Borderline Personality Disorder Tests: McLean Screening Instrument
 

@@ -187,7 +187,7 @@ function realpath() {
     fi
 
     # Resolve symbolic links if necessary
-    while [[ -h "${_target_file}" ]]; do
+    while [[ -L "${_target_file}" ]]; do
         local _link
         _link=$(readlink "${_target_file}")
 
@@ -243,9 +243,9 @@ function app::has_command() {
 function app::is_sourced() {
     # If the script is sourced, BASH_SOURCE[0] will be different from $0
     if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
-        return 0  # Sourced
+        return 0 # Sourced
     else
-        return 1  # Executed directly
+        return 1 # Executed directly
     fi
 }
 
@@ -414,7 +414,7 @@ function app::load_env_file() {
                 echo "key: ${key} value: ${value}"
                 export "${key}"="${value}"
             fi
-        done < <(grep -v '^#' "${_env_file}")  # Redirection to avoid subshell
+        done < <(grep -v '^#' "${_env_file}") # Redirection to avoid subshell
 
         # For debugging, you can print the environment variables
         printenv | sort
@@ -689,13 +689,13 @@ function app::configure_containerd_snapshotter() {
     # Check if daemon.json exists, if not create it
     if [[ ! -f "${daemon_file}" ]]; then
         echo "Docker daemon.json not found. Creating a new one."
-        echo '{"features": {"containerd-snapshotter": true}}' > "${daemon_file}"
+        echo '{"features": {"containerd-snapshotter": true}}' >"${daemon_file}"
     else
         # Check if 'containerd-snapshotter' is set to true in the daemon.json
         if ! jq --exit-status "${_containerd_snapshotter_setting} == true" "${daemon_file}" >/dev/null 2>&1; then
             echo "Setting 'containerd-snapshotter' to true in Docker daemon.json."
             # Modify or add the 'containerd-snapshotter' setting to true
-            jq "${_containerd_snapshotter_setting} |= true" "${daemon_file}" > "/tmp/daemon.json" && mv "/tmp/daemon.json" "${daemon_file}"
+            jq "${_containerd_snapshotter_setting} |= true" "${daemon_file}" >"/tmp/daemon.json" && mv "/tmp/daemon.json" "${daemon_file}"
         else
             echo "'containerd-snapshotter' is already enabled."
         fi
@@ -758,18 +758,18 @@ function app::find_daemon_json_path() {
         if app::is_docker_desktop; then
             log::info "Docker is running on Docker Desktop."
             case "${os}" in
-                Darwin)
-                    # macOS Docker Desktop
-                    daemon_path="${HOME}/Library/Group Containers/group.com.docker/settings.json"
-                    ;;
-                MINGW*|CYGWIN*|MSYS*|Windows_NT)
-                    # Windows Docker Desktop
-                    daemon_path="/c/ProgramData/Docker/config/daemon.json"
-                    ;;
-                *)
-                    log::error "Unsupported OS for Docker Desktop: ${os}"
-                    return 1
-                    ;;
+            Darwin)
+                # macOS Docker Desktop
+                daemon_path="${HOME}/Library/Group Containers/group.com.docker/settings.json"
+                ;;
+            MINGW* | CYGWIN* | MSYS* | Windows_NT)
+                # Windows Docker Desktop
+                daemon_path="/c/ProgramData/Docker/config/daemon.json"
+                ;;
+            *)
+                log::error "Unsupported OS for Docker Desktop: ${os}"
+                return 1
+                ;;
             esac
         else
             # Standard Docker installation
@@ -790,13 +790,6 @@ function app::find_daemon_json_path() {
         return 0
     fi
 }
-
-
-
-
-
-
-
 
 #######################################
 # Check if COMPOSE_PROJECT_NAME is set.
@@ -988,17 +981,6 @@ function app::configure_docker_context() {
     app::switch_to_docker_context || return 1
 }
 
-
-
-
-
-
-
-
-
-
-
-
 # Function to create/update and switch to a Docker context based on the project name
 function app::configure_sdocker_context() {
     # Ensure COMPOSE_PROJECT_NAME is set
@@ -1120,7 +1102,7 @@ function app::ensure_buildx_builder() {
     _builder_name="${1}"
 
     # shellcheck disable=SC2310
-    if app::docker buildx inspect "${_builder_name}" > /dev/null 2>&1; then
+    if app::docker buildx inspect "${_builder_name}" >/dev/null 2>&1; then
         echo "Builder '${_builder_name}' already exists. Setting it as the default builder."
     else
         echo "Builder '${_builder_name}' does not exist. Creating and setting it as the default builder."
@@ -1185,9 +1167,9 @@ function app::build_base_image() {
 #   The exit status of the Docker Compose `up` command.
 #######################################
 function app::deploy_local_registry() {
-    cd "${CONTAINERS_ROOT:-containers}/registry" && \
-        mkdir --parents "${PWD}/data" && \
-        mkdir --parents "${PWD}/config" && \
+    cd "${CONTAINERS_ROOT:-containers}/registry" &&
+        mkdir --parents "${PWD}/data" &&
+        mkdir --parents "${PWD}/config" &&
         app::docker compose \
             --file registry.yml \
             --env-file registry.env \
@@ -1353,37 +1335,37 @@ function parse_options() {
     # Parse options using `getopts` for short options and manual parsing for long options
     while [[ "${#}" -gt 0 ]]; do
         case "${1}" in
-            -h|--help)
-                usage
-                exit 0
-                ;;
-            -v|--verbose)
-                verbose=1
-                shift
-                ;;
-            -o|--output)
-                if [[ -n "${2}" && "${2}" != -* ]]; then
-                    output_file="${2}"
-                    shift 2
-                else
-                    echo "Error: --output requires a non-empty argument."
-                    usage
-                    exit 1
-                fi
-                ;;
-            --) # End of options
-                shift
-                break
-                ;;
-            -*) # Unknown option
-                echo "Error: Unknown option: ${1}"
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        -v | --verbose)
+            verbose=1
+            shift
+            ;;
+        -o | --output)
+            if [[ -n "${2}" && "${2}" != -* ]]; then
+                output_file="${2}"
+                shift 2
+            else
+                echo "Error: --output requires a non-empty argument."
                 usage
                 exit 1
-                ;;
-            *) # Positional argument
-                positional_arg="${1}"
-                shift
-                ;;
+            fi
+            ;;
+        --) # End of options
+            shift
+            break
+            ;;
+        -*) # Unknown option
+            echo "Error: Unknown option: ${1}"
+            usage
+            exit 1
+            ;;
+        *) # Positional argument
+            positional_arg="${1}"
+            shift
+            ;;
         esac
     done
 

@@ -34,7 +34,7 @@ lock_user_password() {
 disable_all_password_logins() {
     while IFS=: read -r _username _; do
         lock_user_password "${_username}"
-    done < /etc/passwd
+    done </etc/passwd
 }
 
 # Main function to execute the script logic

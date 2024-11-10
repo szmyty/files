@@ -38,7 +38,7 @@ indent_size = 2
 # Specific settings for XML files
 [*.xml]
 # Use 2 spaces for indentation in XML files
-indent_size = 2
+indent_size = 4
 
 # Specific settings for JSON files
 [*.json]
@@ -48,7 +48,7 @@ indent_size = 4
 # Specific settings for HTML files
 [*.html]
 # HTML files typically use 2 spaces for indentation
-indent_size = 2
+indent_size = 4
 
 # Specific settings for CSS files
 [*.css]

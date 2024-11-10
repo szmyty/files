@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the URL to your Caddy server's address
-URL="http://localhost:80"  # Change this to an appropriate URL or health endpoint
+URL="http://localhost:80" # Change this to an appropriate URL or health endpoint
 
 # Optionally specify expected content if you have a specific page or health endpoint
 EXPECTED_CONTENT="OK"

@@ -3,35 +3,35 @@
 This checklist outlines a comprehensive set of tools, configurations, files, and practices to include in a baseline GitHub repository. It covers both essential and advanced elements to create a well-crafted, user-friendly, and future-proof repository.
 
 ## 1. Repository Metadata
-- **README.md**: 
+- **README.md**:
   - File type: Markdown
   - Purpose: Project description, installation instructions, usage examples, badges, and emojis for visual appeal.
   
-- **LICENSE**: 
+- **LICENSE**:
   - File type: Plain text
   - Purpose: Open-source license for the project (e.g., MIT, Apache 2.0).
 
-- **.gitignore**: 
+- **.gitignore**:
   - File type: Plain text
   - Purpose: Specifies files and directories to ignore in Git (e.g., `.DS_Store`, `node_modules/`, `.venv/`).
 
-- **.gitattributes**: 
+- **.gitattributes**:
   - File type: Plain text
   - Purpose: Normalize line endings, set language statistics, and handle other file-specific attributes.
 
-- **CONTRIBUTING.md**: 
+- **CONTRIBUTING.md**:
   - File type: Markdown
   - Purpose: Guidelines for contributing, including coding standards and how to run tests locally.
 
-- **CODE_OF_CONDUCT.md**: 
+- **CODE_OF_CONDUCT.md**:
   - File type: Markdown
   - Purpose: Set expectations for behavior within the community and reporting guidelines for inappropriate behavior.
 
-- **SECURITY.md**: 
+- **SECURITY.md**:
   - File type: Markdown
   - Purpose: Procedures for reporting vulnerabilities and security issues.
 
-- **SUPPORT.md**: 
+- **SUPPORT.md**:
   - File type: Markdown
   - Purpose: Information on how users can get help (e.g., Stack Overflow, email support).
 
@@ -213,7 +213,7 @@ This checklist outlines a comprehensive set of tools, configurations, files, and
   - File type: Plain text
   - Purpose: List contributors and their roles in the project, including personal touches like fun facts.
 
-- **Discussions**: 
+- **Discussions**:
   - Feature in GitHub
   - Purpose: Enable GitHub Discussions for community engagement, creating categories for Q&A, feature requests, and general discussions.
 

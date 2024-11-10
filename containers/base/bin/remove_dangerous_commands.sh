@@ -48,7 +48,7 @@ delete_dangerous_commands() {
         -name "${_commands[5]}" -o \
         -name "${_commands[6]}" -o \
         -name "${_commands[7]}" \
-    \) -delete || {
+        \) -delete || {
         echo "Failed to delete one or more dangerous commands." >&2
         exit 1
     }

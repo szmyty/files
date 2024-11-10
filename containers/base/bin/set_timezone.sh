@@ -96,7 +96,7 @@ echo "Setting timezone to ${timezone}."
 ln -sf "/usr/share/zoneinfo/${timezone}" /etc/localtime
 
 # Update /etc/timezone
-echo "${timezone}" > /etc/timezone
+echo "${timezone}" >/etc/timezone
 
 # Reconfigure tzdata to apply changes
 dpkg-reconfigure -f noninteractive tzdata

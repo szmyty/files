@@ -3,7 +3,7 @@
 ## Holistic Health and Wellness
 
 ### Mind-Body Connection
-- **Books**: 
+- **Books**:
   - *"The FibroManual" by Ginevra Liptan*: A comprehensive guide to managing fibromyalgia.
   - *"You Are Not Your Pain" by Vidyamala Burch and Danny Penman*: Mindfulness techniques for pain management.
 - **Websites**:
@@ -16,8 +16,8 @@
 
 ### Gentle Exercise and Movement
 - **Tai Chi and Qigong**: Improve flexibility, balance, and reduce pain.
-- **Yoga**: 
-  - **YouTube Channels**: 
+- **Yoga**:
+  - **YouTube Channels**:
     - [Yoga with Adriene](https://www.youtube.com/user/yogawithadriene): Gentle yoga routines.
     - [Chair Yoga](https://www.youtube.com/results?search_query=chair+yoga): Adapted yoga exercises.
 - **Water Aerobics**: Low-impact exercises in the water.
@@ -33,11 +33,11 @@
   - **National Sleep Foundation**: Tips for better sleep, especially for those with chronic pain.
 
 ### Stress Reduction and Mental Health
-- **Meditation and Mindfulness**: 
+- **Meditation and Mindfulness**:
   - **Apps**: Headspace, Calm, Insight Timer.
   - **Mindfulness-Based Stress Reduction (MBSR)**: Programs online or through local health centers.
 - **Cognitive Behavioral Therapy (CBT)**: Techniques to manage chronic pain and improve mental health.
-- **Support Groups**: 
+- **Support Groups**:
   - **Online Communities**: Facebook groups or forums dedicated to fibromyalgia and chronic pain support.
 
 ### Time Management and Pacing
@@ -72,10 +72,10 @@ To help get started, consider putting together a "wellness package" that include
 ## Additional Perspectives on Health During Capitalism
 
 ### Overcoming Systemic Challenges
-- **Time Management**: 
+- **Time Management**:
   - Prioritize self-care by scheduling regular breaks and rest periods.
   - Use tools like planners and time-tracking apps to manage tasks efficiently.
-- **Work-Life Balance**: 
+- **Work-Life Balance**:
   - Advocate for flexible work arrangements or remote work options.
   - Set boundaries to protect personal time and prevent burnout.
 
@@ -88,7 +88,7 @@ To help get started, consider putting together a "wellness package" that include
 - **Online Communities**: Participate in forums and social media groups for shared experiences and advice.
 
 ### Self-Compassion and Mindfulness
-- **Books**: 
+- **Books**:
   - *"Self-Compassion" by Kristin Neff*: Techniques for practicing self-compassion.
   - *"Radical Acceptance" by Tara Brach*: Embracing life with mindfulness.
 - **Practices**: Regularly engage in mindfulness exercises and self-compassion practices.

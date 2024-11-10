@@ -17,36 +17,36 @@
 # Define common labels for Docker objects that will be used across all services
 # to maintain consistency in labeling Docker objects like containers and volumes.
 x-labels: &labels
-  labels:
-    app.name: ${COMPOSE_PROJECT_NAME} # Name of the application, set using the Compose project name.
+    labels:
+        app.name: ${COMPOSE_PROJECT_NAME} # Name of the application, set using the Compose project name.
 
 # Include external Docker Compose files for specific services. This approach helps in
 # maintaining a clean and organized project structure, allowing individual service configurations
 # to be modified independently without impacting other services.
 # Learn more: https://docs.docker.com/compose/multiple-compose-files/include/
 include:
-  # Include the Base service Docker Compose file which sets up the foundational services.
-  - path: ${CONTAINERS_ROOT}/network.yml
-  - path: ${CONTAINERS_ROOT}/base/base.yml
-    project_directory: ${CONTAINERS_ROOT}/base
-    env_file: ${CONTAINERS_ROOT}/base/base.env
+    # Include the Base service Docker Compose file which sets up the foundational services.
+    - path: ${CONTAINERS_ROOT}/network.yml
+    - path: ${CONTAINERS_ROOT}/base/base.yml
+      project_directory: ${CONTAINERS_ROOT}/base
+      env_file: ${CONTAINERS_ROOT}/base/base.env
 
-  # Include the Entwine service Docker Compose file.
-  - path: ${CONTAINERS_ROOT}/entwine/entwine.yml
-    project_directory: ${CONTAINERS_ROOT}/entwine
-    env_file: ${CONTAINERS_ROOT}/entwine/entwine.env
+    # Include the Entwine service Docker Compose file.
+    - path: ${CONTAINERS_ROOT}/entwine/entwine.yml
+      project_directory: ${CONTAINERS_ROOT}/entwine
+      env_file: ${CONTAINERS_ROOT}/entwine/entwine.env
 
-  # # Include the Minio service Docker Compose file for object storage configuration.
-  # - path: ${CONTAINERS_ROOT}/minio/minio.yml
-  #   project_directory: ${CONTAINERS_ROOT}/minio
-  #   env_file: ${CONTAINERS_ROOT}/minio/minio.env
+    # # Include the Minio service Docker Compose file for object storage configuration.
+    # - path: ${CONTAINERS_ROOT}/minio/minio.yml
+    #   project_directory: ${CONTAINERS_ROOT}/minio
+    #   env_file: ${CONTAINERS_ROOT}/minio/minio.env
 
-  # # Include the TileDB service Docker Compose file for database configuration.
-  # - path: ${CONTAINERS_ROOT}/tiledb/tiledb.yml
-  #   project_directory: ${CONTAINERS_ROOT}/tiledb
-  #   env_file: ${CONTAINERS_ROOT}/tiledb/tiledb.env
+    # # Include the TileDB service Docker Compose file for database configuration.
+    # - path: ${CONTAINERS_ROOT}/tiledb/tiledb.yml
+    #   project_directory: ${CONTAINERS_ROOT}/tiledb
+    #   env_file: ${CONTAINERS_ROOT}/tiledb/tiledb.env
 
-  # Include the Matchering service Docker Compose file for database configuration.
-  # - path: ${CONTAINERS_ROOT}/matchering/matchering.yml
-  #   project_directory: ${CONTAINERS_ROOT}/matchering
-  #   env_file: ${CONTAINERS_ROOT}/matchering/matchering.env
+    # Include the Matchering service Docker Compose file for database configuration.
+    # - path: ${CONTAINERS_ROOT}/matchering/matchering.yml
+    #   project_directory: ${CONTAINERS_ROOT}/matchering
+    #   env_file: ${CONTAINERS_ROOT}/matchering/matchering.env

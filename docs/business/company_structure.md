@@ -4,7 +4,7 @@
 - **Type:** LLC
 - **Purpose:** Manage and oversee all subsidiaries
 
-### Subsidiaries:
+### Subsidiaries
 
 1. **Publishing LLC**
    - **Purpose:** Self-publish books, comics, and other written materials

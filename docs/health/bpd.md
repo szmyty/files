@@ -184,19 +184,19 @@ plot_treatment_effectiveness(bpd_data.treatment_data)
 
     
 ![png](bpd_files/bpd_2_1.png)
-    
 
 
 
-    
+
+
 ![png](bpd_files/bpd_2_2.png)
-    
 
 
 
-    
+
+
 ![png](bpd_files/bpd_2_3.png)
-    
+
 
 
     <ipython-input-3-046e7b1e3132>:131: FutureWarning: 
@@ -209,7 +209,7 @@ plot_treatment_effectiveness(bpd_data.treatment_data)
 
     
 ![png](bpd_files/bpd_2_5.png)
-    
+
 
 
 
@@ -238,6 +238,6 @@ plt.show()
 ```
 
 
-    
+
 ![png](bpd_files/bpd_3_0.png)
-    
+

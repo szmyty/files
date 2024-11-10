@@ -17,9 +17,9 @@ A **legal entity** is any company or organization that has legal rights and obli
 ## Setting Up a Parent Company and Subsidiaries
 
 ### Formation
-1. **Parent Company**: 
+1. **Parent Company**:
    - Start by forming a legal entity, such as a Limited Liability Company (LLC) or a Corporation (C-Corp or S-Corp). This will be your parent company.
-   
+
 2. **Subsidiaries**:
    - Once the parent company is established, you can create subsidiaries. Each subsidiary will be a separate legal entity but owned and controlled by the parent company.
 

@@ -58,7 +58,7 @@ check_tiledb_python_module() {
     echo "Checking for TileDB Python module..."
 
     # Check if the TileDB Python module can be imported.
-    if ! python3 -c "import tiledb" &> /dev/null; then
+    if ! python3 -c "import tiledb" &>/dev/null; then
         echo "TileDB Python module not found!"
         exit 1
     fi

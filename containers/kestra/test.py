@@ -2,16 +2,16 @@ import os
 import time
 
 # Paths to directories
-input_dir = 'input'
-output_dir = 'output'
-processed_dir = 'processed'
+input_dir = "input"
+output_dir = "output"
+processed_dir = "processed"
 
 # Test file content
-test_filename = 'test_file.txt'
-test_content = 'This is a test file for Kestra processing.'
+test_filename = "test_file.txt"
+test_content = "This is a test file for Kestra processing."
 
 # Create test file in the input directory
-with open(os.path.join(input_dir, test_filename), 'w') as f:
+with open(os.path.join(input_dir, test_filename), "w") as f:
     f.write(test_content)
 
 print(f"Test file '{test_filename}' created in '{input_dir}'.")
@@ -29,7 +29,7 @@ while time_elapsed < processing_timeout:
     if os.path.exists(os.path.join(output_dir, test_filename)):
         print(f"Processed file '{test_filename}' found in '{output_dir}'.")
         # Verify the content
-        with open(os.path.join(output_dir, test_filename), 'r') as f:
+        with open(os.path.join(output_dir, test_filename), "r") as f:
             content = f.read()
             if content == test_content:
                 print("File content verified. Processing successful!")

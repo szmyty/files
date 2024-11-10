@@ -30,7 +30,7 @@ set -euo pipefail
 function substitute_env_vars() {
     # Substitute environment variables in the specified file.
     local _file="$1"
-    envsubst < "${_file}" | sponge "${_file}"
+    envsubst <"${_file}" | sponge "${_file}"
 }
 
 function update_conf() {
@@ -57,7 +57,7 @@ function init() {
         echo "Using an existing SECRET_KEY..."
     else
         echo "Generating a new SECRET_KEY..."
-        { date +%s | sha256sum | base64 | head -c 50; } > "${_file}"
+        { date +%s | sha256sum | base64 | head -c 50; } >"${_file}"
     fi
 
     update_conf

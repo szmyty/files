@@ -1,25 +1,33 @@
 {
-  "ignorePaths": [
-    "**/node_modules/**",
-    "**/vscode-extension/**",
-    "**/.git/**",
-    "**/.pnpm-lock.json",
-    ".vscode",
-    "megalinter",
-    "package-lock.json",
-    "report"
-  ],
-  "language": "en",
-  "noConfigSearch": true,
-  "words": [
-    "autofix",
-    "autofixed",
-    "basenames",
-    "markdownlint",
-    "megalinter",
-    "oxsecurity",
-    "Pylint",
-    "Stylelint"
-  ],
-  "version": "0.2"
+    "ignorePaths": [
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.git/**",
+        "**/.pnpm-lock.json",
+        ".vscode",
+        "megalinter",
+        "package-lock.json",
+        "report"
+    ],
+    "language": "en",
+    "noConfigSearch": true,
+    "words": [
+        "autofix",
+        "autofixed",
+        "basenames",
+        "commitizen",
+        "commitlint",
+        "keycloak",
+        "markdownlint",
+        "megalinter",
+        "oxsecurity",
+        "Pylint",
+        "shellcheck",
+        "Stylelint",
+        "subdirs",
+        "syncpack",
+        "Szmyt",
+        "venv"
+    ],
+    "version": "0.2"
 }

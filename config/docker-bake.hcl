@@ -18,7 +18,7 @@ target "image" {
 
 target "image-local" {
   inherits = ["image"]
-  output = ["type=docker"]
+  output   = ["type=docker"]
 }
 
 target "image-all" {

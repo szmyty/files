@@ -37,7 +37,7 @@ Lion's Mane shows great potential as a daily supplement for cognitive enhancemen
 
 ---
 
-### References:
+### References
 1. Mori, K., et al. (2009). **Improvement of cognitive function by oral intake of Hericium erinaceus**. *Phytotherapy Research*. [Link](https://pubmed.ncbi.nlm.nih.gov/24266378/)
 2. Lee, J. S., et al. (2014). **Neuroprotective effects of Hericium erinaceus**. *Journal of Medicinal Food*. [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5987239/)
 3. Nagano, M., et al. (2010). **Reduction in depression and anxiety by Hericium erinaceus**. *Biomedical Research*. [Link](https://pubmed.ncbi.nlm.nih.gov/20834180/)

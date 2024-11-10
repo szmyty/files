@@ -58,7 +58,7 @@ Magnesium glycinate offers multiple health benefits due to its high bioavailabil
 
 ---
 
-### References:
+### References
 
 1. Abbasi, B., et al. (2012). **The effect of magnesium supplementation on primary insomnia in elderly: A double-blind placebo-controlled clinical trial**. *Journal of Research in Medical Sciences*, 17(12), 1161–1169. [Link](https://pubmed.ncbi.nlm.nih.gov/23853635/)
 2. Boyle, N. B., et al. (2017). **The effects of magnesium supplementation on subjective anxiety and stress—a systematic review**. *Nutrients*, 9(5), 429. [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5452159/)

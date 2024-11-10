@@ -57,13 +57,17 @@ ENABLE_LINTERS: []
 
 # List of excluded directory basenames. They're excluded at any nested level.
 EXCLUDED_DIRECTORIES:
-  - .git
-  - .svn
-  - .hg
-  - .bzr
-  - node_modules
-  - bower_components
-  - vendor
+    - .git
+    - .cache
+    - .svn
+    - .hg
+    - .bzr
+    - node_modules
+    - bower_components
+    - vendor
+    - .history
+    - .venv
+    - venv
 
 # Base mega-linter.yml config file(s) to extend local configuration from.
 # Can be a single URL or a list of .mega-linter.yml config files URLs.
@@ -107,7 +111,7 @@ JAVASCRIPT_DEFAULT_STYLE: "prettier"
 
 # Directory for all linter configuration rules.
 # Can be a local folder or a remote URL.
-LINTER_RULES_PATH: ".github/linters"
+# LINTER_RULES_PATH: ".github/linters"
 
 # The file name for outputting logs. All output is sent to the log file regardless of LOG_LEVEL.
 # Use 'none' to not generate this file.
@@ -176,7 +180,6 @@ TYPESCRIPT_DEFAULT_STYLE: "prettier"
 # Will parse the entire repository and find all files to validate across all types.
 # NOTE: When set to false, only new or edited files will be parsed for validation.
 VALIDATE_ALL_CODEBASE: true
-
 # Linter-Specific Configurations
 # ------------------------------
 # This section allows you to configure each linter individually.

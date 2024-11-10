@@ -36,7 +36,7 @@ Options that were looked at, but we evaluated that weren’t going to work
 
 Summary of the solution in a paragraph or two.
 
-# 
+#
 
 # Solution Details {#solution-details}
 
@@ -46,7 +46,7 @@ Details of the solution...feel free to add/remove sections that make sense, some
 
 Diagram of all the binaries, databases and 3rd party services that this system touches
 
-## 
+##
 
 ## Wire frames {#wire-frames}
 
@@ -60,7 +60,7 @@ Where is the code going to go?  Does this touch any common repos?  Any new repos
 
 What kind of testing is going to be done.  Unit tests, regression tests, etc.
 
-## 
+##
 
 ## Scaling {#scaling}
 

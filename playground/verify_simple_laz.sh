@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Download and configure the MinIO client if not already installed
-if ! command -v mc &> /dev/null; then
+if ! command -v mc &>/dev/null; then
     echo "Installing MinIO client..."
     curl -sO https://dl.min.io/client/mc/release/linux-amd64/mc
     chmod +x mc
