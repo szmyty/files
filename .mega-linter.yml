@@ -6,6 +6,17 @@
 # For detailed information about configuration variables, visit:
 # https://megalinter.io/latest/config-variables/
 
+# Other references:
+# https://megalinter.io/latest/
+# https://megalinter.io/latest/config-file/
+# https://megalinter.io/latest/mega-linter-runner/
+# https://megalinter.io/latest/install-github/
+# https://github.com/oxsecurity/megalinter
+# https://megalinter.io/latest/config-precommands/
+# https://megalinter.io/latest/config-postcommands/
+# https://megalinter.io/latest/config-variables-security/
+# https://megalinter.io/latest/reporters/
+
 # General Configuration
 # ---------------------
 # This section contains general settings that apply to MegaLinter as a whole.
@@ -35,9 +46,8 @@ DEFAULT_WORKSPACE: "."
 DISABLE: []
 
 # Flag to have the linter complete with exit code 0 even if errors were detected.
+# Set to 'true' if you want MegaLinter to detect errors but not block CI from passing.
 DISABLE_ERRORS: false
-# Uncomment if you want MegaLinter to detect errors but not block CI from passing.
-# DISABLE_ERRORS: true
 
 # List of enabled but not blocking linters keys.
 DISABLE_ERRORS_LINTERS: []
@@ -50,11 +60,15 @@ DISABLE_LINTERS: []
 #   - SPELL      # Disable spelling checks.
 
 # List of enabled descriptors keys.
-ENABLE: []
+ENABLE: [
+  PYTHON
+]
 
 # List of enabled linters keys.
-ENABLE_LINTERS: []
 # If you use ENABLE_LINTERS, all other linters will be disabled by default.
+ENABLE_LINTERS: [
+  PYTHON_RUFF
+]
 
 # List of excluded directory basenames. They're excluded at any nested level.
 EXCLUDED_DIRECTORIES:
@@ -81,8 +95,8 @@ FAIL_IF_MISSING_LINTER_IN_FLAVOR: false
 # If set to true, MegaLinter fails if a linter or formatter has autofixed sources, even if there are no errors.
 FAIL_IF_UPDATED_SOURCES: false
 
-# If set to true, MegaLinter fails if a linter or formatter has autofixed sources, even if there are no errors.
-FILEIO_REPORTER: false
+
+
 
 # Regular expression defining which files will be excluded from linting.
 # FILTER_REGEX_EXCLUDE: ""
@@ -157,7 +171,7 @@ PRINT_ALL_FILES: true
 PRINT_ALPACA: true
 
 # Directory for generating report files. Set to 'none' to not generate reports.
-REPORT_OUTPUT_FOLDER: ".cache/megalinter/reports"
+REPORT_OUTPUT_FOLDER: .cache/megalinter/reports
 
 # Additional list of secured environment variables to hide when calling linters.
 SECURED_ENV_VARIABLES: []
@@ -225,10 +239,107 @@ VALIDATE_ALL_CODEBASE: true
 
 # JSONLint Configuration
 
+# Python
+# ----------------
+PYTHON_RUFF_CONFIG_FILE: pyproject.toml
+PYTHON_MYPY_CONFIG_FILE: pyproject.toml
+
+# ----------------
+# Reporters
+# ----------------
+
+# API Reporter
+# https://megalinter.io/latest/reporters/ApiReporter/
+
+# Azure Comment Reporter
+# https://megalinter.io/latest/reporters/AzureCommentReporter/
+AZURE_COMMENT_REPORTER: false
+AZURE_COMMENT_REPORTER_LINKS_TYPE: artifacts
+
+# Bitbucket Comment Reporter
+# https://megalinter.io/latest/reporters/BitbucketCommentReporter/
+BITBUCKET_COMMENT_REPORTER: false
+BITBUCKET_COMMENT_REPORTER_OVERWRITE_COMMENT: true
+# BITBUCKET_REPO_ACCESS_TOKEN: ""
+
+# Console Reporter
+# https://megalinter.io/latest/reporters/ConsoleReporter/
+CONSOLE_REPORTER: true
+CONSOLE_REPORTER_SECTIONS: true
+OUTPUT_DETAIL: detailed
+
+# Config Reporter
+# https://megalinter.io/latest/reporters/ConfigReporter/
+CONFIG_REPORTER: true
+CONFIG_REPORTER_SUB_FOLDER: IDE-config
+
+# File.io Reporter
+# https://megalinter.io/latest/reporters/FileIoReporter/
+FILEIO_REPORTER: false
+FILEIO_REPORTER_SEND_SUCCESS: false
+
+# GitHub Status Reporter
+# https://megalinter.io/latest/reporters/GitHubStatusReporter/
+GITHUB_STATUS_REPORTER: false
+GITHUB_API_URL: https://api.github.com
+GITHUB_SERVER_URL: https://github.com
+
+# GitHub Comment Reporter
+# https://megalinter.io/latest/reporters/GitHubCommentReporter/
+GITHUB_COMMENT_REPORTER: false
+
+# Gitlab Comment Reporter
+# https://megalinter.io/latest/reporters/GitlabCommentReporter/
+GITLAB_COMMENT_REPORTER: false
+GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT: true
+# GITLAB_ACCESS_TOKEN_MEGALINTER: ""
+# GITLAB_CUSTOM_CERTIFICATE: ""
+# GITLAB_CERTIFICATE_PATH: ""
+
+
+# Text Reporter
+# https://megalinter.io/latest/reporters/TextReporter/
+TEXT_REPORTER: true
+TEXT_REPORTER_SUB_FOLDER: linters_logs
+
+# JSON Reporter
+# https://megalinter.io/latest/reporters/JsonReporter/
+JSON_REPORTER: true
+JSON_REPORTER_OUTPUT_DETAIL: detailed
+
+# Sarif Reporter
+# https://megalinter.io/latest/reporters/SarifReporter/
 SARIF_REPORTER: true
 SARIF_REPORTER_FILE_NAME: mega-linter-report.sarif
+SARIF_REPORTER_LINTERS: []
 
-CONFIG_REPORTER: true
+# Updated Sources Reporter
+# https://megalinter.io/latest/reporters/UpdatedSourcesReporter/
+UPDATED_SOURCES_REPORTER: true
+UPDATED_SOURCES_REPORTER_DIR: updated_sources
+
+# TAP Reporter
+# https://megalinter.io/latest/reporters/TapReporter/
+TAP_REPORTER: false
+TAP_REPORTER_SUB_FOLDER: tap
+
+# Email Reporter
+# https://megalinter.io/latest/reporters/EmailReporter/
+EMAIL_REPORTER: false
+EMAIL_REPORTER_EMAIL: szmyty@gmail.com
+EMAIL_REPORTER_SEND_SUCCESS: false
+EMAIL_REPORTER_SENDER: megalinter@gmail.com
+EMAIL_REPORTER_SMTP_HOST: smtp.gmail.com
+EMAIL_REPORTER_SMTP_PORT: 465
+EMAIL_REPORTER_SMTP_USERNAME: megalinter@gmail.com
+# EMAIL_REPORTER_SMTP_PASSWORD: password
+
+# Markdown Summary Reporter
+# https://megalinter.io/latest/reporters/MarkdownSummaryReporter/
+MARKDOWN_SUMMARY_REPORTER: true
+MARKDOWN_SUMMARY_REPORTER_FILE_NAME: megalinter-report.md
+
+REPORTERS_MARKDOWN_TYPE: advanced
 
 # Add custom Markdown content to the job summary report generated by MegaLinter.
 JOB_SUMMARY_ADDITIONAL_MARKDOWN: |
@@ -248,8 +359,3 @@ JOB_SUMMARY_ADDITIONAL_MARKDOWN: |
 
   - Ensure all linting errors are resolved before merging.
   - Remember to update the `CHANGELOG.md` if your changes are user-facing.
-
-# Markdown
-# ----------------
-MARKDOWN_SUMMARY_REPORTER: true
-MARKDOWN_SUMMARY_REPORTER_FILE_NAME: megalinter-report.md

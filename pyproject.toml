@@ -320,10 +320,8 @@ warn_untyped_fields = true
 [tool.ruff]
 # Ruff linter configuration
 # Docs: https://github.com/charliermarsh/ruff
-allowed-confusables = ["−", "ρ", "∗"]
 builtins = ["_"]
 cache-dir = ".cache/.ruff_cache"
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 exclude = [
     ".bzr", ".cache", ".coverage", ".direnv", ".eggs", ".env", ".git", ".hg", ".idea",
     ".ipynb_checkpoints", ".mypy_cache", ".nox", ".pants.d", ".pytype", ".ruff_cache",
@@ -332,45 +330,47 @@ exclude = [
     "resources", "scripts", "site", "sql", "venv"
 ]
 extend-exclude = ["./config"]
+fix = false
+fix-only = false
+force-exclude = false
+output-format = "grouped"
+line-length = 88
+namespace-packages = []
+# required-version = "0.0.256"
+respect-gitignore = true
+show-fixes = true
+src = ["."]
+# target-version = "py310"
+
+[tool.ruff.lint]
+allowed-confusables = ["−", "ρ", "∗"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 extend-ignore = []
 extend-select = ["B", "Q"]
 external = []
-fix = false
-fix-only = false
 fixable = [
     "A", "ANN", "ARG", "B", "BLE", "C", "COM", "D", "DTZ", "E", "EM", "ERA", "EXE",
     "F", "FBT", "G", "I", "ICN", "INP", "ISC", "N", "PD", "PGH", "PIE", "PL", "PT",
     "PTH", "Q", "RET", "RUF", "S", "SIM", "T", "TCH", "TID", "TRY", "UP", "W", "YTT"
 ]
-force-exclude = false
-format = "grouped"
 ignore = []
-ignore-init-module-imports = true
-line-length = 88
-namespace-packages = []
-required-version = "0.0.256"
-respect-gitignore = true
 select = ["ALL"]
-show-fixes = true
-show-source = true
-src = ["."]
-target-version = "py310"
 task-tags = ["TODO", "FIXME", "XXX", "HACK"]
 typing-modules = ["airflow.typing_compat"]
 unfixable = ["F401"]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["I001"]
 "app/tests/test_app.py" = ["S101"]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 # Pydocstyle configuration for docstring style checking
 # Docs: https://github.com/PyCQA/pydocstyle
 convention = "google"
 ignore-decorators = ["typing.overload"]
 property-decorators = []
 
-[tool.ruff.flake8-annotations]
+[tool.ruff.lint.flake8-annotations]
 # Flake8 annotations configuration
 # Docs: https://github.com/sco1/flake8-annotations
 allow-star-arg-any = false
@@ -379,23 +379,23 @@ mypy-init-return = false
 suppress-dummy-args = false
 suppress-none-returning = false
 
-[tool.ruff.flake8-bandit]
+[tool.ruff.lint.flake8-bandit]
 # Flake8 bandit configuration for security checks
 # Docs: https://github.com/tylerwince/flake8-bandit
 check-typed-exception = false
 hardcoded-tmp-directory = ["/tmp", "/var/tmp", "/dev/shm"]
 
-[tool.ruff.flake8-bugbear]
+[tool.ruff.lint.flake8-bugbear]
 # Flake8 bugbear configuration for finding likely bugs
 # Docs: https://github.com/PyCQA/flake8-bugbear
 extend-immutable-calls = ["fastapi.Depends", "fastapi.Query"]
 
-[tool.ruff.flake8-builtins]
+[tool.ruff.lint.flake8-builtins]
 # Flake8 builtins configuration to avoid shadowing Python builtins
 # Docs: https://github.com/gforcada/flake8-builtins
 builtins-ignorelist = ["id"]
 
-[tool.ruff.flake8-comprehensions]
+[tool.ruff.lint.flake8-comprehensions]
 # Flake8 comprehensions configuration to simplify comprehensions
 # Docs: https://github.com/adamchainz/flake8-comprehensions
 allow-dict-calls-with-keyword-arguments = false
