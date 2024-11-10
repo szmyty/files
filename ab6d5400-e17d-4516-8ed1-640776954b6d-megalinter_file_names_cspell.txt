@@ -1,0 +1,248 @@
+ clang format
+ commitlintrc
+ cspell
+ czrc
+ dockerignore
+ editorconfig
+ gitattributes
+ github linters shellcheckrc
+ github workflows mega linter
+ gitignore
+ jscpd
+ mailmap
+ mega linter
+ npmrc
+ pnpmfile
+ pnpmignore
+ python version
+ vscode extensions
+ vscode files
+ vscode settings
+Caddyfile
+LICENSE
+README
+app
+app
+app metadata
+app
+caddy Caddyfile
+caddy Caddyfile
+caddy Dockerfile
+caddy caddy
+caddy caddy
+caddy docker entrypoint
+caddy healthcheck
+caddy init
+caddy plugins
+caddy snippets common
+caddy snippets security
+caddy sysctl
+chktexrc
+config pnpmignore
+config prettierrc
+config apt
+config daemon
+config docker bake
+config dpkg
+config package
+config pnpm lock
+config pnpm workspace
+config redis
+containers base base
+containers base base
+containers base base
+containers base bin apt install package list
+containers base bin disable interactive login
+containers base bin disable password login
+containers base bin entrypoint
+containers base bin healthcheck
+containers base bin install pyenv
+containers base bin list package versions
+containers base bin post install
+containers base bin remove crontabs
+containers base bin remove dangerous commands
+containers base bin set timezone
+containers base bin setup
+containers base bin setup known hosts
+containers base bin setup locale
+containers base bin tmp
+containers base config gitconfig
+containers base config apt
+containers base config dpkg
+containers base config texmf
+containers base package
+containers base packages2
+containers buildkitd
+containers common
+containers common
+containers entwine bin entrypoint
+containers entwine bin healthcheck
+containers entwine bin setup
+containers entwine entwine
+containers entwine entwine
+containers entwine entwine
+containers kestra Caddyfile
+containers kestra docker compose
+containers kestra input test file
+containers kestra kestra workflows process files
+containers kestra test
+containers kestra1 docker compose
+containers kestra1 kestra
+containers matchering gitignore
+containers matchering bin entrypoint
+containers matchering bin healthcheck
+containers matchering bin setup
+containers matchering config python version
+containers matchering config supervisord
+containers matchering matchering
+containers matchering matchering
+containers matchering matchering
+containers minio minio
+containers minio minio
+containers network
+containers redis bin entrypoint
+containers redis bin healthcheck
+containers redis bin setup
+containers redis redis
+containers redis redis
+containers redis redis
+containers registry registry
+containers registry registry
+containers registry registry
+containers tiledb mariadb server README
+containers tiledb bin entrypoint
+containers tiledb bin healthcheck
+containers tiledb bin setup
+containers tiledb tiledb
+containers tiledb tiledb
+containers tiledb tiledb
+docker setup
+docs business business casual pants guide
+docs business business hiearchy structure
+docs business company structure
+docs business open source business model
+docs business trademarking
+docs computing Design Doc Template
+docs computing Design Doc Template
+docs computing ansible checklist
+docs computing c4 model diagram
+docs computing common repository files
+docs computing docker capabilities
+docs computing homelab
+docs computing linux file permissions
+docs computing multiplatform docker overview
+docs computing quantum computing fundamentals
+docs computing repository checklist
+docs computing repository files
+docs diagrams
+docs health antidepressants
+docs health awesomelist
+docs health borderline personality disorder
+docs health bpd
+docs health bpd
+docs health bpd
+docs health bpd files gitkeep
+docs health bpd files bpd 2 1
+docs health bpd files bpd 2 2
+docs health bpd files bpd 2 3
+docs health bpd files bpd 2 5
+docs health bpd files bpd 3 0
+docs health cyclothymia
+docs health lions mane
+docs health lynch syndrome
+docs health magnesium
+docs health muscle stimulators
+docs health navigating communication in relationships
+docs health relationship checkin status quiz
+docs health self care
+docs home improvement deep cleaning
+docs legal affidavit of irretrievable breakdown
+docs legal divorce preparation
+docs legal post divorce checklist
+docs legal therapy avenues
+docs pets Winston gastrointestinal overview
+docs pets Winston winston
+docs pets Winston winston health
+docs pets Winston winston health
+docs pets Winston winston health form
+docs pets Winston winston health form
+docs plantuml architecture
+docs plantuml blob storage
+docs plantuml client applications
+docs plantuml common list openiconic
+docs plantuml common strings
+docs plantuml data hub
+docs plantuml data lake
+docs plantuml job orchestrator
+docs plantuml objects node with logo
+docs plantuml sql query engine
+docs plantuml theme
+docs prompts spirituality chakras
+humans
+licenses apache 2 license
+licenses bsd 3 clause license
+licenses cc0 1 universal
+licenses gpl 3 license
+licenses mit license
+package
+playground Caddyfile
+playground docker compose bak
+playground docker compose
+playground simple
+playground upload simple laz
+playground verify simple laz
+playground workflows process entwine
+pnpm lock
+pnpm workspace
+poetry
+pyproject
+shields android studio canary 2023 2
+shields android studio
+shields built with gradle
+shields css3
+shields cucumber
+shields detekt
+shields docker
+shields eslint
+shields git
+shields github
+shields gmail
+shields googlechrome
+shields googlecloud
+shields googledrive
+shields googlemeet
+shields gradle
+shields html5
+shields intellij
+shields javascript
+shields jest
+shields keycloak
+shields kotlin
+shields ktlint
+shields made with kotlin
+shields markdown
+shields mui
+shields nodejs
+shields npm
+shields pgadmin
+shields portainer
+shields postgres
+shields prettier
+shields react hook form
+shields react router
+shields redis
+shields redux
+shields sass
+shields shellscript
+shields slack
+shields sonarlint
+shields spring
+shields storybook
+shields stylelint
+shields testinglibrary
+shields typescript
+shields ubuntu
+shields webpack
+terraform main
+terraform provider
+terraform variables

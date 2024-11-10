@@ -5158,6 +5158,11 @@ demos/
 extras/documentation
 
 # --------------------------
+# Ruff
+# --------------------------
+**/.ruff_cache
+
+# --------------------------
 #  Zephir
 # --------------------------
 # Cache files, generates by Zephir
