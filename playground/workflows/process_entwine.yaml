@@ -3,10 +3,12 @@ namespace: local
 
 tasks:
   - id: download_from_minio
-    type: io.kestra.plugin.core.http.Download
-    uri: http://minio:9000/input-bucket/simple.laz
-    headers:
-      Authorization: Basic {{ "minioadmin:minioadmin" | base64_encode }}
+    type: io.kestra.plugin.minio.Download
+    accessKeyId: "minioadmin"
+    secretKeyId: "minioadmin"
+    endpoint: "http://minio:9000"
+    bucket: "input-bucket"
+    key: "simple.laz"
 
   - id: compute_hash
     type: io.kestra.plugin.scripts.shell.Script
@@ -15,13 +17,11 @@ tasks:
     script: |
       echo "The current execution is: {{ execution.id }}"
 
-      # Install required packages
-      apk add --no-cache curl bash coreutils
+      # Ensure the output directory exists
+      mkdir -p /output
 
-      # Compute SHA256 hash of the downloaded file
-      sha256sum {{ outputs.download_from_minio.uri }} > /output/simple.laz.sha256
-
-      cat /output/simple.laz.sha256
+      # Compute SHA256 hash of the downloaded file and display it
+      sha256sum {{ outputs.download_from_minio.uri }} | tee /output/simple.laz.sha256
 
 triggers:
   - id: watch_minio

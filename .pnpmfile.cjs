@@ -23,14 +23,17 @@ module.exports = {
          */
         readPackage(pkg, context) {
             // Example: Force a specific version of a dependency
-            if (pkg.dependencies && pkg.dependencies["example-package"]) {
-                pkg.dependencies["example-package"] = "^1.2.3";
-            }
+            // if (pkg.dependencies && pkg.dependencies["example-package"]) {
+            //     pkg.dependencies["example-package"] = "^1.2.3";
+            // }
 
-            // Example: Inject an additional dependency
-            if (!pkg.dependencies["new-package"]) {
-                pkg.dependencies["new-package"] = "^1.0.0";
-            }
+            // // Example: Inject an additional dependency
+            // if (!pkg.dependencies["new-package"]) {
+            //     pkg.dependencies["new-package"] = "^1.0.0";
+            // }
+
+            // Log the package being resolved
+            // context.log("Resolving package:", pkg);
 
             return pkg;
         },

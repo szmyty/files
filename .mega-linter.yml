@@ -1,0 +1,222 @@
+---
+# MegaLinter Configuration File
+# This file configures MegaLinter to run various linters on your project.
+# You can customize which linters to enable or disable and set their configurations.
+#
+# For detailed information about configuration variables, visit:
+# https://megalinter.io/latest/config-variables/
+
+# General Configuration
+# ---------------------
+# This section contains general settings that apply to MegaLinter as a whole.
+
+# List of additional excluded directory basenames. They're excluded at any nested level.
+ADDITIONAL_EXCLUDED_DIRECTORIES: []
+
+# Activates formatting and autofix.
+# Options: 'all', 'none', or a list of linter keys.
+# Set to 'all' to apply fixes from all linters.
+APPLY_FIXES: all
+
+# Flag to clear files from the report folder before starting the linting process.
+CLEAR_REPORT_FOLDER: false
+
+# List of configuration properties to append their values (instead of replacing them) in case of using EXTENDS.
+CONFIG_PROPERTIES_TO_APPEND: []
+
+# Deprecated: The name of the repository's default branch.
+DEFAULT_BRANCH: "HEAD"
+
+# The location containing files to lint if you are running locally.
+DEFAULT_WORKSPACE: "."
+
+# List of disabled descriptors keys.
+DISABLE: []
+
+# Flag to have the linter complete with exit code 0 even if errors were detected.
+DISABLE_ERRORS: false
+# Uncomment if you want MegaLinter to detect errors but not block CI from passing.
+# DISABLE_ERRORS: true
+
+# List of enabled but not blocking linters keys.
+DISABLE_ERRORS_LINTERS: []
+
+# List of disabled linters keys.
+DISABLE_LINTERS: []
+# For example:
+# DISABLE_LINTERS:
+#   - COPYPASTE  # Disable copy-paste detection.
+#   - SPELL      # Disable spelling checks.
+
+# List of enabled descriptors keys.
+ENABLE: []
+
+# List of enabled linters keys.
+ENABLE_LINTERS: []
+# If you use ENABLE_LINTERS, all other linters will be disabled by default.
+
+# List of excluded directory basenames. They're excluded at any nested level.
+EXCLUDED_DIRECTORIES:
+  - .git
+  - .svn
+  - .hg
+  - .bzr
+  - node_modules
+  - bower_components
+  - vendor
+
+# Base mega-linter.yml config file(s) to extend local configuration from.
+# Can be a single URL or a list of .mega-linter.yml config files URLs.
+# Later files take precedence.
+EXTENDS: []
+
+# If set to true, MegaLinter fails if a linter is missing in the selected flavor.
+FAIL_IF_MISSING_LINTER_IN_FLAVOR: false
+
+# If set to true, MegaLinter fails if a linter or formatter has autofixed sources, even if there are no errors.
+FAIL_IF_UPDATED_SOURCES: false
+
+# Regular expression defining which files will be excluded from linting.
+FILTER_REGEX_EXCLUDE: ""
+# For example, to exclude test files: FILTER_REGEX_EXCLUDE: '.*src/test.*'
+
+# Regular expression defining which files will be processed by linters.
+FILTER_REGEX_INCLUDE: ""
+# For example, to include only src files: FILTER_REGEX_INCLUDE: '.*src/.*'
+
+# Provides suggestions about different MegaLinter flavors to use to improve runtime performances.
+FLAVOR_SUGGESTIONS: true
+
+# Formatter errors will be reported as errors (and not warnings) if this variable is set to false.
+FORMATTERS_DISABLE_ERRORS: true
+
+# If set, calls git with Authorization: Bearer + value.
+# GIT_AUTHORIZATION_BEARER: ""
+
+# Base directory for REPORT_OUTPUT_FOLDER, for user-defined linter rules location, for location of linted files if DEFAULT_WORKSPACE isn't set.
+GITHUB_WORKSPACE: "${GITHUB_WORKSPACE}"
+
+# If set to true, MegaLinter will skip files containing @generated marker but without @not-generated marker.
+IGNORE_GENERATED_FILES: false
+
+# If set to true, MegaLinter will skip files ignored by git using .gitignore file.
+IGNORE_GITIGNORED_FILES: true
+
+# JavaScript default style to check/apply. Options: 'standard', 'prettier'.
+JAVASCRIPT_DEFAULT_STYLE: "prettier"
+
+# Directory for all linter configuration rules.
+# Can be a local folder or a remote URL.
+LINTER_RULES_PATH: ".github/linters"
+
+# The file name for outputting logs. All output is sent to the log file regardless of LOG_LEVEL.
+# Use 'none' to not generate this file.
+LOG_FILE: ".cache/megalinter/megalinter.log"
+
+# How much output the script will generate to the console. One of 'INFO', 'DEBUG', 'WARNING', or 'ERROR'.
+LOG_LEVEL: "INFO"
+
+# Markdown default style to check/apply. Options: 'markdownlint', 'remark-lint'.
+MARKDOWN_DEFAULT_STYLE: "markdownlint"
+
+# Name of MegaLinter configuration file.
+# Can be defined remotely; in that case, set this variable with the remote URL of the config file.
+# MEGALINTER_CONFIG: ".mega-linter.yml"
+
+# Comma-separated list of files to analyze. Using this variable will bypass other file listing methods.
+MEGALINTER_FILES_TO_LINT: []
+
+# Process linters in parallel to improve overall MegaLinter performance.
+PARALLEL: true
+
+# All available cores are used by default.
+# If there are too many, you need to decrease the number to enhance performance.
+# PARALLEL_PROCESS_NUMBER: ""
+
+# List of plugin URLs to install and run during MegaLinter run.
+PLUGINS: []
+
+# Custom bash commands to run after linters.
+POST_COMMANDS: []
+
+# Custom bash commands to run before linters.
+PRE_COMMANDS: []
+
+# Display all files analyzed by the linter instead of only the number.
+PRINT_ALL_FILES: true
+
+# Enable printing alpaca image to console.
+PRINT_ALPACA: true
+
+# Directory for generating report files. Set to 'none' to not generate reports.
+REPORT_OUTPUT_FOLDER: ".cache/megalinter/reports"
+
+# Additional list of secured environment variables to hide when calling linters.
+SECURED_ENV_VARIABLES: []
+
+# List of secured environment variables to hide when calling linters.
+# Default list includes MegaLinter & CI platforms sensitive variables.
+# This is not recommended to override; use SECURED_ENV_VARIABLES instead.
+# SECURED_ENV_VARIABLES_DEFAULT: []
+
+# Displays elapsed time in reports.
+SHOW_ELAPSED_TIME: true
+
+# Displays all disabled linters MegaLinter could have run.
+SHOW_SKIPPED_LINTERS: true
+
+# Comma-separated list of cli_lint_modes to skip.
+# Use if you want to skip linters with some CLI lint modes (e.g., 'file', 'project').
+# Available values: 'file', 'cli_lint_mode', 'project'.
+SKIP_CLI_LINT_MODES: []
+
+# TypeScript default style to check/apply. Options: 'standard', 'prettier'.
+TYPESCRIPT_DEFAULT_STYLE: "prettier"
+
+# Will parse the entire repository and find all files to validate across all types.
+# NOTE: When set to false, only new or edited files will be parsed for validation.
+VALIDATE_ALL_CODEBASE: true
+
+# Linter-Specific Configurations
+# ------------------------------
+# This section allows you to configure each linter individually.
+
+# Python Linters
+# --------------
+# Configure linters for Python files.
+
+# Pylint Configuration
+
+# Flake8 Configuration
+
+# JavaScript Linters
+# ------------------
+# Configure linters for JavaScript files.
+
+# TypeScript Linters
+# ------------------
+# Configure linters for TypeScript files.
+
+# CSS Linters
+# -----------
+# Configure linters for CSS files.
+
+# Stylelint Configuration
+
+# Markdown Linters
+# ----------------
+# Configure linters for Markdown files.
+
+# Markdownlint Configuration
+
+# YAML Linters
+# ------------
+# Configure linters for YAML files.
+
+# Yamllint Configuration
+
+# JSON Linters
+# ------------
+# Configure linters for JSON files.
+
+# JSONLint Configuration

@@ -64,6 +64,8 @@ services:
             username: kestra
             password: k3str4
         kestra:
+          tutorialFlows:
+            enabled: false
           server:
             port: 8080
             basicAuth:
@@ -76,9 +78,49 @@ services:
               basePath: "/app/storage"
           queue:
             type: postgres
+          anonymousUsageReport:
+            enabled: false
+          metrics:
+            prefix: kestra
           tasks:
             tmpDir:
               path: /tmp/kestra-wd/tmp
+          micronaut:
+            security:
+              x509:
+                enabled: false
+            ssl:
+              enabled: false
+            server:
+              maxRequestSize: 10GB
+              multipart:
+                maxFileSize: 10GB
+                disk: true
+              readIdleTimeout: 60m
+              writeIdleTimeout: 60m
+              idleTimeout: 60m
+              netty:
+                maxChunkSize: 10MB
+              contextPath: "kestra"
+              cors:
+                enabled: true
+                allowedOrigins: "*"
+                allowedMethods: "*"
+                allowedHeaders: "*"
+                maxAge: 1800
+              hostResolution:
+                hostHeader: Host
+                protocolHeader: X-Forwarded-Proto
+              plugins:
+                repositories:
+                  central:
+                    url: https://repo.maven.apache.org/maven2/
+                  jcenter:
+                    url: https://jcenter.bintray.com/
+                  kestra:
+                    url: https://dl.bintray.com/kestra/maven
+              variables:
+                envVarsPrefix: KESTRA_
       KESTRA_URL: http://localhost:8080/
       KESTRA_PLUGINS: io.kestra.plugin:scripts:2.4.0,io.kestra.plugin:minio:2.4.0
     ports:
