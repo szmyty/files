@@ -1,44 +1,77 @@
 #!/usr/bin/env bash
 set -euo pipefail
+IFS=$'\n\t'
 
-# -----------------------------------------------------------------------------
-# File: remove_dangerous_commands.sh
+##########################################################################
+# remove_dangerous_commands.sh: Script to remove potentially dangerous
+# commands from critical system directories.
 #
-# Purpose: Remove potentially dangerous commands from critical system directories.
+# This script searches for and deletes specific commands considered
+# dangerous in directories like /bin, /etc, /lib, /sbin, and /usr.
 #
-# Description: This script searches for and deletes specific commands considered
-#              dangerous in directories like /bin, /etc, /lib, /sbin, and /usr.
-#
-# Usage: ./remove_dangerous_commands.sh
+# Usage:
+#   ./remove_dangerous_commands.sh
 #
 # Author: Alan Szmyt
-# -----------------------------------------------------------------------------
-# Best Practices:
-# - Make sure this file is executable: `chmod +x remove_dangerous_commands.sh`
-# - Run the script as root or with sufficient privileges to modify system directories.
-# - Be cautious with the list of commands to ensure you are not removing necessary tools.
-# -----------------------------------------------------------------------------
+##########################################################################
 
-# Function to remove dangerous commands from specified directories
-remove_dangerous_commands() {
+##########################################################################
+# remove_dangerous_commands: Removes dangerous commands from specified directories.
+#
+# This function iterates over critical system directories and removes
+# commands that are considered potentially dangerous. It ensures that
+# only specified commands are deleted, avoiding the removal of necessary tools.
+#
+# Usage:
+#   remove_dangerous_commands
+#
+# Arguments:
+#   None
+#
+# Returns:
+#   0 if all dangerous commands are removed successfully.
+#   1 if an error occurs during the removal process.
+##########################################################################
+function remove_dangerous_commands() {
+    # Array of directories to search for dangerous commands.
     local _directories=("/bin" "/etc" "/lib" "/sbin" "/usr")
 
-    echo "Removing potentially dangerous commands from critical system directories."
+    printf "Removing potentially dangerous commands from critical system directories...\n"
 
     # Call the function to delete the dangerous commands
-    delete_dangerous_commands "${_directories[@]}"
+    delete_dangerous_commands "${_directories[@]}" || {
+        printf "Error: Failed to remove dangerous commands.\n" >&2
+        return 1
+    }
 
-    echo "Dangerous commands have been removed."
+    printf "Dangerous commands have been removed.\n"
 }
 
-# Function to find and delete the specified dangerous commands
-delete_dangerous_commands() {
+##########################################################################
+# delete_dangerous_commands: Finds and deletes specified dangerous commands.
+#
+# This function searches through the provided directories for a list of
+# dangerous commands and deletes them. It uses ssh-keyscan to locate and
+# remove the commands, ensuring the system remains secure.
+#
+# Usage:
+#   delete_dangerous_commands "/bin" "/etc"
+#
+# Arguments:
+#   $@ - A list of directories to search for dangerous commands.
+#
+# Returns:
+#   0 if all specified dangerous commands are deleted successfully.
+#   1 if an error occurs during the deletion process.
+##########################################################################
+function delete_dangerous_commands() {
+    # Array of directories to search for dangerous commands.
     local _dirs=("$@")
 
-    # The list of dangerous commands to be removed
+    # The list of dangerous commands to be removed.
     local _commands=("hexdump" "chgrp" "chown" "ln" "od" "strings" "su" "sudo")
 
-    # Use find to locate and delete the dangerous commands
+    # Use find to locate and delete the dangerous commands.
     find "${_dirs[@]}" -xdev \( \
         -name "${_commands[0]}" -o \
         -name "${_commands[1]}" -o \
@@ -49,15 +82,26 @@ delete_dangerous_commands() {
         -name "${_commands[6]}" -o \
         -name "${_commands[7]}" \
         \) -delete || {
-        echo "Failed to delete one or more dangerous commands." >&2
+        printf "Failed to delete one or more dangerous commands.\n" >&2
         exit 1
     }
 }
 
-# Main function to execute the script logic
-main() {
+##########################################################################
+# main: Main function to orchestrate the removal of dangerous commands.
+#
+# This function calls remove_dangerous_commands to initiate the process
+# of deleting potentially dangerous commands from critical system directories.
+#
+# Usage:
+#   main
+##########################################################################
+function main() {
     remove_dangerous_commands
 }
 
-# Call the main function
+# Execute the main function.
 main
+
+# Exit the script with a successful status code.
+exit 0

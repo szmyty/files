@@ -23,7 +23,7 @@ set -euo pipefail
 # -----------------------------------------------------------------------------
 
 # Function to safely remove a directory if it exists
-remove_directory_if_exists() {
+function remove_directory_if_exists() {
     local _dir="${1}"
     if [[ -d "${_dir}" ]]; then
         echo "Removing directory: ${_dir}"
@@ -37,7 +37,7 @@ remove_directory_if_exists() {
 }
 
 # Function to remove all crontab-related directories
-remove_all_crontabs() {
+function remove_all_crontabs() {
     remove_directory_if_exists "/var/spool/cron"
     remove_directory_if_exists "/etc/crontabs"
     remove_directory_if_exists "/etc/periodic"
