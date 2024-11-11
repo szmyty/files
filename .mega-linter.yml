@@ -60,9 +60,9 @@ DISABLE_LINTERS: []
 #   - SPELL      # Disable spelling checks.
 
 # List of enabled descriptors keys.
-ENABLE: [
-  PYTHON
-]
+# ENABLE: [
+#   PYTHON
+# ]
 
 # List of enabled linters keys.
 # If you use ENABLE_LINTERS, all other linters will be disabled by default.
@@ -94,9 +94,6 @@ FAIL_IF_MISSING_LINTER_IN_FLAVOR: false
 
 # If set to true, MegaLinter fails if a linter or formatter has autofixed sources, even if there are no errors.
 FAIL_IF_UPDATED_SOURCES: false
-
-
-
 
 # Regular expression defining which files will be excluded from linting.
 # FILTER_REGEX_EXCLUDE: ""
@@ -295,7 +292,6 @@ GITLAB_COMMENT_REPORTER_OVERWRITE_COMMENT: true
 # GITLAB_ACCESS_TOKEN_MEGALINTER: ""
 # GITLAB_CUSTOM_CERTIFICATE: ""
 # GITLAB_CERTIFICATE_PATH: ""
-
 
 # Text Reporter
 # https://megalinter.io/latest/reporters/TextReporter/

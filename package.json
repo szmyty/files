@@ -18,7 +18,9 @@
         "install:shellcheck": "asdf install shellcheck",
         "commit": "cz",
         "postinstall": "syncpack fix-mismatches",
-        "trying": "syncpack --version"
+        "trying": "syncpack --version",
+        "container": "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw my-megalinter:latest",
+        "build-image": "docker build -t my-megalinter:latest containers/megalinter"
     },
     "keywords": [
         "development",

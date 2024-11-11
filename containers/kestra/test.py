@@ -1,6 +1,4 @@
-"""test_kestra.py
-
-Unit tests for the Kestra functionality.
+"""Unit tests for the Kestra functionality.
 
 This module contains a suite of unit tests to verify the behavior of the Kestra
 application. It ensures that all critical functions perform as expected and helps
@@ -17,8 +15,11 @@ Example:
     ```
 """
 
-import os
 import time
+from logging import getLogger
+from pathlib import Path
+
+logger = getLogger(__name__)
 
 # Paths to directories
 INPUT_DIR = "input"
@@ -30,13 +31,14 @@ TEST_FILENAME = "test_file.txt"
 TEST_CONTENT = "This is a test file for Kestra processing."
 
 # Create test file in the input directory
-with open(os.path.join(INPUT_DIR, TEST_FILENAME), "w", encoding="utf-8") as f:
+test_file = Path(INPUT_DIR) / TEST_FILENAME
+with test_file.open("w", encoding="utf-8") as f:
     f.write(TEST_CONTENT)
 
-print(f"Test file '{TEST_FILENAME}' created in '{INPUT_DIR}'.")
+logger.info("Test file '%s' created in '%s'.", TEST_FILENAME, INPUT_DIR)
 
 # Wait for the file to be processed
-print("Waiting for the file to be processed...")
+logger.info("Waiting for the file to be processed...")
 TIME_ELAPSED = 0
 PROCESSING_TIMEOUT = 60  # seconds
 
@@ -45,21 +47,23 @@ while TIME_ELAPSED < PROCESSING_TIMEOUT:
     TIME_ELAPSED += 5
 
     # Check if the file exists in the output directory
-    if os.path.exists(os.path.join(OUTPUT_DIR, TEST_FILENAME)):
-        print(f"Processed file '{TEST_FILENAME}' found in '{OUTPUT_DIR}'.")
+    output_file = Path(OUTPUT_DIR) / TEST_FILENAME
+    if output_file.exists():
+        logger.info("Processed file '%s' found in '%s'.", TEST_FILENAME, OUTPUT_DIR)
         # Verify the content
-        with open(os.path.join(OUTPUT_DIR, TEST_FILENAME), encoding="utf-8") as f:
+        with output_file.open("r", encoding="utf-8") as f:
             content = f.read()
             if content == TEST_CONTENT:
-                print("File content verified. Processing successful!")
+                logger.info("File content verified. Processing successful!")
             else:
-                print("File content does not match. Processing failed.")
+                logger.info("File content does not match. Processing failed.")
         break
 else:
-    print("Processing timeout. File was not processed within the expected time.")
+    logger.info("Processing timeout. File was not processed within the expected time.")
 
 # Optionally, check that the file has been moved to the processed directory
-if os.path.exists(os.path.join(PROCESSED_DIR, TEST_FILENAME)):
-    print(f"Original file '{TEST_FILENAME}' moved to '{PROCESSED_DIR}'.")
+processed_file = Path(PROCESSED_DIR) / TEST_FILENAME
+if processed_file.exists():
+    logger.info("Original file '%s' moved to '%s'.", TEST_FILENAME, PROCESSED_DIR)
 else:
-    print(f"Original file '{TEST_FILENAME}' not found in '{PROCESSED_DIR}'.")
+    logger.info("Original file '%s' not found in '%s'.", TEST_FILENAME, PROCESSED_DIR)
