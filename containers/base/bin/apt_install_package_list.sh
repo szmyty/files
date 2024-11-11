@@ -13,32 +13,40 @@ set -euo pipefail
 # Author: Alan Szmyt
 # -----------------------------------------------------------------------------
 
-# Check if the package list file is provided as an argument
+# Check if the package list file is provided as an argument.
 if [[ "$#" -ne 1 ]]; then
-    echo "Usage: ${0} <path_to_package_list>"
+    printf "Usage: %s <path_to_package_list>" "${0}"
     exit 1
 fi
 
-# Define the package list file path from the CLI argument
-package_list="$1"
+# Define the 'space' delimiter for the cut command.
+_delimiter=' '
 
-# Define the regex pattern for filtering out comments and empty lines
-regex_pattern='^\s*(#|$)'
+# Define the package list file path from the CLI argument.
+_package_list="${1}"
 
-# Function to extract package names from the package list and store them in an array
-get_package_names() {
-    mapfile -t package_names < <(grep --invert-match --extended-regexp "${regex_pattern}" "${package_list}" | cut --delimiter=' ' --fields=1)
+# Define the regex pattern for filtering out comments and empty lines.
+_regex_pattern='^\s*(#|$)'
+
+# Function to extract package names from the package list and store them in an array.
+function get_package_names() {
+    mapfile -t package_names < <(\
+        grep \
+            --invert-match \
+            --extended-regexp "${_regex_pattern}" "${_package_list}" \
+            | cut --delimiter="${_delimiter}" --fields=1
+        )
 }
 
-# Update apt-get and install packages from the package list
+# Update apt-get and install packages from the package list.
 {
     apt-get update
     get_package_names
-    apt-get install -y "${package_names[@]}"
+    apt-get install --yes "${package_names[@]}"
 } || {
-    echo "Failed to install packages from ${package_list}" >&2
+    printf "Failed to install packages from %s" _package_list >&2
     exit 1
 }
 
-# Clean up the apt cache
+# Clean up the apt cache.
 rm -rf /var/lib/apt/lists/*

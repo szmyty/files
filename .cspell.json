@@ -17,6 +17,8 @@
         "basenames",
         "commitizen",
         "commitlint",
+        "iface",
+        "IPAM",
         "ISORT",
         "Kestra",
         "keycloak",
