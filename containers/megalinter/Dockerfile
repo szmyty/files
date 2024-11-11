@@ -8,7 +8,7 @@ RUN pip3 install lxml
 RUN cd /venvs/mypy \
     && virtualenv . \
     && source bin/activate \
-    && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir lxml \
+    && PYTHONDONTWRITEBYTECODE=1 pip3 install --no-cache-dir lxml numpy pydantic \
     && deactivate
 
 # ENTRYPOINT [ "tail", "-f", "/dev/null" ]

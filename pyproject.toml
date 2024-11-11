@@ -16,7 +16,6 @@ readme = "README.md"
 packages = [
     { include = "**/*.py", from = "scripts", to = "licenses", format = "sdist" },
     { include = "**/*.py", from = "scripts", to = "licenses", format = "wheel" },
-    # { include = "extra_package" },
 ]
 
 [tool.poetry.scripts]
