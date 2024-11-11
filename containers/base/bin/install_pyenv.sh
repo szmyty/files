@@ -8,6 +8,8 @@ set -euox pipefail
 #
 # @Author       : Alan Szmyt
 # @Date         : 2024-10-02
+#
+# TODO pull pyenv installation binaries from stage.
 ######################################################################
 
 [[ -n "${PYENV_DEBUG:-}" ]] && set -x

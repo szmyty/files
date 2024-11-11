@@ -44,9 +44,10 @@ function get_package_names() {
     get_package_names
     apt-get install --yes "${package_names[@]}"
 } || {
-    printf "Failed to install packages from %s" _package_list >&2
+    printf "Failed to install packages from %s\n" _package_list >&2
     exit 1
 }
 
 # Clean up the apt cache.
 rm -rf /var/lib/apt/lists/*
+

@@ -25,7 +25,7 @@
 #               specified package is installed. It returns a status
 #               message indicating whether the package is installed.
 ######################################################################
-is_package_installed() {
+function is_package_installed() {
     local _package="$1"
 
     local _package_status

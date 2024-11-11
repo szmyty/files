@@ -363,8 +363,6 @@ ENV PATH=${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}
 # Install pyenv from source.
 RUN ${APP_BIN}/install_pyenv.sh
 
-# TODO pull pyenv installation binaries from stage.
-
 ######################################################################
 # Stage 4: Debug Logging
 ######################################################################
