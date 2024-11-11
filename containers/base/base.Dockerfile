@@ -354,7 +354,7 @@ ENV PYENV_GIT_TAG="v${PYENV_VERSION}"
 # Copy the scripts for setting up known hosts and installing pyenv.
 RUN mkdir --parents --mode 0700 ${APP_HOME}/.ssh && \
     chown --recursive ${APP_USER}:${APP_GROUP} ${APP_HOME}/.ssh && \
-    /usr/bin/env bash ${APP_BIN}/setup_known_hosts.sh
+    /usr/bin/env bash ${APP_BIN}/add_known_hosts.sh
 
 # Setup necessary Env variables for pyenv.
 ENV PYENV_ROOT=${APP_HOME}/.pyenv
