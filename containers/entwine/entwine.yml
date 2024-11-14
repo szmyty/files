@@ -1,4 +1,14 @@
 ---
+######################################################################
+# @File         : entwine.yml
+# @Description  : Docker Compose service configuration for the Entwine
+#                 application. This file defines the build and runtime
+#                 settings for the Entwine service, including network
+#                 aliases, environment variables, and common labels.
+#
+# @Author       : Alan Szmyt
+######################################################################
+
 # Define common labels for Docker objects.
 x-labels: &labels
   labels:
@@ -6,23 +16,39 @@ x-labels: &labels
     app.name: ${COMPOSE_PROJECT_NAME}
 
 services:
+  # Entwine service definition
   entwine:
+    # Extend the configuration from a common YAML file.
     extends:
-      file: ../common.yml
-      service: common
+      file: ../common.yml # Path to the common Compose configuration file.
+      service: common     # Name of the service to extend.
+
+    # Define the image for the Entwine service.
     image: ${COMPOSE_PROJECT_NAME}/${ENTWINE_IMAGE_NAME}:${ENTWINE_IMAGE_TAG}
+
+    # Set the hostname for the container.
     hostname: ${COMPOSE_PROJECT_NAME}.${ENTWINE_HOSTNAME}
+
+    # Define the container name for easier identification.
     container_name: ${COMPOSE_PROJECT_NAME}-${ENTWINE_HOSTNAME}
+
+    # Build configuration for the Entwine Docker image.
     build:
-      context: .
-      dockerfile: entwine.Dockerfile
+      context: .                 # Build context for the Dockerfile.
+      dockerfile: entwine.Dockerfile # Path to the Dockerfile for the Entwine service.
       args:
+        # Pass build arguments to the Dockerfile.
         - PROJECT_NAME=${COMPOSE_PROJECT_NAME}
         - BASE_IMAGE_NAME=${BASE_IMAGE_NAME}
         - BASE_IMAGE_VERSION=${BASE_IMAGE_VERSION}
+
+    # Network configuration for the Entwine service.
     networks:
       default:
         aliases:
+          # Add an alias for the container in the default network.
           - ${COMPOSE_PROJECT_NAME}.${ENTWINE_HOSTNAME}
+
+    # Load environment variables from the specified file.
     env_file:
-      - entwine.env
+      - entwine.env # Path to the environment variables file for the Entwine service.

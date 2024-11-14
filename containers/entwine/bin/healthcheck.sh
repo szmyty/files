@@ -7,8 +7,6 @@
 # to ensure they are correctly installed and match the expected versions. The script is intended
 # to be used as a health check in a Docker container.
 
-# @version 1.0
-# @date 2024-08-23
 # @author Alan Szmyt
 
 # @section LICENSE

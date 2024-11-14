@@ -242,7 +242,7 @@ RUN git clone \
     --branch ${ENTWINE_VERSION} \
     ${ENTWINE_REPO_URL} . \
     && mkdir build \
-    && cd build  \
+    && cd build \
     && \
     CXXFLAGS=${CXXFLAGS} \
     LDFLAGS=${LDFLAGS} \
@@ -260,6 +260,8 @@ RUN git clone \
 
 # Switch back to the app directory.
 WORKDIR ${APP_HOME}
+
+ENV PROJ_NETWORK=TRUE
 
 # Final stage
 # FROM ${BASE_IMAGE}
@@ -284,7 +286,6 @@ WORKDIR ${APP_HOME}
 
 # # Set environment variables
 # ENV PROJ_LIB=/usr/share/proj
-# ENV PROJ_NETWORK=TRUE
 # ENV LD_LIBRARY_PATH=/usr/local/lib
 
 # # Set entrypoint
@@ -292,3 +293,26 @@ WORKDIR ${APP_HOME}
 
 # # Default command to use the configuration file
 # CMD ["build", "-c", "/etc/entwine/config.json"]
+
+# Hack to work around problems with Proj.4 in Docker
+# ENV PROJ_LIB ${CONDAENV}/share/proj
+# ENV PROJ_NETWORK=TRUE
+# ENV PATH $PATH:${CONDAENV}/bin
+# ENV DTED_APPLY_PIXEL_IS_POINT=TRUE
+# ENV GTIFF_POINT_GEO_IGNORE=TRUE
+# ENV GTIFF_REPORT_COMPD_CS=TRUE
+# ENV REPORT_COMPD_CS=TRUE
+# ENV OAMS_TRADITIONAL_GIS_ORDER=TRUE
+# ENV XDG_DATA_HOME=${CONDAENV}/share
+# ENV LD_LIBRARY_PATH=${CONDAENV}/x86_64-conda-linux-gnu/sysroot/usr/lib64:${CONDAENV}/lib
+
+# ENV PROJ_NETWORK=TRUE
+# ENV PROJ_DATA="${CONDAENV}/share/proj"
+# ENV GDAL_DATA="${CONDAENV}/share/gdal"
+# ENV PDAL_DRIVER_PATH="${CONDAENV}/lib:${CONDAENV}/lib/python3.12/site-packages/pdal/"
+# ENV GEOTIFF_CSV="${CONDAENV}/share/epsg_csv"
+# ENV GDAL_DRIVER_PATH="${CONDAENV}/lib/gdalplugins"
+# ENV PATH="$PATH:${CONDAENV}/bin"
+# ENV GTIFF_REPORT_COMPD_CS=TRUE
+# ENV REPORT_COMPD_CS=TRUE
+# ENV OAMS_TRADITIONAL_GIS_ORDER=TRUE
