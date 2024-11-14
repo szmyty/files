@@ -302,7 +302,7 @@ function app::get_script_info() {
 
     readonly SCRIPT_DIR SCRIPT_NAME SCRIPT_PATH SCRIPT_NAME_NO_EXT SCRIPT_EXT
 
-    # Display the information (optional)
+    # Display the information. TODO change to use log::info
     printf "SCRIPT_PATH: %s\n" "${SCRIPT_PATH}"
     printf "SCRIPT_DIR: %s\n" "${SCRIPT_DIR}"
     printf "SCRIPT_NAME_WITH_EXT: %s\n" "${SCRIPT_NAME}"
@@ -446,7 +446,7 @@ function app::find_docker() {
         return 1
     fi
 
-    echo "Docker found at: ${_docker_path}"
+    printf "Docker found at: %s\n" "${_docker_path}"
 
     # Start constructing the Docker command
     local _docker_cmd="${_docker_path}"

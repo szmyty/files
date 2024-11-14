@@ -1,69 +1,115 @@
 #!/usr/bin/env bash
 set -euo pipefail
+IFS=$'\n\t'
 
-# -----------------------------------------------------------------------------
-# File: disable_interactive_login.sh
+##########################################################################
+# disable_interactive_login.sh: Disable interactive login shell for all users.
 #
-# Purpose: Disable interactive login shell for all users in the system.
+# This script modifies the /etc/passwd file to replace the login shell of
+# all users with /sbin/nologin, effectively preventing interactive logins.
 #
-# Description: This script modifies the /etc/passwd file to replace the login
-#              shell of all users with /sbin/nologin, effectively preventing
-#              interactive logins.
-#
-# Usage: ./disable_interactive_login.sh
+# Usage:
+#   ./disable_interactive_login.sh
 #
 # Author: Alan Szmyt
-# -----------------------------------------------------------------------------
-# Best Practices:
-# - Make sure this file is executable: `chmod +x disable_interactive_login.sh`
-# - Run the script as root or with sufficient privileges to modify /etc/passwd.
-# - Backup the /etc/passwd file before running the script.
-# -----------------------------------------------------------------------------
+##########################################################################
 
+##########################################################################
+# validate_passwd_file: Validates the existence of the /etc/passwd file.
+#
+# This function checks if the /etc/passwd file exists. If not, it prints
+# an error message and exits with a non-zero status.
+#
+# Usage:
+#   validate_passwd_file
+#
+# Globals:
+#   _passwd_file   (in) Path to the /etc/passwd file.
+#
+# Arguments:
+#   None
+#
+# Returns:
+#   None. Exits with a non-zero status if the file does not exist.
+##########################################################################
+function validate_passwd_file() {
+    local _passwd_file="/etc/passwd"
 
-# Function to replace the login shell with /sbin/nologin
+    if [[ ! -f "${_passwd_file}" ]]; then
+        printf "Error: %s not found.\n" "${_passwd_file}" >&2
+        exit 1
+    fi
+}
+
+##########################################################################
+# replace_login_shell: Replaces the login shell for all users with /sbin/nologin.
+#
+# This function modifies the /etc/passwd file, replacing the login shell
+# (the last field in each line) with /sbin/nologin for all users.
+#
+# Usage:
+#   replace_login_shell "/path/to/passwd"
+#
+# Arguments:
+#   $1 - Path to the /etc/passwd file.
+#
+# Returns:
+#   None. Exits with a non-zero status if sed fails to modify the file.
+##########################################################################
 function replace_login_shell() {
     local _file="${1}"
 
-    # This expression finds each line in the /etc/passwd file and replaces the
-    # login shell field (the last field) with /sbin/nologin.
-    #
-    # ^(.*):[^:]*$:
-    # - ^(.*): Matches the beginning of the line and captures everything up to the last `:`.
-    # - [^:]*: Matches the current shell or last field.
-    # - \1:/sbin/nologin: Replaces the last field with /sbin/nologin.
-    #
-    # If sed fails, it prints an error message and exits.
     sed --in-place --regexp-extended 's#^(.*):[^:]*$#\1:/sbin/nologin#' "${_file}" || {
-        echo "Failed to modify ${_file}." >&2
+        printf "Failed to modify %s.\n" "${_file}" >&2
         exit 1
     }
 }
 
-# Function to disable interactive login for all users
+##########################################################################
+# disable_interactive_login: Disables interactive login for all users.
+#
+# This function validates the /etc/passwd file, then calls
+# `replace_login_shell` to disable interactive login by changing the login
+# shell for all users to /sbin/nologin.
+#
+# Usage:
+#   disable_interactive_login
+#
+# Globals:
+#   _passwd_file   (in) Path to the /etc/passwd file.
+#
+# Arguments:
+#   None
+#
+# Returns:
+#   None. Exits with a non-zero status if any step fails.
+##########################################################################
 function disable_interactive_login() {
     local _passwd_file="/etc/passwd"
 
-    # Check if the passwd file exists
-    if [[ ! -f "${_passwd_file}" ]]; then
-        echo "Error: ${_passwd_file} not found." >&2
-        exit 1
-    fi
+    # Validate the existence of the passwd file.
+    validate_passwd_file
 
-    # Replace the login shell of all users with /sbin/nologin
-    printf "Disabling interactive login shell for all users."
-
-    # Call the function separately to ensure set -e is respected
+    # Disable interactive login for all users.
+    printf "Disabling interactive login shell for all users...\n"
     replace_login_shell "${_passwd_file}"
-
-    printf "Interactive login shell has been disabled for all users."
+    printf "Interactive login shell has been disabled for all users.\n"
 }
 
-
-# Main function to execute the script logic
-main() {
+##########################################################################
+# main: Main function to orchestrate the disabling of interactive login.
+#
+# This function calls `disable_interactive_login` to initiate the process.
+#
+# Usage:
+#   main
+##########################################################################
+function main() {
     disable_interactive_login
 }
 
-# Call the main function
+# Execute the main function.
 main
+
+# Exit the script with a successful status code.
+exit 0

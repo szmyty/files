@@ -50,30 +50,10 @@ services:
       target: base
       tags:
         - ${COMPOSE_PROJECT_NAME}-${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION}
-      # https://docs.docker.com/reference/cli/docker/buildx/build/#cache-to
-      # cache_to:
-      #   - type=local,dest=${PROJECT_CACHE_DIR}/.buildx-cache
-      # platforms:
-      #   - "${DOCKER_DEFAULT_PLATFORM}"
-
       # Arguments to pass to the build process
       # Reference: https://docs.docker.com/reference/compose-file/build/#args
       args:
         BASE_IMAGE_VERSION: ${BASE_IMAGE_VERSION}
-      # x-bake:
-        # cache-from:
-        #   - type=local,src=${PROJECT_CACHE_DIR}/.buildx-cache
-        # cache-to:
-        #   - type=local,dest=${PROJECT_CACHE_DIR}/.buildx-cache
-        # secret:
-          # - id=mysecret,src=./secret
-          # - id=mysecret2,src=./secret2
-        # platforms: "${DOCKER_DEFAULT_PLATFORM}"
-        # https://docs.docker.com/build/exporters/image-registry/
-        # output: type=image,name=localhost:5005/${COMPOSE_PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION},push=true,registry.insecure=true
-        # output: type=docker
-        # output: type=tar,dest=${PROJECT_CACHE_DIR}/.buildx-cache/${COMPOSE_PROJECT_NAME}-${BASE_IMAGE_NAME}-${BASE_IMAGE_VERSION}.tar
-        # no-cache: false
     # Environment file containing environment variables for the base service
     # Documentation: https://docs.docker.com/compose/compose-file/compose-file-v3/#env_file
     env_file:
