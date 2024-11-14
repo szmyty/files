@@ -138,3 +138,9 @@ import proxied n64 http://n64:{$N64_PORT}
 
 # Subdomain for the prometheus monitoring web app.
 import proxied prometheus http://prometheus:{$PROMETHEUS_PORT}
+
+# :80
+
+# route {
+#     teapot
+# }

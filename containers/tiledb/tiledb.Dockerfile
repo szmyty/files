@@ -39,7 +39,6 @@ ARG BASE_IMAGE_VERSION=latest
 
 # Use a base image.
 FROM ${PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
-# FROM --platform=${BUILDPLATFORM} ${PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
 
 LABEL stage="base"
 LABEL description="Base stage with necessary dependencies for building TileDB."

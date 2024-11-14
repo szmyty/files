@@ -1,6 +1,64 @@
+# syntax=docker/dockerfile:1.3
+# check=error=true
+# escape=\
+######################################################################
+# @Project      : app
+# @File         : Dockerfile
+# @Description  : Dockerfile for building a Caddy server with custom plugins.
+#
+# This Dockerfile is designed to build a secure and efficient container for a Caddy server.
+#
+# @Author       : Alan Szmyt
+# @References   :
+#   - https://caddyserver.com/
+#   - https://github.com/caddyserver/caddy-docker
+#   - https://github.com/caddyserver/caddy-docker/blob/master/Dockerfile.tmpl
+######################################################################
+
+######################################################################
+# Stage 1: Base Setup
+# This stage sets up the base environment with necessary packages and dependencies.
+######################################################################
+# Project name.
+ARG PROJECT_NAME=${COMPOSE_PROJECT_NAME}
+
+# Image name to use.
+ARG BASE_IMAGE_NAME=base
+
+# Image version to use.
+ARG BASE_IMAGE_VERSION=latest
+
+# Use a base image.
+FROM ${PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
+
+# Set labels for the base stage.
+LABEL stage="base"
+LABEL description="Base stage with necessary dependencies for building Caddy."
+
+# Switch to root user to install required dependencies.
+USER root
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # syntax=docker/dockerfile:1
 # escape=\
-FROM caddy:2.7-builder AS configure
 
 # Set maintainer label
 LABEL maintainer="szmyty@gmail.com"
