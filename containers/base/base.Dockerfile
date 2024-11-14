@@ -224,6 +224,12 @@ WORKDIR ${APP_HOME}
 # chmod 500: Grants read and execute permissions to the owner, no permissions to group and others.
 COPY --chown=${APP_USER}:${APP_GROUP} --chmod=500 bin ${APP_BIN}
 
+# Copy the Git config file to for the app user.
+COPY --chown=${APP_USER}:${APP_GROUP} --chmod=644 config/.gitconfig ${GIT_CONFIG}
+
+# Copy the gitconfig file to the root user's home directory.
+RUN cp ${GIT_CONFIG} /home/root/.gitconfig
+
 # Copy apt.conf and dpkg.cfg to their respective locations.
 # chmod 644: Grants read and write permissions to the owner, and read-only permissions to group and others.
 COPY --chown=root:root --chmod=644  config/apt.conf /etc/apt/apt.conf.d/99docker-apt.conf

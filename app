@@ -1194,9 +1194,9 @@ function app::start_services() {
         "--ansi" "auto"
         "up"
         "--build"
-        "--force-recreate"
         "--remove-orphans"
     )
+    # "--force-recreate"
     # Add services to the command, with --no-deps to skip dependency services.
     for service in "${services[@]}"; do
         cmd+=("--no-deps" "${service}")
@@ -1231,11 +1231,11 @@ function app::load_environment() {
     # Load the main app environment
     app::load_env_file "app.env"
 
-    # Load the environment for base container
+    # Load the environment for base container.
     app::load_env_file "${CONTAINERS_ROOT:-.}/base/base.env"
 
-    # Load the environment for matchering container
-    app::load_env_file "${CONTAINERS_ROOT:-.}/matchering/matchering.env"
+    # Load the environment for entwine container.
+    app::load_env_file "${CONTAINERS_ROOT:-.}/entwine/entwine.env"
 
     # Print the final environment variables
     app::print_environment

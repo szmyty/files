@@ -11,6 +11,8 @@
 # @Version      : 1.0
 # @References   :
 #   - https://github.com/connormanning/entwine
+#   - https://github.com/mundialis/docker-pdal
+#   = https://wiki.osgeo.org/wiki/DockerImages
 ######################################################################
 
 ######################################################################
@@ -29,28 +31,18 @@ ARG BASE_IMAGE_VERSION=latest
 # Use a base image.
 FROM ${PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
 
+# Set labels for the base stage.
 LABEL stage="base"
 LABEL description="Base stage with necessary dependencies for building Entwine."
 
 # Switch to root user to install required dependencies.
 USER root
 
-# Installation prefix for TileDB to be installed at.
-# ARG TILEDB_DATA_HOME=${APP_DATA}/tiledb
-# ARG TILEDB_PY_DATA_HOME=${TILEDB_DATA_HOME}/TileDB-Py
-# ARG VIRTUAL_ENV=${TILEDB_PY_DATA_HOME}/.venv
-
-# # Set environment variables.
-# ENV TILEDB_DATA_HOME=${TILEDB_DATA_HOME} \
-#     TILEDB_PY_DATA_HOME=${TILEDB_PY_DATA_HOME} \
-#     VIRTUAL_ENV=${VIRTUAL_ENV}
-
-# ENV PATH="${VIRTUAL_ENV}/bin:${TILEDB_DATA_HOME}/bin:${PATH}"
-# ENV LD_LIBRARY_PATH="${TILEDB_DATA_HOME}/lib:${LD_LIBRARY_PATH}"
-
 # Install required dependencies for the build.
 RUN apt-get update && apt-get install --yes \
     build-essential \
+    gcc \
+    g++ \
     cmake \
     git \
     libcurl4-openssl-dev \
@@ -61,25 +53,184 @@ RUN apt-get update && apt-get install --yes \
     libgdal-dev \
     wget \
     ca-certificates \
+    proj-bin \
+    hdf4-tools \
+    geotiff-bin \
+    gdal-bin \
+    netcdf-bin \
     && rm -rf /var/lib/apt/lists/*
 
 ######################################################################
-# Stage 2: Build Entwine
+# Stage 2: Build PDAL
+# This stage clones the PDAL repository, builds, and installs it.
+# PDAL is a C++ library for translating and processing point cloud data.
+#
+# @References:
+#   - https://github.com/PDAL/PDAL/blob/master/scripts/docker/ubuntu/Dockerfile
+######################################################################
+FROM base AS pdal
+
+# Set labels for the pdal stage.
+LABEL stage="pdal"
+LABEL description="Stage to build PDAL from source."
+
+# Set the PDAL version to build.
+ARG PDAL_VER_MAJOR=2
+ARG PDAL_VER_MINOR=8
+ARG PDAL_VER_PATCH=1
+ARG PDAL_REPO_URL="https://github.com/PDAL/PDAL.git"
+
+# Set the PDAL version to use as an environment variable.
+ENV PDAL_VERSION="${PDAL_VER_MAJOR}.${PDAL_VER_MINOR}.${PDAL_VER_PATCH}"
+
+# Installation prefix for PDAL to be installed at.
+ARG PDAL_DATA_HOME=${APP_DATA}/pdal
+ENV PDAL_DATA_HOME=${PDAL_DATA_HOME}
+
+# Set the PATH and LD_LIBRARY_PATH environment variables.
+ENV PATH="${PDAL_DATA_HOME}/bin:${PATH}"
+ENV LD_LIBRARY_PATH="${PDAL_DATA_HOME}/lib:${LD_LIBRARY_PATH}"
+
+# Setting the compilers to use.
+ARG CC=gcc
+ARG CXX=g++
+
+# Set the compilers to use as environment variables.
+ENV CC=${CC}
+ENV CXX=${CXX}
+
+# Set the build type.
+ARG CMAKE_BUILD_TYPE="Release"
+
+# Set the installation prefix.
+ARG CMAKE_INSTALL_PREFIX=${PDAL_DATA_HOME}
+ARG PDAL_LIB_PREFIX="$CMAKE_INSTALL_PREFIX/lib"
+
+# Set the build shared libraries option.
+ARG BUILD_SHARED_LIBS="ON"
+
+# Set the CXXFLAGS options environment variable.
+ARG CXXFLAGS="-Werror=strict-aliasing"
+
+# Set the LDFLAGS options environment variable.
+ARG LDFLAGS="-Wl,-rpath-link,$PDAL_LIB_PREFIX"
+
+# Set the number of processors to use for the build.
+ARG PDAL_BUILD_PROC=2
+ENV PDAL_BUILD_PROC=${PDAL_BUILD_PROC}
+
+# PDAL build options.
+ARG BUILD_PLUGIN_CPD=OFF
+ARG BUILD_PLUGIN_PGPOINTCLOUD=ON
+ARG BUILD_PLUGIN_NITF=OFF
+ARG BUILD_PLUGIN_ICEBRIDGE=OFF
+ARG BUILD_PLUGIN_HDF=OFF
+ARG BUILD_PLUGIN_ARROW=OFF
+ARG BUILD_PLUGIN_DRACO=OFF
+ARG BUILD_PLUGIN_TILEDB=OFF
+ARG BUILD_PLUGIN_E57=OFF
+ARG BUILD_PGPOINTCLOUD_TESTS=OFF
+ARG BUILD_PLUGIN_MBIO=OFF
+ARG WITH_ZSTD=ON
+
+# Switch to the pdal directory.
+WORKDIR ${APP_HOME}/pdal
+
+# Clone the PDAL repository and configure the build.
+RUN git clone \
+    --quiet \
+    --depth 1 \
+    --branch ${PDAL_VERSION} \
+    ${PDAL_REPO_URL} . \
+    && mkdir build \
+    && cd build  \
+    && \
+    CXXFLAGS=${CXXFLAGS} \
+    LDFLAGS=${LDFLAGS} \
+    cmake .. \
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+    -DCMAKE_C_COMPILER=$(which ${CC}) \
+    -DCMAKE_CXX_COMPILER=$(which ${CXX}) \
+    -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS} \
+    -DCMAKE_PREFIX_PATH:FILEPATH=${PDAL_LIB_PREFIX} \
+    -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} \
+    -DBUILD_PLUGIN_CPD=${BUILD_PLUGIN_CPD} \
+    -DBUILD_PLUGIN_PGPOINTCLOUD=${BUILD_PLUGIN_PGPOINTCLOUD} \
+    -DBUILD_PLUGIN_NITF=${BUILD_PLUGIN_NITF} \
+    -DBUILD_PLUGIN_ICEBRIDGE=${BUILD_PLUGIN_ICEBRIDGE} \
+    -DBUILD_PLUGIN_HDF=${BUILD_PLUGIN_HDF} \
+    -DBUILD_PLUGIN_ARROW=${BUILD_PLUGIN_ARROW} \
+    -DBUILD_PLUGIN_DRACO=${BUILD_PLUGIN_DRACO} \
+    -DBUILD_PLUGIN_TILEDB=${BUILD_PLUGIN_TILEDB} \
+    -DBUILD_PLUGIN_E57=${BUILD_PLUGIN_E57} \
+    -DBUILD_PGPOINTCLOUD_TESTS=${BUILD_PGPOINTCLOUD_TESTS} \
+    -DBUILD_PLUGIN_MBIO=${BUILD_PLUGIN_MBIO} \
+    -DWITH_ZSTD=${WITH_ZSTD} \
+    && ninja --verbose -j${PDAL_BUILD_PROC} \
+    && ctest -V \
+    && ninja --verbose -j${PDAL_BUILD_PROC} install \
+    && ldconfig
+
+# Switch back to the app directory.
+WORKDIR ${APP_HOME}
+
+######################################################################
+# Stage 3: Build Entwine
 # This stage clones the Entwine repository and builds it.
 ######################################################################
-FROM base AS build-entwine
+FROM pdal AS entwine
 
-LABEL stage="build-entwine"
+# Set labels for the entwine stage.
+LABEL stage="entwine"
 LABEL description="Stage to build Entwine from source."
 
+# Set the Entwine version to build.
 ARG ENTWINE_VER_MAJOR=3
 ARG ENTWINE_VER_MINOR=1
 ARG ENTWINE_VER_PATCH=1
 ARG ENTWINE_REPO_URL="https://github.com/connormanning/entwine.git"
 
+# Set the Entwine version to use as an environment variable.
 ENV ENTWINE_VERSION="${ENTWINE_VER_MAJOR}.${ENTWINE_VER_MINOR}.${ENTWINE_VER_PATCH}"
 
-# WORKDIR ${TMPDIR}/entwine
+# Installation prefix for Entwine to be installed at.
+ARG ENTWINE_DATA_HOME=${APP_DATA}/entwine
+ENV ENTWINE_DATA_HOME=${ENTWINE_DATA_HOME}
+
+# Set the PATH and LD_LIBRARY_PATH environment variables.
+ENV PATH="${ENTWINE_DATA_HOME}/bin:${PATH}"
+ENV LD_LIBRARY_PATH="${ENTWINE_DATA_HOME}/lib:${LD_LIBRARY_PATH}"
+
+# Setting the compilers to use.
+ARG CC=gcc
+ARG CXX=g++
+
+# Set the compilers to use as environment variables.
+ENV CC=${CC}
+ENV CXX=${CXX}
+
+# Set the build type.
+ARG CMAKE_BUILD_TYPE="Release"
+
+# Set the installation prefix.
+ARG CMAKE_INSTALL_PREFIX=${ENTWINE_DATA_HOME}
+ARG ENTWINE_LIB_PREFIX="$CMAKE_INSTALL_PREFIX/lib"
+
+# Set the build shared libraries option.
+ARG BUILD_SHARED_LIBS="ON"
+
+# Set the CXXFLAGS options environment variable.
+ARG CXXFLAGS="-Werror=strict-aliasing"
+
+# Set the LDFLAGS options environment variable.
+ARG LDFLAGS="-Wl,-rpath-link,$ENTWINE_LIB_PREFIX"
+
+# Set the number of processors to use for the build.
+ARG ENTWINE_BUILD_PROC=2
+ENV ENTWINE_BUILD_PROC=${ENTWINE_BUILD_PROC}
+
+# Switch to the entwine directory.
 WORKDIR ${APP_HOME}/entwine
 
 # Clone the Entwine repository and configure the build.
@@ -89,16 +240,26 @@ RUN git clone \
     --shallow-submodules \
     --recurse-submodules \
     --branch ${ENTWINE_VERSION} \
-    ${ENTWINE_REPO_URL} .
+    ${ENTWINE_REPO_URL} . \
+    && mkdir build \
+    && cd build  \
+    && \
+    CXXFLAGS=${CXXFLAGS} \
+    LDFLAGS=${LDFLAGS} \
+    cmake .. \
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+    -DCMAKE_C_COMPILER=$(which gcc) \
+    -DCMAKE_CXX_COMPILER=$(which g++) \
+    -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS} \
+    -DCMAKE_PREFIX_PATH:FILEPATH=${ENTWINE_LIB_PREFIX} \
+    -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} \
+    && ninja --verbose -j${ENTWINE_BUILD_PROC} \
+    && ninja install \
+    && ldconfig
 
+# Switch back to the app directory.
 WORKDIR ${APP_HOME}
-
-# Build Entwine
-# WORKDIR /opt/entwine
-# RUN mkdir build && cd build && \
-#     cmake .. && \
-#     make && \
-#     make install
 
 # Final stage
 # FROM ${BASE_IMAGE}
@@ -131,81 +292,3 @@ WORKDIR ${APP_HOME}
 
 # # Default command to use the configuration file
 # CMD ["build", "-c", "/etc/entwine/config.json"]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ######################################################################
-# # Stage 3: Build TileDB-Py
-# # This stage clones the TileDB-Py repository and installs the Python bindings.
-# ######################################################################
-# FROM base AS build-tiledb-py
-
-# LABEL stage="build-tiledb-py"
-# LABEL description="Stage to build and install TileDB-Py with a virtual environment."
-
-# # TODO: https://docs.tiledb.com/main/how-to/installation/building-from-source/python
-# # https://docs.tiledb.com/main/how-to/installation/usage/python
-
-# # TODO need to configure TileDB: https://docs.tiledb.com/main/how-to/configuration#basic-usage
-
-# # https://packages.debian.org/bookworm/libtbb-dev
-
-# ARG TILEDB_PY_VER_MAJOR=0
-# ARG TILEDB_PY_VER_MINOR=31
-# ARG TILEDB_PY_VER_PATCH=1
-# ARG TILEDB_PY_REPO_URL="https://github.com/TileDB-Inc/TileDB-Py.git"
-
-# ENV TILEDB_PY_VERSION="${TILEDB_PY_VER_MAJOR}.${TILEDB_PY_VER_MINOR}.${TILEDB_PY_VER_PATCH}"
-
-# WORKDIR ${TMPDIR}/tiledb-py
-
-# # Install Python3 venv package, clone the TileDB-Py repository, and install the Python bindings in a virtual environment.
-# RUN apt-get update && apt-get install --yes python3-venv \
-#     && python3 -m venv ${VIRTUAL_ENV} \
-#     && git clone --quiet --recurse-submodules --branch ${TILEDB_PY_VERSION} ${TILEDB_PY_REPO_URL} . \
-#     && pip3 install --upgrade pip \
-#     && pip3 install --requirement requirements.txt \
-#     && python3 setup.py install --tiledb=${TILEDB_DATA_HOME}
-
-# # # Clean up APT when done.
-# # RUN apt-get remove -y python3-venv && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# ######################################################################
-# # Stage 4: Final Image
-# # This stage copies the necessary files from the build stages and prepares the final image.
-# ######################################################################
-# # FROM base AS final
-# FROM build-tiledb-py as final
-
-# LABEL stage="final"
-# LABEL description="Final stage with TileDB and TileDB-Py installed."
-
-# # Copy TileDB and TileDB-Py installations from the build stages.
-# COPY --from=build-tiledb ${TILEDB_DATA_HOME} ${TILEDB_DATA_HOME}
-# COPY --from=build-tiledb-py ${TILEDB_DATA_HOME} ${TILEDB_DATA_HOME}
-
-# # Copy the scripts from the local bin directory to overwrite the container's bin directory.
-# COPY --chown=${APP_USER}:${APP_GROUP} --chmod=500 bin ${APP_BIN}
-
-# # Set working directory.
-# WORKDIR ${APP_HOME}
-
-# # RUN ${APP_BIN}/post-install.sh
-
-# # Need to switch to a non-root user to avoid running as root.
-
-# # Default command (override as needed).
-# CMD ["/bin/bash"]
