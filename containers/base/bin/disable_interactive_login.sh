@@ -20,27 +20,9 @@ set -euo pipefail
 # - Backup the /etc/passwd file before running the script.
 # -----------------------------------------------------------------------------
 
-# Function to disable interactive login for all users
-disable_interactive_login() {
-    local _passwd_file="/etc/passwd"
-
-    # Check if the passwd file exists
-    if [[ ! -f "${_passwd_file}" ]]; then
-        echo "Error: ${_passwd_file} not found." >&2
-        exit 1
-    fi
-
-    # Replace the login shell of all users with /sbin/nologin
-    echo "Disabling interactive login shell for all users."
-
-    # Call the function separately to ensure set -e is respected
-    replace_login_shell "${_passwd_file}"
-
-    echo "Interactive login shell has been disabled for all users."
-}
 
 # Function to replace the login shell with /sbin/nologin
-replace_login_shell() {
+function replace_login_shell() {
     local _file="${1}"
 
     # This expression finds each line in the /etc/passwd file and replaces the
@@ -57,6 +39,26 @@ replace_login_shell() {
         exit 1
     }
 }
+
+# Function to disable interactive login for all users
+function disable_interactive_login() {
+    local _passwd_file="/etc/passwd"
+
+    # Check if the passwd file exists
+    if [[ ! -f "${_passwd_file}" ]]; then
+        echo "Error: ${_passwd_file} not found." >&2
+        exit 1
+    fi
+
+    # Replace the login shell of all users with /sbin/nologin
+    printf "Disabling interactive login shell for all users."
+
+    # Call the function separately to ensure set -e is respected
+    replace_login_shell "${_passwd_file}"
+
+    printf "Interactive login shell has been disabled for all users."
+}
+
 
 # Main function to execute the script logic
 main() {

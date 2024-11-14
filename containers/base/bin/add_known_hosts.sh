@@ -75,4 +75,5 @@ function main() {
 # Execute the main function.
 main
 
+# Exit the script with a successful status code.
 exit 0
