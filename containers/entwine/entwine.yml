@@ -20,8 +20,10 @@ services:
   entwine:
     # Extend the configuration from a common YAML file.
     extends:
-      file: ../common.yml # Path to the common Compose configuration file.
-      service: common     # Name of the service to extend.
+      # Path to the common Compose configuration file.
+      file: ../common.yml
+      # Name of the service to extend.
+      service: common
 
     # Define the image for the Entwine service.
     image: ${COMPOSE_PROJECT_NAME}/${ENTWINE_IMAGE_NAME}:${ENTWINE_IMAGE_TAG}
@@ -34,8 +36,12 @@ services:
 
     # Build configuration for the Entwine Docker image.
     build:
-      context: .                 # Build context for the Dockerfile.
-      dockerfile: entwine.Dockerfile # Path to the Dockerfile for the Entwine service.
+      # Build context for the Dockerfile.
+      context: .
+      # Path to the Dockerfile for the Entwine service.
+      dockerfile: entwine.Dockerfile
+      # Build target stage for the Dockerfile.
+      target: final
       args:
         # Pass build arguments to the Dockerfile.
         - PROJECT_NAME=${COMPOSE_PROJECT_NAME}
@@ -51,4 +57,5 @@ services:
 
     # Load environment variables from the specified file.
     env_file:
-      - entwine.env # Path to the environment variables file for the Entwine service.
+      # Path to the environment variables file for the Entwine service.
+      - entwine.env

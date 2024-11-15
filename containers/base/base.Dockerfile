@@ -36,8 +36,8 @@ FROM debian:${DEBIAN_IMAGE_VERSION} AS setup
 # Labels using OCI conventions and incorporating ARG variables.
 #
 # References:
-# https://github.com/opencontainers/image-spec/blob/latest/annotations.md
-# https://specs.opencontainers.org/image-spec/annotations/
+#   - https://github.com/opencontainers/image-spec/blob/latest/annotations.md
+#   - https://specs.opencontainers.org/image-spec/annotations/
 ######################################################################
 LABEL \
     org.opencontainers.image.authors="Alan Szmyt" \

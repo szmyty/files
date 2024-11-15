@@ -7,10 +7,6 @@
 # @Description  : Multi-stage Dockerfile for building Entwine.
 #
 # @Author       : Alan Szmyt
-# @References   :
-#   - https://github.com/connormanning/entwine
-#   - https://github.com/mundialis/docker-pdal
-#   - https://wiki.osgeo.org/wiki/DockerImages
 ######################################################################
 
 ######################################################################
@@ -29,7 +25,7 @@ ARG BASE_IMAGE_VERSION=latest
 # Use a base image.
 FROM ${PROJECT_NAME}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
 
-# Set labels for the base stage.
+# Set labels for the `base` stage.
 LABEL stage="base"
 LABEL description="Base stage with necessary dependencies for building Entwine."
 
@@ -45,6 +41,7 @@ ENV ENTWINE_DATA_HOME=${ENTWINE_DATA_HOME}
 # Set the PATH and LD_LIBRARY_PATH environment variables.
 ENV PATH="${ENTWINE_DATA_HOME}/bin:${PDAL_DATA_HOME}/bin:${PATH}"
 ENV LD_LIBRARY_PATH="${ENTWINE_DATA_HOME}/lib:${PDAL_DATA_HOME}/lib:${LD_LIBRARY_PATH}"
+ENV PKG_CONFIG_PATH="${PDAL_DATA_HOME}/lib/pkgconfig:${PKG_CONFIG_PATH}"
 
 # Setting the compilers to use.
 ARG CC=gcc
@@ -87,11 +84,13 @@ RUN apt-get update && apt-get install --yes \
 # PDAL is a C++ library for translating and processing point cloud data.
 #
 # @References:
+#   - https://pdal.io/
+#   - https://github.com/PDAL/PDAL
 #   - https://github.com/PDAL/PDAL/blob/master/scripts/docker/ubuntu/Dockerfile
 ######################################################################
 FROM base AS pdal
 
-# Set labels for the pdal stage.
+# Set labels for the `pdal` stage.
 LABEL stage="pdal"
 LABEL description="Stage to build PDAL from source."
 
@@ -180,10 +179,15 @@ WORKDIR ${APP_HOME}
 ######################################################################
 # Stage 3: Build Entwine
 # This stage clones the Entwine repository and builds it.
+#
+# @References:
+#   - https://entwine.io/
+#   - https://github.com/connormanning/entwine
+#   - https://github.com/connormanning/entwine/blob/master/scripts/docker/Dockerfile
 ######################################################################
 FROM base AS entwine
 
-# Set labels for the entwine stage.
+# Set labels for the `entwine` stage.
 LABEL stage="entwine"
 LABEL description="Stage to build Entwine from source."
 
@@ -223,34 +227,37 @@ ENV ENTWINE_BUILD_PROC=${ENTWINE_BUILD_PROC}
 WORKDIR ${APP_HOME}/entwine
 
 # Clone the Entwine repository and configure the build.
-# RUN git clone \
-#     --quiet \
-#     --depth 1 \
-#     --shallow-submodules \
-#     --recurse-submodules \
-#     --branch ${ENTWINE_VERSION} \
-#     ${ENTWINE_REPO_URL} . \
-#     && mkdir build \
-#     && cd build \
-#     && \
-#     CXXFLAGS=${CXXFLAGS} \
-#     LDFLAGS=${LDFLAGS} \
-#     cmake .. \
-#     -GNinja \
-#     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-#     -DCMAKE_C_COMPILER=$(which gcc) \
-#     -DCMAKE_CXX_COMPILER=$(which g++) \
-#     -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS} \
-#     -DCMAKE_PREFIX_PATH:FILEPATH=${ENTWINE_LIB_PREFIX} \
-#     -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} \
-#     && ninja --verbose -j${ENTWINE_BUILD_PROC} \
-#     && ninja install \
-#     && ldconfig
+RUN git clone \
+    --quiet \
+    --depth 1 \
+    --shallow-submodules \
+    --recurse-submodules \
+    --branch ${ENTWINE_VERSION} \
+    ${ENTWINE_REPO_URL} . \
+    && mkdir build \
+    && cd build \
+    && \
+    CXXFLAGS=${CXXFLAGS} \
+    LDFLAGS=${LDFLAGS} \
+    cmake .. \
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+    -DCMAKE_C_COMPILER=$(which gcc) \
+    -DCMAKE_CXX_COMPILER=$(which g++) \
+    -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS} \
+    -DCMAKE_PREFIX_PATH:FILEPATH=${ENTWINE_LIB_PREFIX} \
+    -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} \
+    && ninja --verbose -j${ENTWINE_BUILD_PROC} \
+    && ninja install \
+    && ldconfig
 
 # Switch back to the app directory.
 WORKDIR ${APP_HOME}
 
-# Final stage
+######################################################################
+# Stage 4: Final Stage
+# This stage copies the PDAL and Entwine binaries and libraries to the final image.
+######################################################################
 FROM base AS final
 
 # Copy PDAL binary and libraries.
@@ -259,9 +266,9 @@ COPY --from=pdal ${PDAL_DATA_HOME}/lib/libpdal* ${PDAL_DATA_HOME}/lib/
 COPY --from=pdal ${PDAL_DATA_HOME}/include/pdal ${PDAL_DATA_HOME}/include/pdal
 
 # Copy Entwine binary and libraries.
-# COPY --from=entwine ${ENTWINE_DATA_HOME}/bin ${ENTWINE_DATA_HOME}/bin/
-# COPY --from=entwine ${ENTWINE_DATA_HOME}/lib/libentwine* ${ENTWINE_DATA_HOME}/lib/
-# COPY --from=entwine ${ENTWINE_DATA_HOME}/include/entwine ${ENTWINE_DATA_HOME}/include/entwine
+COPY --from=entwine ${ENTWINE_DATA_HOME}/bin ${ENTWINE_DATA_HOME}/bin/
+COPY --from=entwine ${ENTWINE_DATA_HOME}/lib/libentwine* ${ENTWINE_DATA_HOME}/lib/
+COPY --from=entwine ${ENTWINE_DATA_HOME}/include/entwine ${ENTWINE_DATA_HOME}/include/entwine
 
 # Copy Entwine configuration file
 # COPY entwine-config.json /etc/entwine/config.json
