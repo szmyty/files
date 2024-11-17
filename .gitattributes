@@ -15,15 +15,15 @@
 # Source Code Files
 # -----------------------------------------------------------
 
-# Shell scripts
+# Shell scripts.
 *.bash               text eol=lf
 *.sh                 text eol=lf
 
-# Batch files for Windows
+# Batch files for Windows.
 *.bat                text eol=crlf
 *.cmd                text eol=crlf
 
-# Various programming languages
+# Various programming languages.
 *.coffee             text
 *.css                text diff=css
 *.htm                text diff=html
@@ -55,14 +55,24 @@
 *.xhtml              text diff=html
 *.java               text
 
-# Dart/Flutter files
+# C, C++, and header files.
+*.c                  text
+*.cc                 text
+*.cpp                text
+*.cxx                text
+*.h                  text
+*.hpp                text
+*.hxx                text
+*.ino                text
+
+# Dart/Flutter files.
 *.dart               text
 
 # -----------------------------------------------------------
 # Configuration Files
 # -----------------------------------------------------------
 
-# Configuration and settings files
+# Configuration and settings files.
 *.cnf                text
 *.conf               text
 *.config             text
@@ -89,24 +99,43 @@ makefile             text eol=lf
 .eslintrc            text
 .eslintrc.js         text
 
-# RC files (like .babelrc, .eslintrc)
+# RC files (like .babelrc, .eslintrc).
 *.*rc                text
 
-# Ignore files (like .npmignore, .gitignore)
+# Ignore files (like .npmignore, .gitignore).
 *.*ignore            text
 *.gitignore          text
 
-# Node Version Manager (NVM)
+# Node Version Manager (NVM).
 *.nvmrc              text eol=lf
 
-# Heroku
+# Heroku.
 Procfile             text
+
+# Terraform and related files.
+*.tf                 text
+*.tfstate            text -diff
+*.tfvars             text
+
+# Ansible playbooks.
+*.playbook.yml       text
+*.vault.yml          text
+
+# Kubernetes manifests.
+*.k8s.yml            text
+*.kube.yml           text
+
+# Chef cookbooks.
+*.recipe.rb          text
+
+# Puppet manifests.
+*.pp                 text
 
 # -----------------------------------------------------------
 # Documentation Files
 # -----------------------------------------------------------
 
-# Markdown files
+# Markdown files.
 *.ipynb              text
 *.markdown           text diff=markdown
 *.md                 text diff=markdown
@@ -118,7 +147,7 @@ Procfile             text
 *.mdtext             text
 *.txt                text
 
-# Documentation files
+# Documentation files.
 AUTHORS              text
 CHANGELOG            text
 CHANGES              text
@@ -138,7 +167,7 @@ TODO                 text
 # Template Files
 # -----------------------------------------------------------
 
-# Template files for various templating engines
+# Template files for various templating engines.
 *.dot                text
 *.ejs                text
 *.erb                text
@@ -161,14 +190,14 @@ TODO                 text
 # Docker
 # -----------------------------------------------------------
 
-# Dockerfile
+# Dockerfile.
 Dockerfile           text
 
 # -----------------------------------------------------------
 # Graphics Files
 # -----------------------------------------------------------
 
-# Binary images
+# Binary images.
 *.ai                 binary
 *.bmp                binary
 *.eps                binary
@@ -191,17 +220,17 @@ Dockerfile           text
 *.wbmp               binary
 *.webp               binary
 
-# SVG is treated as an asset (text by default)
+# SVG is treated as an asset (text by default).
 *.svg                text
 
-# If you want to treat .svg as binary, uncomment the following line
+# If you want to treat .svg as binary, uncomment the following line.
 #*.svg                binary
 
 # -----------------------------------------------------------
 # Audio Files
 # -----------------------------------------------------------
 
-# Binary audio formats
+# Binary audio formats.
 *.kar                binary
 *.m4a                binary
 *.mid                binary
@@ -216,7 +245,7 @@ Dockerfile           text
 # Video Files
 # -----------------------------------------------------------
 
-# Binary video formats
+# Binary video formats.
 *.3gpp               binary
 *.3gp                binary
 *.as                 binary
@@ -240,7 +269,7 @@ Dockerfile           text
 # Archive Files
 # -----------------------------------------------------------
 
-# Compressed and archive formats
+# Compressed and archive formats.
 *.7z                 binary
 *.gz                 binary
 *.jar                binary
@@ -248,12 +277,20 @@ Dockerfile           text
 *.rar                binary
 *.tar                binary
 *.zip                binary
+*.bz2                binary
+*.xz                 binary
+*.lz                 binary
+*.lzma               binary
+*.tar.gz             binary
+*.tar.xz             binary
+*.tar.bz2            binary
+*.zstd               binary
 
 # -----------------------------------------------------------
 # Font Files
 # -----------------------------------------------------------
 
-# Binary font formats
+# Binary font formats.
 *.ttf                binary
 *.eot                binary
 *.otf                binary
@@ -264,7 +301,7 @@ Dockerfile           text
 # Executable Files
 # -----------------------------------------------------------
 
-# Executables and compiled files
+# Executables and compiled files.
 *.exe                binary
 *.pyc                binary
 
@@ -272,13 +309,13 @@ Dockerfile           text
 # Windows Specific Files
 # -----------------------------------------------------------
 
-# Ensure that these Windows files always have CRLF line endings
+# Ensure that these Windows files always have CRLF line endings.
 *.sln                text eol=crlf
 *.props              text eol=crlf
 *.vcxproj            text eol=crlf
 *.vcxproj.filters    text eol=crlf
 
-# Templatized versions
+# Templatized versions.
 *.sln.tmpl           text eol=crlf
 *.props.tmpl         text eol=crlf
 *.vcxproj.tmpl       text eol=crlf
@@ -287,6 +324,150 @@ Dockerfile           text
 # SQL Files
 # -----------------------------------------------------------
 
-# SQL files (set linguist-detectable to true)
+# SQL files (set linguist-detectable to true).
 *.sql linguist-detectable=true
 *.sql linguist-language=sql
+
+# -----------------------------------------------------------
+# Miscellaneous
+# -----------------------------------------------------------
+
+# vCard files.
+*.vcf                text
+
+# iCalendar files.
+*.ics                text
+
+# Properties files.
+*.properties         text
+
+# Apache Avro schema.
+*.avsc               text
+
+# -----------------------------------------------------------
+# Build and CI/CD Files
+# -----------------------------------------------------------
+
+# Maven files.
+*.pom                text
+*.pom.xml            text
+
+# Gradle files.
+*.gradle             text
+*.gradle.kts         text
+
+# Jenkins pipeline files.
+*.jenkinsfile        text
+Jenkinsfile          text
+
+# GitHub Actions workflow files.
+*.workflow           text
+*.github/workflows/* text
+
+# CircleCI config files.
+.circleci/config.yml text
+
+# -----------------------------------------------------------
+# Data and Machine Learning Files
+# -----------------------------------------------------------
+
+# CSV and TSV files.
+*.csv                text
+*.tsv                text
+
+# Parquet and ORC files.
+*.parquet            binary
+*.orc                binary
+
+# TensorFlow and PyTorch models.
+*.pb                 binary
+*.h5                 binary
+*.onnx               binary
+
+# Jupyter Notebook checkpoints.
+.ipynb_checkpoints/* binary
+
+# YAML/JSON for machine learning configs.
+*.mlmodel            text
+*.jsonnet            text
+
+# HDF5 files.
+*.hdf5               binary
+
+# -----------------------------------------------------------
+# Source Code Files (Additional)
+# -----------------------------------------------------------
+
+# Rust files.
+*.rs                 text
+
+# Go files.
+*.go                 text
+
+# Kotlin files.
+*.kt                 text
+*.kts                text
+
+# Swift files.
+*.swift              text
+
+# TypeScript declaration files.
+*.d.ts               text
+
+# Haskell files.
+*.hs                 text
+
+# Perl files.
+*.pm                 text
+
+# Lua files.
+*.lua                text
+
+# R files.
+*.r                  text
+*.R                  text
+*.rmd                text
+*.Rmd                text
+
+# MATLAB files.
+*.m                  text
+
+# Julia files.
+*.jl                 text
+
+# Groovy files.
+*.groovy             text
+
+# Scala files.
+*.scala              text
+
+# Objective-C files.
+*.m                  text
+*.mm                 text
+
+# PHP templates.
+*.ctp                text
+
+# -----------------------------------------------------------
+# Logs and Generated Files
+# -----------------------------------------------------------
+
+# Ignore common log files.
+*.log                text -diff
+
+# Generated assets (e.g., Webpack or Rollup).
+*.bundle.js          binary
+*.min.js             binary
+*.min.css            binary
+
+# -----------------------------------------------------------
+# Additional Binary Files
+# -----------------------------------------------------------
+
+# Common CAD files.
+*.dwg                binary
+*.dxf                binary
+
+# Common firmware formats.
+*.bin                binary
+*.hex                binary
