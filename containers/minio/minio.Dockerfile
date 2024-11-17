@@ -315,3 +315,6 @@ COPY --from=entwine ${ENTWINE_DATA_HOME}/include/entwine ${ENTWINE_DATA_HOME}/in
 # ENV GTIFF_REPORT_COMPD_CS=TRUE
 # ENV REPORT_COMPD_CS=TRUE
 # ENV OAMS_TRADITIONAL_GIS_ORDER=TRUE
+
+# TODO https://github.com/mikroskeem/libexecinfo
+# TODO https://github.com/libunwind/libunwind

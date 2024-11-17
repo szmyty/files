@@ -289,7 +289,6 @@ COPY --from=pdal ${PDAL_DATA_HOME}/include/pdal ${PDAL_DATA_HOME}/include/pdal
 # Hack to work around problems with Proj.4 in Docker
 # ENV PROJ_LIB ${CONDAENV}/share/proj
 # ENV PROJ_NETWORK=TRUE
-# ENV PATH $PATH:${CONDAENV}/bin
 # ENV DTED_APPLY_PIXEL_IS_POINT=TRUE
 # ENV GTIFF_POINT_GEO_IGNORE=TRUE
 # ENV GTIFF_REPORT_COMPD_CS=TRUE
