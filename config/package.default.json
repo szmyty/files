@@ -1,0 +1,328 @@
+{
+    // The name of the package
+    "name": "my-package",
+
+    // Version must be parseable by node-semver
+    "version": "1.0.0",
+
+    // Helps people discover your package as it's listed in 'npm search'
+    "description": "A sample package for demonstration purposes",
+
+    // Keywords to help users find your package
+    "keywords": ["sample", "demo", "package"],
+
+    // The URL to the project homepage
+    "homepage": "https://example.com/my-package",
+
+    // Information about where to report bugs
+    "bugs": {
+      // The URL to your project's issue tracker
+      "url": "https://example.com/my-package/issues",
+      // The email address for reporting issues
+      "email": "support@example.com"
+    },
+
+    // Specifies the license for your package
+    "license": "MIT",
+
+    // DEPRECATED: Use 'license' instead
+    "licenses": [
+      {
+        "type": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    ],
+
+    // The person who created the package
+    "author": {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "url": "https://example.com"
+    },
+
+    // A list of people who contributed to this package
+    "contributors": [
+      {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "url": "https://example.com"
+      }
+    ],
+
+    // A list of people who maintain this package
+    "maintainers": [
+      {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "url": "https://example.com"
+      }
+    ],
+
+    // An array of files to include in your project
+    "files": ["lib/", "bin/", "README.md"],
+
+    // The primary entry point to your program
+    "main": "lib/index.js",
+
+    // Restricts external access to non-exported module files
+    "exports": {
+      ".": "./lib/index.js",
+      "./feature": "./lib/feature.js",
+      // Conditional exports for different environments
+      "./utils": {
+        "require": "./lib/utils.cjs.js",
+        "import": "./lib/utils.esm.js",
+        "default": "./lib/utils.js"
+      }
+    },
+
+    // Executable commands for your package
+    "bin": {
+      "my-command": "./bin/my-command.js"
+    },
+
+    // Specifies the module system ("commonjs" or "module")
+    "type": "commonjs",
+
+    // Points to your bundled declaration file
+    "types": "lib/index.d.ts",
+
+    // Synonymous with "types"
+    "typings": "lib/index.d.ts",
+
+    // Supports features available in newer TypeScript versions
+    "typesVersions": {
+      ">=3.1": {
+        "*": ["types/v3/*"]
+      }
+    },
+
+    // Files for the man program to find
+    "man": ["./man/my-package.1"],
+
+    // Directories related to your package
+    "directories": {
+      "lib": "lib",
+      "bin": "bin",
+      "doc": "doc",
+      "man": "man",
+      "test": "test",
+      "example": "example"
+    },
+
+    // Specifies where your code lives
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/username/my-package.git",
+      "directory": "packages/my-package"
+    },
+
+    // Ways to help fund development of the package
+    "funding": {
+      "type": "patreon",
+      "url": "https://patreon.com/username"
+    },
+
+    // Script commands that are run at various times in the lifecycle
+    "scripts": {
+      // Run code quality tools like ESLint
+      "lint": "eslint .",
+      // Run BEFORE the package is published
+      "prepublish": "npm run build",
+      // Run both BEFORE the package is packed and published, and on local npm install
+      "prepare": "npm run build",
+      // Run BEFORE the package is prepared and packed, ONLY on npm publish
+      "prepublishOnly": "npm test",
+      // Run BEFORE a tarball is packed
+      "prepack": "npm run build",
+      // Run AFTER the tarball has been generated
+      "postpack": "echo 'Package packed'",
+      // Publishes a package to the registry
+      "publish": "npm publish",
+      // Run AFTER the package is published
+      "postpublish": "echo 'Package published'",
+      // Run BEFORE the package is installed
+      "preinstall": "echo 'Preparing to install'",
+      // Run AFTER the package is installed
+      "install": "node-gyp rebuild",
+      // Run AFTER the package is installed
+      "postinstall": "echo 'Installation complete'",
+      // Run BEFORE the package is uninstalled
+      "preuninstall": "echo 'Preparing to uninstall'",
+      // Run BEFORE the package is uninstalled
+      "uninstall": "echo 'Uninstalling...'",
+      // Run AFTER the package is uninstalled
+      "postuninstall": "echo 'Uninstallation complete'",
+      // Run BEFORE bumping the package version
+      "preversion": "npm test",
+      // Run BEFORE bumping the package version
+      "version": "npm run build",
+      // Run AFTER bumping the package version
+      "postversion": "git push && git push --tags",
+      // Run by the 'npm test' command
+      "pretest": "npm run lint",
+      "test": "mocha",
+      "posttest": "echo 'Tests complete'",
+      // Run by the 'npm stop' command
+      "prestop": "echo 'Stopping service...'",
+      "stop": "node stop.js",
+      "poststop": "echo 'Service stopped'",
+      // Run by the 'npm start' command
+      "prestart": "echo 'Starting service...'",
+      "start": "node server.js",
+      "poststart": "echo 'Service started'",
+      // Run by the 'npm restart' command
+      "prerestart": "echo 'Restarting service...'",
+      "restart": "npm stop && npm start",
+      "postrestart": "echo 'Service restarted'",
+      // Start dev server to serve application files
+      "serve": "node server.js"
+    },
+
+    // Configuration parameters used in package scripts
+    "config": {
+      "port": "8080",
+      "env": "production"
+    },
+
+    // Packages required by your application
+    "dependencies": {
+      "express": "^4.17.1",
+      "lodash": "^4.17.21"
+    },
+
+    // Packages used during development
+    "devDependencies": {
+      "eslint": "^7.32.0",
+      "mocha": "^8.4.0"
+    },
+
+    // Dependencies that are optional
+    "optionalDependencies": {
+      "fsevents": "^2.3.2"
+    },
+
+    // Packages that your package works with
+    "peerDependencies": {
+      "react": "^17.0.2"
+    },
+
+    // Provides more information about peer dependencies
+    "peerDependenciesMeta": {
+      "react": {
+        // Specifies that this peer dependency is optional
+        "optional": true
+      }
+    },
+
+    // Array of package names that will be bundled when publishing the package
+    "bundleDependencies": ["express"],
+
+    // DEPRECATED: Use 'bundleDependencies' instead
+    "bundledDependencies": ["express"],
+
+    // Supports selective version resolutions using yarn
+    "resolutions": {
+      "**/lodash": "4.17.21"
+    },
+
+    // Supports selective version overrides using npm
+    "overrides": {
+      "lodash": "4.17.21"
+    },
+
+    // Defines expected package manager
+    "packageManager": "npm@7.20.0",
+
+    // Specifies the version of node that your package requires
+    "engines": {
+      "node": ">=14.0.0",
+      "npm": ">=7.0.0"
+    },
+
+    // Defines tools and versions expected when Volta is installed
+    "volta": {
+      "node": "14.17.0",
+      "npm": "7.20.0",
+      "yarn": "1.22.10"
+    },
+
+    // If true, npm will ensure the package runs only on the specified engine
+    "engineStrict": true,
+
+    // Specifies which operating systems your module will run on
+    "os": ["darwin", "linux", "!win32"],
+
+    // Specifies that your code only runs on certain CPU architectures
+    "cpu": ["x64", "arm64"],
+
+    // DEPRECATED: Used to trigger an npm warning if the package is not installed globally
+    "preferGlobal": false,
+
+    // If true, npm will refuse to publish it
+    "private": false,
+
+    // Configures the behavior of npm publish
+    "publishConfig": {
+      "access": "public",
+      "tag": "latest",
+      "registry": "https://registry.npmjs.org/",
+      "provenance": false
+    },
+
+    // Contains information about the package distribution
+    "dist": {
+      "shasum": "",
+      "tarball": ""
+    },
+
+    // Contents of the README file
+    "readme": "README contents go here.",
+
+    // An ECMAScript module ID that is the primary entry point
+    "module": "lib/index.esm.js",
+
+    // A module ID with untranspiled code
+    "esnext": {
+      "main": "src/index.js",
+      "browser": "src/index.browser.js"
+    },
+
+    // Allows packages within a directory to depend on one another
+    "workspaces": ["packages/*"],
+
+    // Configuration for jspm package manager
+    "jspm": {
+      // JSPM-specific configuration properties
+    },
+
+    // Configuration for ESLint
+    "eslintConfig": {
+      // ESLint configuration properties
+    },
+
+    // Configuration for Prettier
+    "prettier": {
+      // Prettier configuration properties
+    },
+
+    // Configuration for Stylelint
+    "stylelint": {
+      // Stylelint configuration properties
+    },
+
+    // Configuration for AVA test runner
+    "ava": {
+      // AVA configuration properties
+    },
+
+    // Configuration for semantic-release
+    "release": {
+      // semantic-release configuration properties
+    },
+
+    // Configuration for JSCPD (JavaScript Copy/Paste Detector)
+    "jscpd": {
+      // JSCPD configuration properties
+    }
+  }

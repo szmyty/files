@@ -26,6 +26,7 @@
         "megalinter",
         "MYPY",
         "oxsecurity",
+        "pnpmfile",
         "potree",
         "Pylint",
         "pylintrc",

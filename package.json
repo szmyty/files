@@ -1,64 +1,103 @@
 {
-    "name": "app",
-    "version": "0.1.0",
-    "description": "A comprehensive development environment for multi-dimensional project management.",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "build": "echo 'Add your build command here'",
-        "test": "exit 0",
-        "format:check": "echo 'Add your format check command here'",
-        "lint": "pnpm run lint:all",
-        "lint:all": "echo 'Add your lint command here'",
-        "lint:shell": "echo 'Add your shell lint command here'",
-        "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx",
-        "install:tools": "pnpm run install:pnpm && pnpm run install:asdf && pnpm run install:shellcheck",
-        "install:pnpm": "curl -fsSL https://get.pnpm.io/install.sh | sh - && pnpm install",
-        "install:asdf": "asdf install",
-        "install:shellcheck": "asdf install shellcheck",
-        "commit": "cz",
-        "postinstall": "syncpack fix-mismatches",
-        "trying": "syncpack --version",
-        "container": "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:rw -v $(pwd):/tmp/lint:rw my-megalinter:latest",
-        "build-image": "docker build -t my-megalinter:latest containers/megalinter"
+    "$schema": "https://json.schemastore.org/package.json",
+    "name": "react-components",
+    "version": "1.0.0",
+    "author": {
+        "name": "Alan Szmyt",
+        "email": "szmyty@gmail.com"
     },
-    "keywords": [
-        "development",
-        "environment",
-        "app",
-        "multi-dimensional"
-    ],
-    "author": "Alan Szmyt <szmyty@gmail.com>",
     "license": "MIT",
-    "engines": {
-        "node": ">=20.17.0",
-        "pnpm": ">=9.9.0",
-        "npm": ">=10.8.2"
-    },
-    "engineStrict": true,
-    "devDependencies": {
-        "@commitlint/cli": "catalog:workspace",
-        "@commitlint/config-conventional": "^19.2.2",
-        "asdf": "catalog:workspace",
-        "commitizen": "catalog:workspace",
-        "cz-conventional-changelog": "^3.3.0",
-        "eslint": "^9.9.1",
-        "husky": "^9.1.5",
-        "lerna": "8.1.9",
-        "mega-linter-runner": "8.1.0",
-        "shellcheck": "^3.0.0",
-        "syncpack": "^13.0.0"
-    },
     "packageManager": "pnpm@9.13.2",
-    "eslintConfig": {
-        "extends": "google"
-    },
     "pnpm": {
         "requiredScripts": [
             "build"
         ]
     },
+    "devDependencies": {
+        "@cspell/cspell-types": "8.16.0",
+        "@pnpm/read-package-json": "9.0.9",
+        "@pnpm/types": "12.2.0",
+        "@storybook/addon-coverage": "1.0.4",
+        "@storybook/addon-essentials": "8.4.4",
+        "@storybook/addon-interactions": "8.4.4",
+        "@storybook/addon-links": "8.4.4",
+        "@storybook/addon-onboarding": "8.4.4",
+        "@storybook/addon-themes": "8.4.4",
+        "@storybook/blocks": "8.4.4",
+        "@storybook/manager-api": "8.4.4",
+        "@storybook/react": "8.4.4",
+        "@storybook/react-vite": "8.4.4",
+        "@storybook/test": "8.4.4",
+        "@storybook/theming": "8.4.4",
+        "@types/jest": "29.5.14",
+        "@types/lodash": "4.17.13",
+        "@types/mocha": "10.0.9",
+        "@types/node": "22.9.0",
+        "@types/react": "18.3.12",
+        "@typescript-eslint/eslint-plugin": "8.15.0",
+        "@typescript-eslint/parser": "8.15.0",
+        "@vitejs/plugin-react-swc": "3.7.1",
+        "autoprefixer": "10.4.20",
+        "cross-env": "7.0.3",
+        "cspell": "8.16.0",
+        "dotenv-cli": "7.4.2",
+        "eslint": "9.15.0",
+        "eslint-config-prettier": "9.1.0",
+        "eslint-plugin-react": "7.37.2",
+        "eslint-plugin-storybook": "0.11.0",
+        "husky": "9.1.7",
+        "jest": "29.7.0",
+        "lerna": "^8.1.9",
+        "lint-staged": "15.2.10",
+        "msw": "2.6.5",
+        "msw-storybook-addon": "2.0.4",
+        "nx": "20.1.2",
+        "prettier": "3.3.3",
+        "prettier-plugin-pkg": "0.18.1",
+        "prettier-plugin-sh": "0.14.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-helmet-async": "2.0.5",
+        "react-router-dom": "6.28.0",
+        "react-virtuoso": "4.12.0",
+        "storybook": "8.4.4",
+        "stylelint": "16.10.0",
+        "stylelint-prettier": "5.0.2",
+        "ts-node": "10.9.2",
+        "typescript": "5.6.3",
+        "vite": "5.4.11"
+    },
+    "peerDependencies": {
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-helmet-async": "2.0.5",
+        "react-router-dom": "6.28.0",
+        "react-virtuoso": "4.12.0"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest",
+            "google"
+        ],
+        "overrides": [
+            {
+                "files": [
+                    "**/*.stories.*"
+                ],
+                "parserOptions": {
+                    "project": "./tsconfig.eslint.json"
+                },
+                "rules": {
+                    "import/no-anonymous-default-export": "off"
+                }
+            }
+        ]
+    },
     "dependencies": {
-        "depcheck": "1.4.7"
+        "change-case": "5.4.4",
+        "lodash": "4.17.21",
+        "prop-types": "15.8.1",
+        "tslib": "2.8.1"
     }
 }
