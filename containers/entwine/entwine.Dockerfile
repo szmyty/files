@@ -197,9 +197,9 @@ ARG ENTWINE_REPO_URL="https://github.com/connormanning/entwine.git"
 ENV ENTWINE_VERSION="${ENTWINE_VER_MAJOR}.${ENTWINE_VER_MINOR}.${ENTWINE_VER_PATCH}"
 
 # Copy PDAL binary and libraries.
-COPY --from=pdal ${PDAL_DATA_HOME}/bin /usr/local/bin/
-COPY --from=pdal ${PDAL_DATA_HOME}/lib/libpdal* /usr/local/lib/
-COPY --from=pdal ${PDAL_DATA_HOME}/include/pdal /usr/local/include/pdal
+COPY --from=pdal ${PDAL_DATA_HOME}/bin ${PDAL_DATA_HOME}/bin/
+COPY --from=pdal ${PDAL_DATA_HOME}/lib/libpdal* ${PDAL_DATA_HOME}/lib/
+COPY --from=pdal ${PDAL_DATA_HOME}/include/pdal ${PDAL_DATA_HOME}/include/pdal
 
 # Set the installation prefix.
 ARG CMAKE_INSTALL_PREFIX=${ENTWINE_DATA_HOME}
@@ -253,7 +253,7 @@ WORKDIR ${APP_HOME}
 # Final stage
 FROM base AS final
 
-# Copy PDAL binary and libraries.
+# Copy PDAL binary and libraries from entwine stage.
 COPY --from=entwine ${PDAL_DATA_HOME}/bin ${PDAL_DATA_HOME}/bin/
 COPY --from=entwine ${PDAL_DATA_HOME}/lib/libpdal* ${PDAL_DATA_HOME}/lib/
 COPY --from=entwine ${PDAL_DATA_HOME}/include/pdal ${PDAL_DATA_HOME}/include/pdal
