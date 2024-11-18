@@ -254,9 +254,9 @@ WORKDIR ${APP_HOME}
 FROM base AS final
 
 # Copy PDAL binary and libraries.
-COPY --from=pdal ${PDAL_DATA_HOME}/bin ${PDAL_DATA_HOME}/bin/
-COPY --from=pdal ${PDAL_DATA_HOME}/lib/libpdal* ${PDAL_DATA_HOME}/lib/
-COPY --from=pdal ${PDAL_DATA_HOME}/include/pdal ${PDAL_DATA_HOME}/include/pdal
+COPY --from=entwine ${PDAL_DATA_HOME}/bin ${PDAL_DATA_HOME}/bin/
+COPY --from=entwine ${PDAL_DATA_HOME}/lib/libpdal* ${PDAL_DATA_HOME}/lib/
+COPY --from=entwine ${PDAL_DATA_HOME}/include/pdal ${PDAL_DATA_HOME}/include/pdal
 
 # Copy Entwine binary and libraries.
 # COPY --from=entwine ${ENTWINE_DATA_HOME}/bin ${ENTWINE_DATA_HOME}/bin/
