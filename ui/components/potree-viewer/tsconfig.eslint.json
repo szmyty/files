@@ -1,0 +1,19 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+      "types": ["node", "@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"]
+    },
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "tests/**/*.ts",
+      "tests/**/*.tsx",
+      ".eslintrc.js",
+      "jest.config.js",
+      "vite.config.ts",
+      "webpack.config.js",
+      "decs.d.ts",
+      "src/**/*.stories.tsx",
+      "src/**/*.stories.@(js|jsx|ts|tsx)"
+    ]
+  }

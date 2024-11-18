@@ -1,0 +1,27 @@
+---
+######################################################################
+# @Project      : app
+# @File         : pnpm-workspace.yaml
+# @Description  : Defines the workspace packages and version catalogs for the
+#                 monorepo. This setup allows pnpm to manage dependencies
+#                 across multiple packages efficiently, ensuring consistent
+#                 versioning and dependency resolution.
+#
+# @Author       : Alan Szmyt
+# @Date         : 2024-11-10
+######################################################################
+
+packages:
+  # all packages in direct subdirs of packages/
+  # - "packages/*"
+  # all packages in subdirs of components/
+  # - "components/**"
+  # exclude packages that are inside test directories
+  - "!**/test/**"
+
+catalogs:
+  # Define a catalog of version ranges for the workspace.
+  workspace:
+    "@commitlint/cli": ^19.4.0
+    asdf: 1.2.3
+    commitizen: 4.3.0

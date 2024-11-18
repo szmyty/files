@@ -1,0 +1,376 @@
+# .editorconfig
+# This file is used to define coding styles and maintain consistency
+# across different editors and IDEs for a project.
+# For more information, visit: https://editorconfig.org
+
+root = true
+
+# Global settings applicable to all files
+[*]
+# Use spaces instead of tabs for indentation
+indent_style = space
+
+# Set indentation size to 4 spaces (default)
+indent_size = 4
+
+# Use LF (Line Feed) as the line ending (Unix-style)
+end_of_line = lf
+
+# Use UTF-8 as the character encoding
+charset = utf-8
+
+# Remove any trailing whitespace characters at the end of each line
+trim_trailing_whitespace = true
+
+# Ensure that files end with a newline
+insert_final_newline = true
+
+# Specific settings for Markdown files
+[*.md]
+# Do not trim trailing whitespace for Markdown files, as it may be needed for formatting
+trim_trailing_whitespace = false
+
+# Specific settings for YAML files
+[*.{yml,yaml}]
+# YAML files typically use 2 spaces for indentation
+indent_size = 2
+
+# Specific settings for XML files
+[*.xml]
+# Use 2 spaces for indentation in XML files
+indent_size = 4
+
+# Specific settings for JSON files
+[*.json]
+# JSON files typically use 2 spaces for indentation
+indent_size = 4
+
+# Specific settings for HTML files
+[*.html]
+# HTML files typically use 2 spaces for indentation
+indent_size = 4
+
+# Specific settings for CSS files
+[*.css]
+# CSS files typically use 2 spaces for indentation
+indent_size = 2
+
+# Specific settings for JavaScript and TypeScript files
+[*.{js,ts}]
+# Use 2 spaces for indentation in JavaScript and TypeScript files
+indent_size = 2
+
+# Specific settings for Python files
+[*.py]
+# Python's PEP 8 recommends 4 spaces for indentation
+indent_size = 4
+
+# Specific settings for shell scripts
+[*.sh]
+# Use 4 spaces for indentation in shell scripts
+indent_size = 4
+
+# Specific settings for Makefiles
+[Makefile]
+# Makefiles require tab characters for indentation
+indent_style = tab
+
+# Specific settings for C and C++ files
+[*.{c,cpp,h,hpp}]
+# Use 4 spaces for indentation in C and C++ files
+indent_size = 4
+
+# Specific settings for Java files
+[*.java]
+# Use 4 spaces for indentation in Java files
+indent_size = 4
+
+# Specific settings for Ruby files
+[*.rb]
+# Use 2 spaces for indentation in Ruby files
+indent_size = 2
+
+# Specific settings for Swift files
+[*.swift]
+# Use 4 spaces for indentation in Swift files
+indent_size = 4
+
+# Specific settings for Go files
+[*.go]
+# Go files typically use tabs for indentation
+indent_style = tab
+
+# Specific settings for PHP files
+[*.php]
+# Use 4 spaces for indentation in PHP files
+indent_size = 4
+
+# Specific settings for TOML files
+[*.toml]
+# Use 2 spaces for indentation in TOML files
+indent_size = 2
+
+# Specific settings for Dockerfile files
+[Dockerfile]
+# Use 4 spaces for indentation in Dockerfiles
+indent_size = 4
+
+# Specific settings for Kotlin files
+[*.kt]
+# Use 4 spaces for indentation in Kotlin files
+indent_size = 4
+
+# Specific settings for SCSS files
+[*.scss]
+# Use 2 spaces for indentation in SCSS files
+indent_size = 2
+
+# Specific settings for LESS files
+[*.less]
+# Use 2 spaces for indentation in LESS files
+indent_size = 2
+
+# Specific settings for R files
+[*.R]
+# Use 2 spaces for indentation in R files
+indent_size = 2
+
+# Specific settings for Rust files
+[*.rs]
+# Use 4 spaces for indentation in Rust files
+indent_size = 4
+
+# Specific settings for Lua files
+[*.lua]
+# Use 2 spaces for indentation in Lua files
+indent_size = 2
+
+# Specific settings for Perl files
+[*.pl]
+# Use 4 spaces for indentation in Perl files
+indent_size = 4
+
+# Specific settings for CMake files
+[CMakeLists.txt]
+# Use 2 spaces for indentation in CMake files
+indent_size = 2
+
+# Specific settings for LaTeX files
+[*.tex]
+# Use 2 spaces for indentation in LaTeX files
+indent_size = 2
+
+# Specific settings for Haskell files
+[*.hs]
+# Use 2 spaces for indentation in Haskell files
+indent_size = 2
+
+# Specific settings for Gradle verification metadata files
+[gradle/verification-metadata.xml]
+# Use 3 spaces for indentation in Gradle verification metadata files
+indent_size = 3
+
+# Specific settings for release features text files
+[subprojects/launcher/src/main/resources/release-features.txt]
+# Do not insert a final newline in release features text files
+insert_final_newline = false
+
+# Specific settings for Elixir files
+[*.ex, *.exs]
+# Use 2 spaces for indentation in Elixir files
+indent_size = 2
+
+# Specific settings for Protobuf files
+[*.proto]
+# Use 2 spaces for indentation in Protobuf files
+indent_size = 2
+
+# Specific settings for SASS files
+[*.sass]
+# Use 2 spaces for indentation in SASS files
+indent_size = 2
+
+# Specific settings for INI files
+[*.ini]
+# Use 2 spaces for indentation in INI files
+indent_size = 2
+
+# Specific settings for Terraform files
+[*.tf]
+# Use 2 spaces for indentation in Terraform files
+indent_size = 2
+
+# Specific settings for Julia files
+[*.jl]
+# Use 4 spaces for indentation in Julia files
+indent_size = 4
+
+# Specific settings for CoffeeScript files
+[*.coffee]
+# Use 2 spaces for indentation in CoffeeScript files
+indent_size = 2
+
+# Specific settings for F# files
+[*.fs, *.fsi, *.fsx]
+# Use 4 spaces for indentation in F# files
+indent_size = 4
+
+# Specific settings for HCL files
+[*.hcl]
+# Use 2 spaces for indentation in HCL files
+indent_size = 2
+
+# Specific settings for Apache config files
+[*.conf]
+# Use 2 spaces for indentation in Apache config files
+indent_size = 2
+
+# Specific settings for Nginx config files
+[nginx.conf, *.nginx]
+# Use 2 spaces for indentation in Nginx config files
+indent_size = 2
+
+# Specific settings for Caddyfile
+[Caddyfile]
+# Use 4 spaces for indentation in Caddyfiles
+indent_size = 4
+
+# Specific settings for Vagrantfile
+[Vagrantfile]
+# Use 2 spaces for indentation in Vagrantfiles
+indent_size = 2
+
+# Specific settings for ASP.NET Razor files
+[*.cshtml]
+# Use 2 spaces for indentation in Razor files
+indent_size = 2
+
+# Specific settings for Vue.js files
+[*.vue]
+# Use 2 spaces for indentation in Vue.js files
+indent_size = 2
+
+# Specific settings for JavaScript configuration files
+[*.{eslintrc,prettierrc,babelrc}]
+# Use 2 spaces for indentation in JavaScript configuration files
+indent_size = 2
+
+# Specific settings for Handlebars files
+[*.hbs]
+# Use 2 spaces for indentation in Handlebars files
+indent_size = 2
+
+# Specific settings for YAML configuration files
+[*.{travis.yml,appveyor.yml,azure-pipelines.yml}]
+# Use 2 spaces for indentation in CI/CD configuration files
+indent_size = 2
+
+# Specific settings for Jenkinsfile
+[Jenkinsfile]
+# Use 4 spaces for indentation in Jenkinsfiles
+indent_size = 4
+
+# Specific settings for Swift Package Manager files
+[Package.swift]
+# Use 4 spaces for indentation in Swift Package Manager files
+indent_size = 4
+
+# Specific settings for Groovy files
+[*.groovy]
+# Use 4 spaces for indentation in Groovy files
+indent_size = 4
+
+# Specific settings for Puppet files
+[*.pp]
+# Use 2 spaces for indentation in Puppet files
+indent_size = 2
+
+# Specific settings for ClangFormat configuration files
+[.clang-format]
+# Use 2 spaces for indentation in ClangFormat configuration files
+indent_size = 2
+
+# Specific settings for Bazel BUILD files
+[BUILD, *.bzl]
+# Use 2 spaces for indentation in Bazel BUILD files
+indent_size = 2
+
+# Specific settings for Visual Studio solution files
+[*.sln]
+# Use 4 spaces for indentation in Visual Studio solution files
+indent_size = 4
+
+# Specific settings for Visual Studio project files
+[*.csproj, *.vbproj, *.fsproj]
+# Use 2 spaces for indentation in Visual Studio project files
+indent_size = 2
+
+# Specific settings for Docker Compose files
+[docker-compose.yml]
+# Use 2 spaces for indentation in Docker Compose files
+indent_size = 2
+
+# Specific settings for properties files
+[*.properties]
+# Use 2 spaces for indentation in properties files
+indent_size = 2
+
+# Specific settings for SQL files
+[*.sql]
+# Use 4 spaces for indentation in SQL files
+indent_size = 4
+
+# Specific settings for Matlab files
+[*.m]
+# Use 4 spaces for indentation in Matlab files
+indent_size = 4
+
+# Specific settings for Rake files
+[Rakefile]
+# Use 2 spaces for indentation in Rake files
+indent_size = 2
+
+# Specific settings for Rust Cargo.toml files
+[Cargo.toml]
+# Use 2 spaces for indentation in Cargo.toml files
+indent_size = 2
+
+# Specific settings for Gherkin feature files
+[*.feature]
+# Use 2 spaces for indentation in Gherkin feature files
+indent_size = 2
+
+# Specific settings for Log files
+[*.log]
+# Ensure log files do not have final newlines
+insert_final_newline = false
+
+# Specific settings for Python config files (tox, pytest, etc.)
+[tox.ini, pytest.ini, setup.cfg]
+# Use 4 spaces for indentation in Python configuration files
+indent_size = 4
+
+# Specific settings for Ruby Gemfile
+[Gemfile]
+# Use 2 spaces for indentation in Gemfile
+indent_size = 2
+
+# Specific settings for Ruby Gemfile.lock
+[Gemfile.lock]
+# Use 2 spaces for indentation in Gemfile.lock
+indent_size = 2
+
+# Specific settings for RSpec files
+[spec/**/*.rb]
+# Use 2 spaces for indentation in RSpec files
+indent_size = 2
+
+# Specific settings for Python Pipfile
+[Pipfile]
+# Use 4 spaces for indentation in Pipfile
+indent_size = 4
+
+# We don't want to apply our defaults to third-party code or minified bundles:
+[{**/{external,vendor}/**,**.min.{js,css}}]
+indent_style = ignore
+indent_size = ignore

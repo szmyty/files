@@ -26,6 +26,7 @@
         "megalinter",
         "MYPY",
         "oxsecurity",
+        "potree",
         "Pylint",
         "pylintrc",
         "pyproject",
@@ -36,6 +37,7 @@
         "subdirs",
         "syncpack",
         "Szmyt",
+        "tailwindcss",
         "venv"
     ],
     "version": "0.2"

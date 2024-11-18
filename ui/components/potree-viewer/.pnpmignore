@@ -1,0 +1,58 @@
+# .pnpmignore
+# This file specifies the files and directories that should be ignored by pnpm
+# when publishing the package or when it is included as a dependency in other projects.
+# It's similar to .gitignore, but specific to pnpm.
+
+# Ignore node_modules as they should not be published or shared
+node_modules/
+
+# Ignore pnpm-specific files
+.pnpm/
+
+# Ignore lock files
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Ignore build output
+dist/
+build/
+coverage/
+
+# Ignore IDE/editor-specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+.nyc_output/
+
+# Ignore test files
+test/
+tests/
+__tests__/
+__mocks__/
+coverage/
+
+# Ignore documentation files that don't need to be included in the package
+docs/
+*.md
+*.markdown
+
+# Ignore sensitive files
+.env
+.secret
+*.key
+*.pem
+
+# Ignore script files
+scripts/
+bin/

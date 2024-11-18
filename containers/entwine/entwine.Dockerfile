@@ -36,7 +36,7 @@ LABEL description="Base stage with necessary dependencies for building Entwine."
 # Installation prefix for PDAL to be installed at.
 ARG PDAL_DATA_HOME=${APP_DATA}/pdal
 ENV PDAL_DATA_HOME=${PDAL_DATA_HOME}
-ENV PDAL_DIR=${PDAL_DATA_HOME}/lib/cmake/PDAL
+ENV PDAL_DIR=${PDAL_DATA_HOME}/lib/cmake
 
 # Installation prefix for Entwine to be installed at.
 ARG ENTWINE_DATA_HOME=${APP_DATA}/entwine
@@ -204,7 +204,7 @@ COPY --from=pdal ${PDAL_DATA_HOME}/include/pdal ${PDAL_DATA_HOME}/include/pdal
 # Set the installation prefix.
 ARG CMAKE_INSTALL_PREFIX=${ENTWINE_DATA_HOME}
 ARG ENTWINE_LIB_PREFIX="$CMAKE_INSTALL_PREFIX/lib"
-ENV ENTWINE_LIB_PREFIX=${ENTWINE_LIB_PREFIX}
+ARG PDAL_LIB_PREFIX="$PDAL_DATA_HOME/lib"
 
 # Set the build shared libraries option.
 ARG BUILD_SHARED_LIBS="ON"
@@ -223,29 +223,29 @@ ENV ENTWINE_BUILD_PROC=${ENTWINE_BUILD_PROC}
 WORKDIR ${APP_HOME}/entwine
 
 # Clone the Entwine repository and configure the build.
-# RUN git clone \
-#     --quiet \
-#     --depth 1 \
-#     --shallow-submodules \
-#     --recurse-submodules \
-#     --branch ${ENTWINE_VERSION} \
-#     ${ENTWINE_REPO_URL} . \
-#     && mkdir build \
-#     && cd build \
-#     && \
-#     CXXFLAGS=${CXXFLAGS} \
-#     LDFLAGS=${LDFLAGS} \
-#     cmake .. \
-#     -GNinja \
-#     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-#     -DCMAKE_C_COMPILER=$(which gcc) \
-#     -DCMAKE_CXX_COMPILER=$(which g++) \
-#     -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS} \
-#     -DCMAKE_PREFIX_PATH:FILEPATH=${ENTWINE_LIB_PREFIX} \
-#     -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} \
-#     && ninja --verbose -j${ENTWINE_BUILD_PROC} \
-#     && ninja install \
-#     && ldconfig
+RUN git clone \
+    --quiet \
+    --depth 1 \
+    --shallow-submodules \
+    --recurse-submodules \
+    --branch ${ENTWINE_VERSION} \
+    ${ENTWINE_REPO_URL} . \
+    && mkdir build \
+    && cd build \
+    && \
+    CXXFLAGS=${CXXFLAGS} \
+    LDFLAGS=${LDFLAGS} \
+    cmake .. \
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+    -DCMAKE_C_COMPILER=$(which gcc) \
+    -DCMAKE_CXX_COMPILER=$(which g++) \
+    -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS} \
+    -DCMAKE_PREFIX_PATH:FILEPATH="${ENTWINE_LIB_PREFIX};${PDAL_LIB_PREFIX}" \
+    -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} \
+    && ninja --verbose -j${ENTWINE_BUILD_PROC} \
+    && ninja install \
+    && ldconfig
 
 # Switch back to the app directory.
 WORKDIR ${APP_HOME}
@@ -259,22 +259,22 @@ COPY --from=entwine ${PDAL_DATA_HOME}/lib/libpdal* ${PDAL_DATA_HOME}/lib/
 COPY --from=entwine ${PDAL_DATA_HOME}/include/pdal ${PDAL_DATA_HOME}/include/pdal
 
 # Copy Entwine binary and libraries.
-# COPY --from=entwine ${ENTWINE_DATA_HOME}/bin ${ENTWINE_DATA_HOME}/bin/
-# COPY --from=entwine ${ENTWINE_DATA_HOME}/lib/libentwine* ${ENTWINE_DATA_HOME}/lib/
-# COPY --from=entwine ${ENTWINE_DATA_HOME}/include/entwine ${ENTWINE_DATA_HOME}/include/entwine
+COPY --from=entwine ${ENTWINE_DATA_HOME}/bin ${ENTWINE_DATA_HOME}/bin/
+COPY --from=entwine ${ENTWINE_DATA_HOME}/lib/libentwine* ${ENTWINE_DATA_HOME}/lib/
+COPY --from=entwine ${ENTWINE_DATA_HOME}/include/entwine ${ENTWINE_DATA_HOME}/include/entwine
 
 # Copy Entwine configuration file
 # COPY entwine-config.json /etc/entwine/config.json
 
-# # Install runtime dependencies
-# RUN apt-get update && apt-get install --yes \
-#     libcurl4 \
-#     libtiff5 \
-#     libgeotiff2 \
-#     libboost-system1.71.0 \
-#     libjsoncpp1 \
-#     libgdal26 \
-#     && rm -rf /var/lib/apt/lists/*
+# Install runtime dependencies
+RUN apt-get update && apt-get install --yes \
+    libcurl4 \
+    libtiff5 \
+    libgeotiff2 \
+    libboost-system1.71.0 \
+    libjsoncpp1 \
+    libgdal26 \
+    && rm -rf /var/lib/apt/lists/*
 
 # # Set environment variables
 # ENV PROJ_LIB=/usr/share/proj
@@ -295,8 +295,6 @@ COPY --from=entwine ${PDAL_DATA_HOME}/include/pdal ${PDAL_DATA_HOME}/include/pda
 # ENV REPORT_COMPD_CS=TRUE
 # ENV OAMS_TRADITIONAL_GIS_ORDER=TRUE
 # ENV XDG_DATA_HOME=${CONDAENV}/share
-# ENV LD_LIBRARY_PATH=${CONDAENV}/x86_64-conda-linux-gnu/sysroot/usr/lib64:${CONDAENV}/lib
-
 # ENV PROJ_NETWORK=TRUE
 # ENV PROJ_DATA="${CONDAENV}/share/proj"
 # ENV GDAL_DATA="${CONDAENV}/share/gdal"

@@ -1,0 +1,37 @@
+{
+    "name": "potree-viewer",
+    "type": "module",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "engines": {
+        "node": ">=20.17.0",
+        "pnpm": ">=9.13.2",
+        "npm": ">=10.8.2"
+    },
+    "engineStrict": true,
+    "packageManager": "pnpm@9.13.2",
+    "eslintConfig": {
+        "extends": "google"
+    },
+    "pnpm": {
+        "requiredScripts": [
+            "build"
+        ]
+    },
+    "devDependencies": {
+        "lerna": "^8.1.9",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "peerDependencies": {
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    }
+}
