@@ -1,0 +1,23 @@
+<!--
+  @file preview-head.html
+  @description Provides a workaround for interaction tests in Storybook with Vite.
+  @reference https://storybook.js.org/docs/builders/vite#interaction-tests-not-working-as-expected
+  @version 1.0.0
+
+  This file sets the `global` property on the `window` object to ensure compatibility
+  with Storybook's interaction tests when using the Vite builder.
+-->
+
+<script>
+    /**
+     * Sets the `global` property on the `window` object.
+     *
+     * @description Some Storybook interaction tests rely on `global` being defined.
+     * Vite's build process can cause issues with this expectation. This script ensures
+     * that `window.global` is defined as `window` to resolve these issues.
+     *
+     * For more details, refer to the documentation:
+     * @see https://storybook.js.org/docs/builders/vite#interaction-tests-not-working-as-expected
+     */
+    window.global = window;
+  </script>

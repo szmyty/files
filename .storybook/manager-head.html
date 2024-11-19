@@ -1,0 +1,25 @@
+<!--
+  @file manager-head.html
+  @description Customizes the Storybook Manager's HTML head to adjust styles for documentation tables.
+  @reference https://github.com/elastic/eui/blob/main/.storybook/manager-head.html
+  @version 1.0.0
+
+  This file modifies the appearance of the Storybook documentation's argument tables by overriding
+  the default styles. Specifically, it ensures code blocks within argument tables wrap their content
+  for better readability.
+-->
+
+<style>
+    /**
+     * Custom style for Storybook documentation argument tables.
+     *
+     * @description Ensures code blocks within `.docblock-argstable` use pre-wrap for white-space,
+     * allowing long lines of code to wrap for improved readability.
+     *
+     * @target .docblock-argstable code
+     * @property white-space: pre-wrap !important;
+     */
+    .docblock-argstable code {
+      white-space: pre-wrap !important;
+    }
+  </style>
