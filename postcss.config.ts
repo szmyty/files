@@ -18,7 +18,9 @@ module.exports = {
    * - `autoprefixer`: Adds vendor prefixes to CSS rules for compatibility with different browsers.
    */
   plugins: {
-    tailwindcss: {}, // Tailwind CSS integration
+    tailwindcss: {
+      config: "./tailwind.config.ts",
+    }, // Tailwind CSS integration
     autoprefixer: {}, // Automatically adds vendor prefixes to CSS
   },
 };
