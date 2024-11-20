@@ -40,7 +40,6 @@ const config: Config = withMaterialTailwind({
    * Tailwind scans these files to generate the necessary CSS.
    */
   content: [
-    "./index.html", // Main HTML entry file
     "./src/**/*.{vue,js,ts,jsx,tsx}", // Source files with supported extensions
   ],
 

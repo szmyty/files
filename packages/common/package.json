@@ -1,0 +1,7 @@
+{
+    "name": "@react-components/common",
+    "version": "1.0.0",
+    "description": "Common components for React",
+    "main": "dist/index.ts",
+
+}

@@ -1572,7 +1572,7 @@ appengine-generated/
 *.sig
 
 pkg/
-src/
+# src/
 
 # --------------------------
 # Autotools
@@ -2443,7 +2443,7 @@ _ReSharper*/
 .vs/
 
 # Ignore Nuget packages folder
-packages/
+# packages/
 
 # --------------------------
 # Force.com
@@ -4466,7 +4466,7 @@ _ModuleInstall/
 /typo3
 /typo3_src
 /typo3_src-*
-/Packages
+# /Packages
 /.htaccess
 /index.php
 # Ignore temp directory.

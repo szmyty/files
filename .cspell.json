@@ -17,6 +17,7 @@
         "basenames",
         "commitizen",
         "commitlint",
+        "docgen",
         "iface",
         "IPAM",
         "ISORT",
@@ -39,6 +40,7 @@
         "syncpack",
         "Szmyt",
         "tailwindcss",
+        "tsbuildinfo",
         "venv"
     ],
     "version": "0.2"

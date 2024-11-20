@@ -87,7 +87,15 @@ const config: StorybookConfig = {
    * `debug` provides detailed logs for troubleshooting.
    */
   logLevel: "debug",
-
+  /**
+   * Overrides environment variables for the Storybook process.
+   */
+  env: (config: Record<string, string> = {}): Record<string, string> => ({
+    ...config,
+    ESLINT_NO_DEV_ERRORS: "true", // Convert boolean to string
+    DISABLE_ESLINT_PLUGIN: "true", // Convert boolean to string
+  }),
+  staticDirs: [],
   /**
    * Custom Vite final configuration.
    * - Adds environment-specific configuration for development and production.
