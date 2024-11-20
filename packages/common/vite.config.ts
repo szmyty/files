@@ -1,8 +1,20 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tsNode from "ts-node";
+
+tsNode.register({
+  transpileOnly: true,
+  compilerOptions: {
+    module: "commonjs",
+  },
+});
 
 export default defineConfig({
   plugins: [react()],
+  // CSS options
+  css: {
+    postcss: "./postcss.config.cjs",
+  },
   build: {
     lib: {
       entry: "src/index.ts", // Path to your library's entry point

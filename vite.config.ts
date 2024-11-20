@@ -148,9 +148,10 @@ export default defineConfig(({ mode }) => ({
 
   // CSS options
   css: {
-    postcss: {
-      plugins: [tailwindcss],
-    },
+    postcss: "./postcss.config.ts",
+    // postcss: {
+    //   plugins: [tailwindcss],
+    // },
   },
 
   // Resolve options for path aliases
