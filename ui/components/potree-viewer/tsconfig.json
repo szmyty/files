@@ -1,7 +1,13 @@
 {
-    "files": [],
-    "references": [
-      { "path": "./tsconfig.app.json" },
-      { "path": "./tsconfig.node.json" }
-    ]
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+      "outDir": "dist",
+      "rootDir": "src",
+      "declaration": true,
+      "declarationMap": true,
+      "emitDeclarationOnly": true,
+      "composite": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["**/__tests__", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx", "**/node_modules", "**/dist"]
   }

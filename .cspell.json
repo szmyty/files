@@ -15,6 +15,7 @@
         "autofix",
         "autofixed",
         "basenames",
+        "camelcase",
         "commitizen",
         "commitlint",
         "docgen",
