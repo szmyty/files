@@ -9,6 +9,10 @@
     "license": "MIT",
     "private": true,
     "scripts": {
+        "app:build": "pnpm --filter example^... build",
+        "app:dev": "pnpm --filter example dev",
+        "graph": "pnpm m ls --graph",
+        "nx-graph": "nx graph",
         "tailwind-config-viewer": "npx tailwind-config-viewer --config ./tailwind.config.js serve --port 5030 --open",
         "sync": "pnpm install && pnpm prune"
     },

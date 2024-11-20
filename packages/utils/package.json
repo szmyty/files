@@ -9,10 +9,16 @@
     "dist"
   ],
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
   "scripts": {
     "build:postcss": "tsc --project tsconfig.postcss.json",
-    "build:app": "tsc --project tsconfig.json",
-    "build": "pnpm run build:app && vite build",
+    "build:lib": "tsc --project tsconfig.json",
+    "build": "pnpm run build:lib && vite build",
     "lint": "eslint src --ext .ts,.tsx",
     "test": "jest"
   },

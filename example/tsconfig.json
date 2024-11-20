@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "target": "ES6",                        // Target modern JavaScript
+      "module": "ESNext",                     // Use ES modules for import/export
+      "moduleResolution": "Node",            // Resolve modules in a Node.js style
+      "jsx": "react-jsx",                    // Use React's modern JSX transform
+      "strict": true,                        // Enable all strict type-checking options
+      "esModuleInterop": true,               // Allow default imports from CommonJS
+      "forceConsistentCasingInFileNames": true, // Enforce consistent file naming
+      "skipLibCheck": true,                  // Skip type-checking for library files
+      "baseUrl": ".",                        // Base URL for module resolution
+      "paths": {
+        "*": ["node_modules/*"]              // Ensure proper module resolution
+      }
+    },
+    "include": ["src"],                      // Include the `src` directory for type-checking
+    "exclude": ["node_modules", "dist"]      // Exclude unnecessary directories
+  }

@@ -249,7 +249,63 @@ importers:
         specifier: 2.1.5
         version: 2.1.5(@types/node@22.9.0)(msw@2.6.5(@types/node@22.9.0)(typescript@5.6.3))(terser@5.36.0)
 
-  example: {}
+  example:
+    dependencies:
+      '@floating-ui/dom':
+        specifier: 1.6.12
+        version: 1.6.12
+      '@react-components/common':
+        specifier: workspace:*
+        version: link:../packages/common
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@testing-library/react':
+        specifier: 16.0.1
+        version: 16.0.1(@testing-library/dom@10.4.0)(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/react':
+        specifier: 18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: 18.3.1
+        version: 18.3.1
+      '@vitejs/plugin-react':
+        specifier: 4.3.3
+        version: 4.3.3(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
+      autoprefixer:
+        specifier: 10.4.20
+        version: 10.4.20(postcss@8.4.49)
+      eslint:
+        specifier: 9.15.0
+        version: 9.15.0(jiti@1.21.6)
+      jest:
+        specifier: 29.7.0
+        version: 29.7.0(@types/node@22.9.0)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.9.2)(@types/node@22.9.0)(typescript@5.6.3))
+      postcss:
+        specifier: 8.4.49
+        version: 8.4.49
+      postcss-cli:
+        specifier: 11.0.0
+        version: 11.0.0(jiti@1.21.6)(postcss@8.4.49)
+      rollup-plugin-postcss:
+        specifier: 4.0.2
+        version: 4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.9.2)(@types/node@22.9.0)(typescript@5.6.3))
+      ts-node:
+        specifier: 10.9.2
+        version: 10.9.2(@swc/core@1.9.2)(@types/node@22.9.0)(typescript@5.6.3)
+      typescript:
+        specifier: 5.6.3
+        version: 5.6.3
+      vite:
+        specifier: 5.4.11
+        version: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
+      vite-plugin-dts:
+        specifier: 4.3.0
+        version: 4.3.0(@types/node@22.9.0)(rollup@4.27.3)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
 
   packages/common:
     dependencies:
