@@ -13,8 +13,10 @@
         "app:dev": "pnpm --filter example dev",
         "graph": "pnpm m ls --graph",
         "nx-graph": "nx graph",
-        "tailwind-config-viewer": "npx tailwind-config-viewer --config ./tailwind.config.js serve --port 5030 --open",
-        "sync": "pnpm install && pnpm prune"
+        "tailwind-config-viewer": "dotenv bash scripts/tailwind-config-viewer.sh",
+        "sync": "pnpm install && pnpm prune",
+        "build-storybook": "storybook build",
+        "environment": "bash scripts/environment.sh"
     },
     "engineStrict": true,
     "packageManager": "pnpm@9.14.1",
