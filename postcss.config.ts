@@ -10,17 +10,30 @@
  * @see https://github.com/postcss/autoprefixer
  */
 
-module.exports = {
-  /**
-   * PostCSS plugins configuration.
-   *
-   * - `tailwindcss`: Enables the use of Tailwind CSS.
-   * - `autoprefixer`: Adds vendor prefixes to CSS rules for compatibility with different browsers.
-   */
+import type { Plugin } from "postcss";
+
+/**
+ * PostCSS configuration object.
+ * Defines plugins used by PostCSS to transform CSS.
+ */
+const config: {
+  plugins: Record<string, Plugin | Record<string, unknown>>;
+} = {
   plugins: {
+    /**
+     * Tailwind CSS integration.
+     * Enables the use of Tailwind CSS utilities and customizations.
+     */
     tailwindcss: {
       config: "./tailwind.config.ts",
-    }, // Tailwind CSS integration
-    autoprefixer: {}, // Automatically adds vendor prefixes to CSS
+    },
+
+    /**
+     * Autoprefixer integration.
+     * Automatically adds vendor prefixes to CSS rules for better browser compatibility.
+     */
+    autoprefixer: {},
   },
 };
+
+export default config;

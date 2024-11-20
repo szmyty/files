@@ -6,6 +6,7 @@
         "name": "Alan Szmyt",
         "email": "szmyty@gmail.com"
     },
+    "type": "module",
     "license": "MIT",
     "private": true,
     "scripts": {
