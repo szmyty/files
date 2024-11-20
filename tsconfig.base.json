@@ -58,6 +58,7 @@
         "**/temp",
         "**/tests",
         "**/tmp",
+        "**/node_modules/@types/mocha"
     ],
     "include": [
         "src/**/*",

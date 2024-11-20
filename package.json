@@ -13,7 +13,7 @@
         "app:dev": "pnpm --filter example dev",
         "graph": "pnpm m ls --graph",
         "nx-graph": "nx graph",
-        "tailwind-config-viewer": "dotenv bash scripts/tailwind-config-viewer.sh",
+        "tailwind-config-viewer": "bash scripts/tailwind-config-viewer.sh",
         "sync": "pnpm install && pnpm prune",
         "build-storybook": "storybook build",
         "environment": "bash scripts/environment.sh"
@@ -49,6 +49,7 @@
         "@storybook/react-vite": "8.4.4",
         "@storybook/test": "8.4.4",
         "@storybook/theming": "8.4.4",
+        "@tailwindcss/forms": "0.5.9",
         "@testing-library/react": "16.0.1",
         "@types/jest": "29.5.14",
         "@types/lodash": "4.17.13",
