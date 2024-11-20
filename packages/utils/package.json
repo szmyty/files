@@ -1,7 +1,7 @@
 {
-  "name": "@react-components/common",
+  "name": "@react-components/utils",
   "version": "1.0.0",
-  "description": "Common components for React",
+  "description": "Utility functions for React",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -48,8 +48,7 @@
   "dependencies": {
     "@floating-ui/dom": "1.6.12",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@react-components/utils": "workspace:*"
+    "react-dom": "^18.3.1"
   },
   "peerDependencies": {
     "react": "^18.3.1",

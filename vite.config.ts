@@ -148,7 +148,7 @@ export default defineConfig(({ mode }) => ({
 
   // CSS options
   css: {
-    postcss: "./postcss.config.ts",
+    postcss: "./postcss.config.cjs",
     // postcss: {
     //   plugins: [tailwindcss],
     // },
