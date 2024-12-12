@@ -2137,7 +2137,7 @@ __recovery/
 *.stat
 
 # Boss dependency manager vendor folder https://github.com/HashLoad/boss
-modules/
+# modules/
 
 # --------------------------
 # DM
@@ -3084,14 +3084,14 @@ install.php
 /temp/*
 /uploaded/*
 /installer_files/*
-/modules/backend/*
-/modules/blog/*
-/modules/cms/*
-/modules/core/*
-/modules/session/*
-/modules/shop/*
-/modules/system/*
-/modules/users/*
+# /modules/backend/*
+# /modules/blog/*
+# /modules/cms/*
+# /modules/core/*
+# /modules/session/*
+# /modules/shop/*
+# /modules/system/*
+# /modules/users/*
 # add content_*.php if you don't want erase client changes to content
 
 # --------------------------
@@ -3623,7 +3623,7 @@ inc/
 .eclipse
 # /lib/
 /logs/
-/modules
+# /modules
 /project/project
 /project/target
 /target
