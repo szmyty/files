@@ -6,7 +6,7 @@
     "description": "An example app to test the common-components library.",
     "scripts": {
       "dev": "vite",
-      "build": "vite build",
+      "build": "tsc && vite build",
       "serve": "vite preview"
     },
     "dependencies": {

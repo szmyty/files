@@ -1,35 +1,37 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tsNode from "ts-node";
-
-tsNode.register({
-  transpileOnly: true,
-  compilerOptions: {
-    module: "commonjs",
-  },
-});
+import react from "@vitejs/plugin-react-swc";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [react()],
-  // CSS options
-  css: {
-    postcss: "./postcss.config.cjs",
-  },
+  plugins: [
+    // Enables React with SWC for faster builds
+    react(),
+    // Enables path aliasing based on tsconfig.json
+    tsconfigPaths(),
+  ],
   build: {
     lib: {
-      entry: "src/index.ts", // Path to your library's entry point
-      name: "CommonComponents", // Global name for UMD builds
-      fileName: (format) => `common-components.${format}.js`, // Output file names
+      // Entry point for the library
+      entry: "./src/index.ts",
+      // Library name for UMD/IIFE builds
+      name: "ReactComponentsCommon",
+      // Output formats: ESM and CommonJS
+      formats: ["es", "cjs"],
+      // Output file names
+      fileName: (format) => `common.${format}.js`,
     },
     rollupOptions: {
-      // Exclude dependencies from the bundled output
-      external: ["react", "react-dom"],
+      // Externalize dependencies to prevent bundling
+      external: ["react", "react-dom", "@react-components/utils"],
       output: {
+        // Global variables for UMD/IIFE builds
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
+          "@react-components/utils": "ReactComponentsUtils",
         },
       },
     },
+    sourcemap: true, // Optional: Enables source maps
   },
 });

@@ -1,0 +1,16 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "tsconfig",
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "types": ["node", "jest"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "paths": {
+            "@react-components/common": ["./packages/common/src"],
+            "@react-components/common/*": ["./packages/common/src/*"],
+            "@react-components/utils": ["./packages/utils/src"],
+            "@react-components/utils/*": ["./packages/utils/src/*"]
+        }
+    },
+}

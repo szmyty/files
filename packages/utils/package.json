@@ -16,7 +16,6 @@
     }
   },
   "scripts": {
-    "build:postcss": "tsc --project tsconfig.postcss.json",
     "build:lib": "tsc --project tsconfig.json",
     "build": "pnpm run build:lib && vite build",
     "lint": "eslint src --ext .ts,.tsx",

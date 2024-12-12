@@ -1,35 +1,29 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tsNode from "ts-node";
-
-tsNode.register({
-  transpileOnly: true,
-  compilerOptions: {
-    module: "commonjs",
-  },
-});
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [react()],
-  // CSS options
+  plugins: [
+    // Enables path aliasing based on tsconfig.json
+    tsconfigPaths(),
+  ],
   css: {
     postcss: "./postcss.config.cjs",
   },
   build: {
     lib: {
-      entry: "src/index.ts", // Path to your library's entry point
-      name: "Utils", // Global name for UMD builds
-      fileName: (format) => `utils.${format}.js`, // Output file names
+      // Entry point for the library
+      entry: "./src/index.ts",
+      // Library name for UMD/IIFE builds
+      name: "ReactComponentsUtils",
+      // Output formats: ESM and CommonJS
+      formats: ["es", "cjs"],
+      // Output file names
+      fileName: (format) => `utils.${format}.js`,
     },
     rollupOptions: {
-      // Exclude dependencies from the bundled output
-      external: ["react", "react-dom"],
-      output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-        },
-      },
+      // Externalize dependencies to prevent bundling
+      external: [],
     },
+    sourcemap: true, // Optional: Enables source maps
   },
 });
