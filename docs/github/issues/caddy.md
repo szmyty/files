@@ -71,4 +71,4 @@ Dependencies:
 The Kubernetes cluster (from the previous issue) should be running with the mock API server deployed.
 
 ## References
-- (Caddy Server)[https://caddyserver.com/]
+- [Caddy Server](https://caddyserver.com/)
