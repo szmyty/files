@@ -1,0 +1,49 @@
+Prompt: Explaining the System Architecture
+
+1. Data Hub
+
+What It Does: The central place where researchers and users upload raw data files. Think of it as the starting point for all the data entering the system.
+
+Purpose: Acts as the entry point for organizing and processing incoming data.
+
+
+2. Job Orchestrator (e.g., Kestra)
+
+What It Does: Monitors the Data Hub and automatically kicks off workflows whenever a new file is uploaded.
+
+Purpose: Ensures that every file is processed consistently without manual intervention.
+
+
+3. Transformation ETL Pipeline
+
+What It Does: Python scripts transform raw data into a standardized format that can be easily used by other parts of the system.
+
+Purpose: Prepares the data for storage and ensures compatibility with the decision support tool.
+
+
+4. Data Lake (e.g., TileDB with Minio)
+
+What It Does: Stores the transformed data in a structured, queryable format. Think of it as a digital filing cabinet for all processed data.
+
+Purpose: Makes it easy to retrieve data quickly when needed for visualizations or analysis.
+
+
+5. GraphQL Apollo Server
+
+What It Does: Handles requests from the frontend app by querying the data lake and delivering the requested data.
+
+Purpose: Acts as the middleman between the backend and the decision support tool, ensuring smooth communication.
+
+
+6. React Decision Support Tool
+
+What It Does: A user-friendly app where decision-makers can view and interact with data layers (e.g., maps, charts).
+
+Purpose: Helps users analyze and visualize data to gain insights and make informed decisions.
+
+
+7. Offline Cache with Redux
+
+What It Does: Stores data layers locally on the user’s device so they can work even without an internet connection.
+
+Purpose: Ensures the tool is reliable and accessible, even in environments with poor connectivity.
