@@ -22,6 +22,15 @@ sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
 scoop install task
 ```
 
+### **Verify Taskfile Installation**
+To ensure Taskfile is installed correctly, run:
+
+```sh
+task --version
+```
+
+If you see the Taskfile version number, the installation was successful.
+
 ### **2️⃣ Run Dev Environment Setup**
 Once Taskfile is installed, run:
 
