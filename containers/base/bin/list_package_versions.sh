@@ -1,29 +1,32 @@
 #!/usr/bin/env bash
-set -euox pipefail
-
-######################################################################
-# @Project      : app
-# @File         : list_package_versions.sh
-# @Description  : Script to list all installed packages on a Debian-based
-#                 system along with their versions. The output is sorted
-#                 alphabetically by package name.
+# ------------------------------------------------------------------------------
+# Script: list-installed-packages.sh
 #
-# @Author       : Alan Szmyt
-# @Date         : 2024-08-30
-######################################################################
-
-######################################################################
-# @brief        Lists all installed packages on the system.
+# Description:
+#   Lists all installed packages on a Debian-based system with their versions,
+#   sorted alphabetically in "package=version" format.
 #
-# @details      This script uses 'dpkg-query' to retrieve the names and
-#               versions of all installed packages. The output is then
-#               sorted alphabetically and printed.
+# Usage:
+#   ./list-installed-packages.sh
 #
-# @return       None.
-######################################################################
+# Dependencies:
+#   - dpkg-query
+# ------------------------------------------------------------------------------
 
-# Retrieve the list of installed packages with their versions.
-packages=$(dpkg-query --show --showformat='${Package}=${Version}\n')
+set -euo pipefail
 
-# Sort and print the package list.
-echo "${packages}" | sort
+list_installed_packages() {
+  local packages
+
+  echo "📦 Retrieving installed packages..."
+  packages=$(dpkg-query --show --showformat='${Package}=${Version}\n')
+
+  echo "📃 Installed packages (sorted):"
+  echo "${packages}" | sort
+}
+
+main() {
+  list_installed_packages
+}
+
+main "$@"

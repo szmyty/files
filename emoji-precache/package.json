@@ -1,0 +1,14 @@
+{
+  "name": "emoji-precache",
+  "version": "1.0.0",
+  "description": "Download all emoji SVGs from Twemoji and Noto Emoji to assets/emojis with PDF conversion",
+  "main": "precache-emojis.js",
+  "scripts": {
+    "start": "node precache-emojis.js"
+  },
+  "dependencies": {
+    "shelljs": "^0.8.5",
+    "twemoji": "^14.0.2"
+  }
+}
+
