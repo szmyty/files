@@ -1,0 +1,67 @@
+nameOverride: wikijs
+fullnameOverride: dnd-wiki-wikijs
+
+replicaCount: 1
+revisionHistoryLimit: 10
+
+image:
+  repository: requarks/wiki
+  tag: 2.5
+  imagePullPolicy: IfNotPresent
+
+resources:
+  limits: {}
+  requests: {}
+
+nodeSelector: {}
+
+affinity: {}
+
+schedulerName: ""
+
+tolerations: []
+
+volumeMounts: []
+
+volumes: []
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: wiki.167guild.io
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+sideload:
+  enabled: false
+  repoURL: https://github.com/Requarks/wiki-localization
+  env: []
+  securityContext: {}
+  resources:
+    limits: {}
+    requests: {}
+
+nodeExtraCaCerts: ""
+
+postgresql:
+  enabled: true
+  postgresqlDatabase: wiki
+  postgresqlUser: postgres
+  # postgresqlPassword: Roqm06Zq6E3lfcovKrDHzBlk8IaG1LBc  # ✅ Use your real password here
+  # postgresqlHost: ""
+  existingSecret: ""
+  existingSecretKey: postgresql-password
+  postgresqlPort: 5432
+  ssl: false
+  ca: ""
+  fullnameOverride: dnd-wiki-postgresql
+
+  persistence:
+    enabled: true
+    existingClaim: ""
+    storageClass: standard  # ✅ Your chosen StorageClass
+    size: 8Gi

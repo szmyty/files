@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: wikijs-cert
+  namespace: wikijs
+spec:
+  domains:
+    - wiki.167guild.io

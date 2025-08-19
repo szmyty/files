@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wikijs-ingress
+  namespace: wikijs
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: wikijs-ip
+    networking.gke.io/managed-certificates: wikijs-cert
+spec:
+  ingressClassName: gce
+  rules:
+    - host: wiki.167guild.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dnd-wiki
+                port:
+                  number: 3000
