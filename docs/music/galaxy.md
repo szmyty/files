@@ -1,67 +1,67 @@
 # galaxy – Tracklist (Incompris LLC)
 
-1. **journal**  
+1. [ ] **journal**  
    _Opening the page. Soft self-reflection. The story begins inward._
 
-2. **temperament**  
+2. [ ] **temperament**  
    _The storm beneath the surface. Unstable calm._
 
-3. **thoth**  
+3. [ ] **thoth**  
    _Sacred sight opens. Ceremony begins. Dream and rage collide._
 
-4. **bodhisattva**  
+4. [ ] **bodhisattva**  
    _Spiritual service through chaos. Rage becomes mantra._
 
-5. **nonlinear**  
+5. [ ] **nonlinear**  
    _Time spirals. Self fractures. Progress isn’t linear._
 
-6. **stark**  
+6. [ ] **stark**  
    _Post-human armor. Glitch soul strength._
 
-7. **telepathy**  
+7. [ ] **telepathy**  
    _Connection beyond words. Thought as vibration._
 
-8. **paigey**  
+8. [ ] **paigey**  
    _Divine feminine tunnel-walk rage. WNBA glamcore._
 
-9. **galaxy**  
+9. [ ] **galaxy**  
    _Title track. Emotional climax. Everything expands._
 
-10. **dharma**  
+10. [ ] **dharma**  
     _Acceptance. The order beneath the chaos._
 
-11. **alchemy**  
+11. [ ] **alchemy**  
     _Pain transmuted. Truth purified._
 
-12. **kindling**  
+12. [ ] **kindling**  
     _The spark before the blaze. Fragile ignition of spirit._
 
-13. **witchhunt**  
+13. [ ] **witchhunt**  
     _Future folk ritual. Fire and exile. Shadows turn to song._
 
-14. **synthesis**  
+14. [ ] **synthesis**  
     _Fragments converging. The self woven into wholeness._
 
-15. **myself**  
+15. [ ] **myself**  
     _Korean hyper glitch pop astral cloud rage rap. Mantra of independence: “did this by myself.”_
 
-16. **kenosis**  
+16. [ ] **kenosis**  
     _Emptying out. Letting go so light can enter._
 
-17. **lala**  
+17. [ ] **lala**  
     _Grief space. A sacred tribute._
 
-18. **willows**  
+18. [ ] **willows**  
     _Devotion, distance, memory. A soft goodbye._
 
-19. **dreamer**  
+19. [ ] **dreamer**  
     _Staying open. Eyes closed, soul forward._
 
-20. **goals**  
+20. [ ] **goals**  
     _Quiet clarity. Dreaming with purpose._
 
-21. **nala**  
+21. [ ] **nala**  
     _Just the vibe. Bass and presence in your name._
 
-22. **doors_are_suicidal**  
+22. [ ] **doors_are_suicidal**  
     _Rage bass with a warning. Suicide closes futures. Dream instead._
