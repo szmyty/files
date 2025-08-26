@@ -1,18 +1,18 @@
 # galaxy – Tracklist (Incompris LLC)
 
-1. [ ] **journal**  
+1. [x] **journal**  
    _Opening the page. Soft self-reflection. The story begins inward._
 
-2. [ ] **temperament**  
+2. [x] **temperament**  
    _The storm beneath the surface. Unstable calm._
 
 3. [ ] **thoth**  
    _Sacred sight opens. Ceremony begins. Dream and rage collide._
 
-4. [ ] **bodhisattva**  
+4. [x] **bodhisattva**  
    _Spiritual service through chaos. Rage becomes mantra._
 
-5. [ ] **nonlinear**  
+5. [x] **nonlinear**  
    _Time spirals. Self fractures. Progress isn’t linear._
 
 6. [ ] **stark**  
@@ -21,16 +21,16 @@
 7. [ ] **telepathy**  
    _Connection beyond words. Thought as vibration._
 
-8. [ ] **paigey**  
+8. [x] **paigey**  
    _Divine feminine tunnel-walk rage. WNBA glamcore._
 
 9. [ ] **galaxy**  
    _Title track. Emotional climax. Everything expands._
 
-10. [ ] **dharma**  
+10. [x] **dharma**  
     _Acceptance. The order beneath the chaos._
 
-11. [ ] **alchemy**  
+11. [x] **alchemy**  
     _Pain transmuted. Truth purified._
 
 12. [ ] **kindling**  
@@ -39,7 +39,7 @@
 13. [ ] **witchhunt**  
     _Future folk ritual. Fire and exile. Shadows turn to song._
 
-14. [ ] **synthesis**  
+14. [x] **synthesize**  
     _Fragments converging. The self woven into wholeness._
 
 15. [ ] **myself**  
@@ -63,5 +63,5 @@
 21. [ ] **nala**  
     _Just the vibe. Bass and presence in your name._
 
-22. [ ] **doors_are_suicidal**  
+22. [x] **suicide**  
     _Rage bass with a warning. Suicide closes futures. Dream instead._
