@@ -45,7 +45,7 @@
 15. [ ] **myself**  
     _Korean hyper glitch pop astral cloud rage rap. Mantra of independence: “did this by myself.”_
 
-16. [ ] **kenosis**  
+16. [x] **kenosis**  
     _Emptying out. Letting go so light can enter._
 
 17. [ ] **lala**  
@@ -60,7 +60,7 @@
 20. [ ] **goals**  
     _Quiet clarity. Dreaming with purpose._
 
-21. [ ] **nala**  
+21. [x] **nala**  
     _Just the vibe. Bass and presence in your name._
 
 22. [x] **suicide**  
