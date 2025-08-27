@@ -6,7 +6,7 @@
 2. [x] **temperament**  
    _The storm beneath the surface. Unstable calm._
 
-3. [ ] **thoth**  
+3. [x] **thoth**  
    _Sacred sight opens. Ceremony begins. Dream and rage collide._
 
 4. [x] **bodhisattva**  
