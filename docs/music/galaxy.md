@@ -57,7 +57,7 @@
 19. [ ] **dreamer**  
     _Staying open. Eyes closed, soul forward._
 
-20. [ ] **goals**  
+20. [x] **goals**  
     _Quiet clarity. Dreaming with purpose._
 
 21. [x] **nala**  
