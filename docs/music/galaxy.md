@@ -42,7 +42,7 @@
 14. [x] **kenosis**  
     _Emptying out. Letting go so light can enter._
 
-15. [ ] **lala**  
+15. [x] **lala**  
     _Grief space. A sacred tribute._
 
 16. [ ] **willows**  
