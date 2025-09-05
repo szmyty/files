@@ -33,29 +33,32 @@
 11. [x] **alchemy**  
     _Pain transmuted. Truth purified._
 
-12. [x] **synthesize**  
+12. [ ] **patience**  
+    _Breathing space. Trust in stillness. Time as teacher._
+
+13. [x] **synthesize**  
     _Fragments converging. The self woven into wholeness._
 
-13. [ ] **myself**  
+14. [ ] **myself**  
     _Korean hyper glitch pop astral cloud rage rap. Mantra of independence: “did this by myself.”_
 
-14. [x] **kenosis**  
+15. [x] **kenosis**  
     _Emptying out. Letting go so light can enter._
 
-15. [x] **lala**  
+16. [x] **lala**  
     _Grief space. A sacred tribute._
 
-16. [x] **willows**  
+17. [x] **willows**  
     _Devotion, distance, memory. A soft goodbye._
 
-17. [ ] **dreamer**  
+18. [ ] **dreamer**  
     _Staying open. Eyes closed, soul forward._
 
-18. [x] **goals**  
+19. [x] **goals**  
     _Quiet clarity. Dreaming with purpose._
 
-19. [x] **nala**  
+20. [x] **nala**  
     _Just the vibe. Bass and presence in your name._
 
-20. [x] **suicide**  
+21. [x] **suicide**  
     _Rage bass with a warning. Suicide closes futures. Dream instead._
