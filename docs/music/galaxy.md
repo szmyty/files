@@ -15,7 +15,7 @@
 5. [x] **nonlinear**  
    _Time spirals. Self fractures. Progress isn’t linear._
 
-6. [ ] **stark**  
+6. [x] **stark**  
    _Post-human armor. Glitch soul strength._
 
 7. [ ] **telepathy**  
