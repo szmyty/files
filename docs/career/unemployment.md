@@ -11,3 +11,9 @@
 - **09/02/2025** — Emailed Danielle at ClearRock with updated resume and additional context about my situation; had a follow-up call where she scheduled me for an onboarding appointment with my assigned consultant (09/16/2025) as part of the 2-month career transition program.  
 - **09/04/2025** — Worked on updating my GitHub profile page to better showcase my projects and technical skills as part of preparing for future job applications.  
 - **09/05/2025** — Reviewed multiple job postings received from Kimble Group recruiting emails to scout potential opportunities and build awareness of current openings.
+
+## Work Search Log — Week of Sep 7–13, 2025
+
+- **09/09/2025** — Emailed my career counselor additional context; shared my GitHub Pages proposal for the THERAPY app and confirmed I’m not pursuing security-clearance roles.  
+- **09/11/2025** — Reviewed the STARS (Situation–Task–Action–Result–Skills) accomplishments framework and brainstormed initial bullet points for interviews and resume achievements.  
+- **09/12/2025** — Set up job lead routing for Kimble Group: created a Gmail “Career” folder and filter to auto-organize their recruiting emails; reviewed current leads for relevant roles.
