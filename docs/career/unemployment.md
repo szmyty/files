@@ -17,3 +17,9 @@
 - **09/09/2025** — Emailed my career counselor additional context; shared my GitHub Pages proposal for the THERAPY app and confirmed I’m not pursuing security-clearance roles.  
 - **09/11/2025** — Reviewed the STARS (Situation–Task–Action–Result–Skills) accomplishments framework and brainstormed initial bullet points for interviews and resume achievements.  
 - **09/12/2025** — Set up job lead routing for Kimble Group: created a Gmail “Career” folder and filter to auto-organize their recruiting emails; reviewed current leads for relevant roles.
+
+## Work Search Log — Week of Sep 14–20, 2025
+
+- **09/16/2025** — Met with my career counselor for our first onboarding meeting to plan next steps and align on job-search strategy.  
+- **09/17/2025** — Completed the STARS accomplishments booklet; drafted finalized achievement bullets for use in resume and interviews.  
+- **09/18/2025** — Explored the career portal and messaged my counselor about resume improvements; received specific suggestions and next-step edits to implement.
