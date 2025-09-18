@@ -18,13 +18,13 @@
 6. [x] **stark**  
    _Post-human armor. Glitch soul strength._
 
-7. [ ] **telepathy**  
+7. [x] **telepathy**  
    _Connection beyond words. Thought as vibration._
 
 8. [x] **paigey**  
    _Divine feminine tunnel-walk rage. WNBA glamcore._
 
-9. [ ] **galaxy**  
+9. [x] **galaxy**  
    _Title track. Emotional climax. Everything expands._
 
 10. [x] **dharma**  
@@ -33,13 +33,13 @@
 11. [x] **alchemy**  
     _Pain transmuted. Truth purified._
 
-12. [ ] **patience**  
+12. [x] **patience**  
     _Breathing space. Trust in stillness. Time as teacher._
 
 13. [x] **synthesize**  
     _Fragments converging. The self woven into wholeness._
 
-14. [ ] **myself**  
+14. [x] **myself**  
     _Korean hyper glitch pop astral cloud rage rap. Mantra of independence: “did this by myself.”_
 
 15. [x] **kenosis**  
@@ -51,7 +51,7 @@
 17. [x] **willows**  
     _Devotion, distance, memory. A soft goodbye._
 
-18. [ ] **dreamer**  
+18. [x] **dreamer**  
     _Staying open. Eyes closed, soul forward._
 
 19. [x] **goals**  
