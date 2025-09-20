@@ -36,11 +36,11 @@
    - [x] Posted to SoundCloud  
    - [x] Synced metadata  
 
-7. [ ] **telepathy**  
+7. [x] **telepathy**  
    _Connection beyond words. Thought as vibration._  
    - [x] Posted to DistroKid  
    - [x] Posted to SoundCloud  
-   - [ ] Synced metadata  
+   - [x] Synced metadata  
 
 8. [x] **paigey**  
    _Divine feminine tunnel-walk rage. WNBA glamcore._  
