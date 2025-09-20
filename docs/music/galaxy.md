@@ -1,40 +1,40 @@
 # galaxy – Tracklist (Incompris LLC)
 
-1. [ ] **journal**  
+1. [x] **journal**  
    _Opening the page. Soft self-reflection. The story begins inward._  
    - [x] Posted to DistroKid  
    - [x] Posted to SoundCloud  
-   - [ ] Synced metadata  
+   - [x] Synced metadata  
 
-2. [ ] **temperament**  
+2. [x] **temperament**  
    _The storm beneath the surface. Unstable calm._  
    - [x] Posted to DistroKid  
    - [x] Posted to SoundCloud  
-   - [ ] Synced metadata  
+   - [x] Synced metadata  
 
-3. [ ] **thoth**  
+3. [x] **thoth**  
    _Sacred sight opens. Ceremony begins. Dream and rage collide._  
    - [x] Posted to DistroKid  
    - [x] Posted to SoundCloud  
-   - [ ] Synced metadata  
+   - [x] Synced metadata  
 
-4. [ ] **bodhisattva**  
+4. [x] **bodhisattva**  
    _Spiritual service through chaos. Rage becomes mantra._  
    - [x] Posted to DistroKid  
    - [x] Posted to SoundCloud  
-   - [ ] Synced metadata  
+   - [x] Synced metadata  
 
-5. [ ] **nonlinear**  
+5. [x] **nonlinear**  
    _Time spirals. Self fractures. Progress isn’t linear._  
    - [x] Posted to DistroKid  
    - [x] Posted to SoundCloud  
-   - [ ] Synced metadata  
+   - [x] Synced metadata  
 
-6. [ ] **stark**  
+6. [x] **stark**  
    _Post-human armor. Glitch soul strength._  
    - [x] Posted to DistroKid  
    - [x] Posted to SoundCloud  
-   - [ ] Synced metadata  
+   - [x] Synced metadata  
 
 7. [ ] **telepathy**  
    _Connection beyond words. Thought as vibration._  
@@ -42,11 +42,11 @@
    - [x] Posted to SoundCloud  
    - [ ] Synced metadata  
 
-8. [ ] **paigey**  
+8. [x] **paigey**  
    _Divine feminine tunnel-walk rage. WNBA glamcore._  
    - [x] Posted to DistroKid  
    - [x] Posted to SoundCloud  
-   - [ ] Synced metadata  
+   - [x] Synced metadata  
 
 9. [ ] **galaxy**  
    _Title track. Emotional climax. Everything expands._  
@@ -54,71 +54,71 @@
    - [ ] Posted to SoundCloud  
    - [ ] Synced metadata  
 
-10. [ ] **dharma**  
+10. [x] **dharma**  
     _Acceptance. The order beneath the chaos._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-11. [ ] **alchemy**  
+11. [x] **alchemy**  
     _Pain transmuted. Truth purified._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-12. [ ] **patience**  
+12. [x] **patience**  
     _Breathing space. Trust in stillness. Time as teacher._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-13. [ ] **synthesize**  
+13. [x] **synthesize**  
     _Fragments converging. The self woven into wholeness._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-14. [ ] **myself**  
+14. [x] **myself**  
     _Korean hyper glitch pop astral cloud rage rap. Mantra of independence: “did this by myself.”_  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-15. [ ] **kenosis**  
+15. [x] **kenosis**  
     _Emptying out. Letting go so light can enter._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-16. [ ] **lala**  
+16. [x] **lala**  
     _Grief space. A sacred tribute._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-17. [ ] **willows**  
+17. [x] **willows**  
     _Devotion, distance, memory. A soft goodbye._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-18. [ ] **dreamer**  
+18. [x] **dreamer**  
     _Staying open. Eyes closed, soul forward._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-19. [ ] **goals**  
+19. [x] **goals**  
     _Quiet clarity. Dreaming with purpose._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
-20. [ ] **nala**  
+20. [x] **nala**  
     _Just the vibe. Bass and presence in your name._  
     - [x] Posted to DistroKid  
     - [x] Posted to SoundCloud  
-    - [ ] Synced metadata  
+    - [x] Synced metadata  
 
 21. [ ] **suicide**  
     _Rage bass with a warning. Suicide closes futures. Dream instead._  
