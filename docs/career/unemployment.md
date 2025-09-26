@@ -23,3 +23,9 @@
 - **09/16/2025** — Met with my career counselor for our first onboarding meeting to plan next steps and align on job-search strategy.  
 - **09/17/2025** — Completed the STARS accomplishments booklet; drafted finalized achievement bullets for use in resume and interviews.  
 - **09/18/2025** — Explored the career portal and messaged my counselor about resume improvements; received specific suggestions and next-step edits to implement.
+
+## Work Search Log — Week of Sep 21–27, 2025
+
+- **09/22/2025** — Updated my resume with feedback and suggestions from my career counselor to strengthen presentation for job applications.  
+- **09/23/2025** — Met with my career counselor; discussed setting up productivity infrastructure and workflow systems to support job search and career direction.  
+- **09/26/2025** — Brain-dumped ideas and began building out a workflow system to review with my counselor next week.
