@@ -29,3 +29,15 @@
 - **09/22/2025** — Updated my resume with feedback and suggestions from my career counselor to strengthen presentation for job applications.  
 - **09/23/2025** — Met with my career counselor; discussed setting up productivity infrastructure and workflow systems to support job search and career direction.  
 - **09/26/2025** — Brain-dumped ideas and began building out a workflow system to review with my counselor next week.
+
+## Work Search Log — Week of Sept 28–Oct 4, 2025
+
+- **09/30/2025** — Developed a detailed system diagram / web-app model to map personal productivity, financial, and business components; preparing to present it to my career counselor as part of career-planning.  
+- **10/02/2025** — Completed the STARS accomplishments worksheet, reflecting on professional achievements from the last seven years to clarify transferable skills for future roles.  
+- **10/04/2025** — Activated and configured my career-program account; reviewed available workshops and online resources to support ongoing job readiness and career transition.
+
+## Work Search Log — Week of Oct 5–11, 2025
+
+- **10/07/2025** — Researched and identified local remote-work and co-working spaces (libraries, cafés, community areas) to create a list of focus environments for productivity.  
+- **10/09/2025** — Continued collaboration with career counselor to integrate finalized STARS insights and system diagram into a practical workflow plan for job search and self-management.  
+- **10/10/2025** — Updated resume with counselor’s additional feedback and new language to better reflect strengths and current direction; iterative version ready for further review.
