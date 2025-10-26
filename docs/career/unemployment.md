@@ -41,3 +41,15 @@
 - **10/07/2025** — Researched and identified local remote-work and co-working spaces (libraries, cafés, community areas) to create a list of focus environments for productivity.  
 - **10/09/2025** — Continued collaboration with career counselor to integrate finalized STARS insights and system diagram into a practical workflow plan for job search and self-management.  
 - **10/10/2025** — Updated resume with counselor’s additional feedback and new language to better reflect strengths and current direction; iterative version ready for further review.
+
+## Work Search Log — Week of Oct 12–18, 2025
+
+- **10/13/2025** — Met with career counselor to review progress and discuss strategies for portfolio development and career direction.  
+- **10/15/2025** — Continued work on personal workflow and portfolio system design by mapping all components of personal finance setup, business architecture, and development environment; preparing a minimal viable version for counselor review.  
+- **10/17/2025** — Organized and refined project architecture notes for upcoming portfolio review, focusing on productivity tools and technical integrations for personal development and creative workflow.  
+
+## Work Search Log — Week of Oct 19–25, 2025
+
+- **10/21/2025** — Researched Massachusetts Career Center resources and reviewed registration steps for MassHire; explored options for workshops and networking opportunities.  
+- **10/23/2025** — Researched the Massachusetts Training Opportunities Program (TOP) and reviewed eligibility requirements for extended training benefits.  
+- **10/25/2025** — Explored Google Grow career certificates and potential alignment with career goals; identified “context engineering” as a marketable skill to highlight on résumé and portfolio.  
