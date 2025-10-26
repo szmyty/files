@@ -52,4 +52,11 @@
 
 - **10/21/2025** — Researched Massachusetts Career Center resources and reviewed registration steps for MassHire; explored options for workshops and networking opportunities.  
 - **10/23/2025** — Researched the Massachusetts Training Opportunities Program (TOP) and reviewed eligibility requirements for extended training benefits.  
-- **10/25/2025** — Explored Google Grow career certificates and potential alignment with career goals; identified “context engineering” as a marketable skill to highlight on résumé and portfolio.  
+- **10/25/2025** — Explored Google Grow career certificates and potential alignment with career goals; identified “context engineering” as a marketable skill to highlight on résumé and portfolio.
+
+## Work Search Log — Week of Oct 26–Nov 1, 2025
+
+- **10/27/2025** — Met with career counselor to review progress, discuss updated career goals, and plan next steps for résumé and workflow development.  
+- **10/29/2025** — Registered for the RESEA (Reemployment Services and Eligibility Assessment) program as required; reviewed materials and scheduled follow-up activities.  
+- **10/31/2025** — Finalized résumé and STARS accomplishments with counselor’s feedback; documented future workflow system for continued career and productivity improvement.  
+
