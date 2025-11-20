@@ -60,3 +60,15 @@
 - **10/29/2025** — Registered for the RESEA (Reemployment Services and Eligibility Assessment) program as required; reviewed materials and scheduled follow-up activities.  
 - **10/31/2025** — Finalized résumé and STARS accomplishments with counselor’s feedback; documented future workflow system for continued career and productivity improvement.  
 
+## Work Search Log — Week of Nov 2–8, 2025
+
+- **11/03/2025** — Met with career counselor (Selean) to continue reviewing my productivity setup, workflow structure, and career-alignment plan.  
+- **11/05/2025** — Learned and incorporated Franklin Covey daily workflow sheets into my routine to support productivity and job-search organization.  
+- **11/07/2025** — Set up and optimized my workstation after moving to improve focus, efficiency, and readiness for career-related work.
+
+## Work Search Log — Week of Nov 9–15, 2025
+
+- **11/10/2025** — Met with career counselor (Selean) to review updated workflow setup, clarify career storytelling approach, and align next steps for job-search strategy.  
+- **11/10/2025** — Worked with counselor to revise and strengthen my résumé, applying narrative-focused edits and incorporating clearer project impact descriptions.  
+- **11/13/2025** — Finalized workstation setup and structured my forward plan to support consistent productivity, résumé development, and career-related tasks.  
+
