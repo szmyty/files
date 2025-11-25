@@ -72,3 +72,9 @@
 - **11/10/2025** — Worked with counselor to revise and strengthen my résumé, applying narrative-focused edits and incorporating clearer project impact descriptions.  
 - **11/13/2025** — Finalized workstation setup and structured my forward plan to support consistent productivity, résumé development, and career-related tasks.  
 
+## Work Search Log — Week of Nov 16–22, 2025
+
+- **11/16/2025** — Designed a structured daily work system by defining how tasks flow across three layers: (1) high-level rolling TODO list for rapid capture and iteration, (2) Franklin Covey daily priority sheets for focused planning, and (3) GitHub Kanban board with roadmap, milestones, and issues for long-term task tracking.  
+- **11/18/2025** — Implemented the new workflow across tools (Notes/Todo list, Covey sheets, GitHub) and synced it with my job-search and career development goals to support consistent productivity and organization during unemployment.  
+- **11/20/2025** — Reviewed and refined the system to prepare for discussion with my career counselor; documented how this structure will be used for job-search tasks, portfolio work, and RESEA requirements.  
+
