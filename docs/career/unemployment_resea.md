@@ -77,3 +77,17 @@
 - **11/16/2025** — Designed a structured daily work system using (1) a rolling TODO list for rapid capture, (2) Franklin Covey daily priority sheets for focused planning, and (3) a GitHub Kanban board for long-term task management.  
 - **11/18/2025** — Implemented the new workflow across tools (Notes, Covey sheets, GitHub) and aligned it with career development and job-search goals.  
 - **11/20/2025** — Reviewed and refined my workflow system; documented the plan to support future counseling sessions, job-search tasks, and RESEA requirements.  
+
+## Work Search Log — Week of Nov 23–29, 2025
+
+- **11/23/2025** — Researched software/engineering job salaries and compensation bands using Levels.fyi to better target realistic, sustainable roles in my job search.  
+- **11/25/2025** — Completed RESEA review meeting with Barbara; went over my work-search activities, unemployment requirements, and next steps to stay in compliance and move toward reemployment.  
+- **11/26/2025** — Attended final RESEA follow-up meeting with Barbara to confirm progress, discuss my ongoing career plan, and ensure all RESEA program requirements were satisfied.  
+
+## Work Search Log — Week of Nov 30–Dec 6, 2025
+
+- **12/02/2025** — Completed the RESEA seminar “Just Don’t: The 9 Don’ts of Job Searching,” fulfilling all remaining RESEA requirements and strengthening my job-search knowledge.  
+- **12/01/2025** — Worked on improving and professionalizing my GitHub profile, including updating README sections, restructuring repositories, and aligning project descriptions for job-search readiness.  
+- **12/03/2025** — Updated my résumé to sync with my GitHub profile and reflect recent structural improvements, narrative clarity, and technical highlights.  
+
+
