@@ -90,4 +90,16 @@
 - **12/01/2025** — Worked on improving and professionalizing my GitHub profile, including updating README sections, restructuring repositories, and aligning project descriptions for job-search readiness.  
 - **12/03/2025** — Updated my résumé to sync with my GitHub profile and reflect recent structural improvements, narrative clarity, and technical highlights.  
 
+## Work Search Log — Week of Dec 7–13, 2025
+
+- **12/08/2025** — Finalized my GitHub profile, completing all repository documentation, project descriptions, and portfolio elements to support job-search readiness.
+- **12/10/2025** — Completed the final update of my résumé, aligning it with my STAR achievements and GitHub portfolio for stronger applications.
+- **12/12/2025** — Began researching TOP (Training Opportunities Program) and reviewing approved training providers to identify programs that match my reemployment goals.
+
+## Work Search Log — Week of Dec 14–20, 2025
+
+- **12/15/2025** — Reviewed open engineering/creative technical roles on Suno’s Careers page and identified positions aligned with my skills.
+- **12/17/2025** — Reviewed SoundCloud’s job postings and flagged potential roles to apply for once my materials are finalized.
+- **12/19/2025** — Planned next steps for submitting job applications next week, including tailoring materials toward Suno and SoundCloud opportunities.
+
 
