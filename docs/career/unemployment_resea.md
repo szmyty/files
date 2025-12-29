@@ -102,4 +102,9 @@
 - **12/17/2025** — Reviewed SoundCloud’s job postings and flagged potential roles to apply for once my materials are finalized.
 - **12/19/2025** — Planned next steps for submitting job applications next week, including tailoring materials toward Suno and SoundCloud opportunities.
 
+## Work Search Log — Week of Dec 21–27, 2025
+
+- **12/23/2025** — Continued building and refining a structured base résumé system based on MassHire Career Center examples, designed to support both general and tailored job applications.
+- **12/24/2025** — Worked on automating résumé generation using a GitHub Actions workflow and LaTeX, enabling efficient updates and role-specific résumé outputs for job applications.
+- **12/26/2025** — Reviewed job requirements and role expectations to guide final résumé edits and ensure alignment with current employer hiring standards.
 
