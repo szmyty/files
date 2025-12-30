@@ -108,3 +108,8 @@
 - **12/24/2025** — Worked on automating résumé generation using a GitHub Actions workflow and LaTeX, enabling efficient updates and role-specific résumé outputs for job applications.
 - **12/26/2025** — Reviewed job requirements and role expectations to guide final résumé edits and ensure alignment with current employer hiring standards.
 
+## Work Search Log — Week of Dec 28, 2025 – Jan 3, 2026
+
+- **12/29/2025** — Completed a major refactor of my résumé, finalizing structure, content, and narrative to accurately reflect my experience and career direction.
+- **12/31/2025** — Continued development of a résumé generation and portfolio system, including refining a GitHub-based build workflow intended to automatically generate résumé outputs and serve as a showcase project.
+- **01/02/2026** — Polished and updated my GitHub profile, improving repository organization, README content, and overall presentation for job-search readiness.
