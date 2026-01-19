@@ -120,3 +120,9 @@
 - **01/08/2026** — Continued work on finalizing my résumé build process, including integrating it with my development environment and ensuring automated generation functions correctly before submitting applications.
 - **01/09/2026** — Researched additional job positions and companies aligned with my background, including continued review of roles at Suno; preparing to submit applications once my materials and development setup are finalized.
 
+## Work Search Log — Week of Jan 11–17, 2026
+
+- **01/13/2026** — Polished and finalized my résumé using the structure and format recommended by my career counselor, ensuring clarity, consistency, and alignment with employer expectations.
+- **01/15/2026** — Solidified my development and work environment to support reliable, professional software engineering work and job-search readiness, establishing a stable workflow for ongoing applications and projects.
+- **01/17/2026** — Researched and reviewed multiple job postings aligned with my skill set; prepared to update LinkedIn and begin submitting applications now that résumé and workflow are finalized.
+
