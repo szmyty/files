@@ -126,3 +126,8 @@
 - **01/15/2026** — Solidified my development and work environment to support reliable, professional software engineering work and job-search readiness, establishing a stable workflow for ongoing applications and projects.
 - **01/17/2026** — Researched and reviewed multiple job postings aligned with my skill set; prepared to update LinkedIn and begin submitting applications now that résumé and workflow are finalized.
 
+## Work Search Log — Week of Jan 18–24, 2026
+
+- **01/20/2026** — Completed my résumé from the ground up using the structure recommended by my career counselor, finalizing content, formatting, and narrative clarity.
+- **01/22/2026** — Met with my career counselor to review the completed résumé; received feedback and confirmation that the résumé is approved and ready for job applications.
+- **01/24/2026** — Updated my LinkedIn profile to reflect the finalized résumé and began adding professional connections to support active job-search efforts.
