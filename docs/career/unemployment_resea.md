@@ -131,3 +131,9 @@
 - **01/20/2026** — Completed my résumé from the ground up using the structure recommended by my career counselor, finalizing content, formatting, and narrative clarity.
 - **01/22/2026** — Met with my career counselor to review the completed résumé; received feedback and confirmation that the résumé is approved and ready for job applications.
 - **01/24/2026** — Updated my LinkedIn profile to reflect the finalized résumé and began adding professional connections to support active job-search efforts.
+
+## Work Search Log — Week of Jan 25–31, 2026
+
+- **01/27/2026** — Identified and shortlisted target companies and roles aligned with my finalized résumé and skill set, focusing on remote-friendly software and technical positions.
+- **01/29/2026** — Continued polishing and refining my résumé and supporting materials to ensure clarity, confidence, and readiness before submitting job applications.
+- **01/31/2026** — Reviewed and learned additional software engineering concepts to strengthen my technical confidence and prepare for interviews and professional work.
