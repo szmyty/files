@@ -137,3 +137,9 @@
 - **01/27/2026** — Identified and shortlisted target companies and roles aligned with my finalized résumé and skill set, focusing on remote-friendly software and technical positions.
 - **01/29/2026** — Continued polishing and refining my résumé and supporting materials to ensure clarity, confidence, and readiness before submitting job applications.
 - **01/31/2026** — Reviewed and learned additional software engineering concepts to strengthen my technical confidence and prepare for interviews and professional work.
+
+## Work Search Log — Week of Feb 1–7, 2026
+
+- **02/03/2026** — Organized and finalized job-search materials and files, including résumé versions, portfolio assets, and supporting documentation to ensure readiness for applications.
+- **02/05/2026** — Refined and stabilized my development and engineering workflow to ensure I am prepared to work effectively in a professional software environment regardless of employer setup.
+- **02/07/2026** — Prepared to begin submitting job applications by reviewing role requirements and ensuring my résumé, GitHub profile, and workflow are fully aligned.
