@@ -143,3 +143,15 @@
 - **02/03/2026** — Organized and finalized job-search materials and files, including résumé versions, portfolio assets, and supporting documentation to ensure readiness for applications.
 - **02/05/2026** — Refined and stabilized my development and engineering workflow to ensure I am prepared to work effectively in a professional software environment regardless of employer setup.
 - **02/07/2026** — Prepared to begin submitting job applications by reviewing role requirements and ensuring my résumé, GitHub profile, and workflow are fully aligned.
+
+## Work Search Log — Week of Feb 8–14, 2026
+
+- **02/10/2026** — Continued refining personal budgeting and financial planning systems to stabilize finances and reduce cognitive load in preparation for reemployment.
+- **02/12/2026** — Structured and organized GitHub project repositories and development workflow to ensure readiness for engineering roles and improve portfolio presentation.
+- **02/13/2026** — Configured and standardized MegaLinter and development environment tooling across projects to align with professional engineering best practices and prepare for new employment.
+
+## Work Search Log — Week of Feb 15–21, 2026
+
+- **02/16/2026** — Finalized core résumé structure using career counselor guidance to ensure clarity, narrative strength, and alignment with current engineering roles.
+- **02/18/2026** — Completed alignment between résumé and GitHub profile to present a cohesive professional portfolio for prospective employers.
+- **02/20/2026** — Identified and reviewed 15–20 target companies for upcoming job applications and began preparing tailored application materials for submission.
