@@ -163,3 +163,11 @@
 - **02/26/2026** — Refined and strengthened technical descriptions within my résumé, improving clarity, outcome focus, and alignment with current software engineering and platform roles.
 
 - **02/27/2026** — Optimized résumé formatting and layout for recruiter readability, finalizing a 2-page version suitable for submission to engineering and AI-adjacent positions.
+
+## Work Search Log — Week of Mar 1–7, 2026
+
+- **03/02/2026** — Polished and finalized my résumé with improved technical descriptions and formatting to ensure it accurately reflects my engineering experience and recent projects.
+
+- **03/03/2026** — Updated my LinkedIn profile to align with my finalized résumé, including revised experience descriptions, headline, and portfolio links.
+
+- **03/04/2026** — Applied for a Software Engineer position at Suno after reviewing the role requirements and tailoring my materials for the application.
