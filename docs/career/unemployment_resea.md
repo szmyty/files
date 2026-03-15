@@ -171,3 +171,9 @@
 - **03/03/2026** — Updated my LinkedIn profile to align with my finalized résumé, including revised experience descriptions, headline, and portfolio links.
 
 - **03/04/2026** — Applied for a Software Engineer position at Suno after reviewing the role requirements and tailoring my materials for the application.
+
+## Work Search Log — Week of Mar 8–14, 2026
+
+- **03/10/2026** — Identified and documented a list of 15–20 target companies aligned with my engineering background to focus upcoming job applications and tailor outreach efforts.
+- **03/11/2026** — Created a Levels.fyi account and downloaded supporting job-search applications to research salary bands, hiring trends, and software engineering opportunities.
+- **03/12/2026** — Corresponded with my career counselor regarding job opportunities; reviewed recommended roles and was introduced to the Wellfound job platform, which I will use to submit additional applications.
