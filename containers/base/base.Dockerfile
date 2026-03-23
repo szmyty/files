@@ -210,7 +210,7 @@ RUN groupadd \
     --create-home \
     --uid ${APP_UID} \
     --gid ${APP_GID} \
-    --comment "Non-root User for Running Applications" \
+    --comment "Non-root runtime user" \
     --home-dir ${APP_HOME} \
     --shell /usr/sbin/nologin ${APP_USER} \
     && chown --recursive ${APP_USER}:${APP_GROUP} ${APP_HOME} \
